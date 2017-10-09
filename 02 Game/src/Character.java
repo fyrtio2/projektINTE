@@ -4,8 +4,10 @@ public class Character {
     private int hp, maxHp;
     private String name;
     private Position position;
+    private int lvl;
 
     public Character(int maxHp, int hp, double speed, String name) {
+        lvl = 0;
         this.hp = hp;
         this.speed = speed;
         this.name = name;
@@ -44,7 +46,11 @@ public class Character {
         return name;
     }
 
-    public void newPosition(int x, int y) {
+    public int getLvl() {
+        return lvl;
+    }
+
+        public void newPosition(int x, int y) {
         Position p = new Position(x, y);
 
     }
