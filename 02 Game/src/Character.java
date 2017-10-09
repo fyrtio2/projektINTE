@@ -1,21 +1,24 @@
 public class Character {
 
-    private int speed;
-    private double hp;
+    private float speed;
+    private int hp;
     private String name;
     private int posX, posY;
 
-    public Character(double hp, int speed, String name) {
+    public Character(int hp, float speed, String name) {
         this.hp = hp;
         this.speed = speed;
         this.name = name;
     }
 
-    public double getHp() {
+    public int getHp() {
+        if (hp < 0) {
+            return 0;
+        }
         return hp;
     }
 
-    public int getSpeed() {
+    public float getSpeed() {
         return speed;
     }
 
