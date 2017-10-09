@@ -46,7 +46,7 @@ public class Character {
         return name;
     }
 
-    public int getLvl(){
+    public int getLvl() {
         return lvl;
     }
 
