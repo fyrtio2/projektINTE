@@ -2,7 +2,7 @@
 
 public class Character {
 
-    private float speed;
+    private double speed;
     private int hp;
     private String name;
     private Position position;
@@ -20,7 +20,7 @@ public class Character {
         return hp;
     }
 
-    public float getSpeed() {
+    public double getSpeed() {
         return speed;
     }
 
