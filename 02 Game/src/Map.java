@@ -24,6 +24,6 @@ public class Map {
 
     public boolean isWithinMap(Character character) {
         Position p = character.getPosition();
-        return (p)
+        return !(p.getX() > mapWidth || p.getY() > mapHeight);
     }
 }
