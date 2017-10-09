@@ -1,26 +1,42 @@
-
-
 public class Character {
 
-    private float speed;
-    private int hp;
+    private double speed;
+    private int hp, maxHp;
     private String name;
     private Position position;
 
-    public Character(int hp, float speed, String name) {
+    public Character(int maxHp, int hp, double speed, String name) {
         this.hp = hp;
         this.speed = speed;
         this.name = name;
     }
 
-    public int getHp() {
-        if (hp < 0) {
+    public int checkForNegativeHp(int health){
+        if (health < 0){
             return 0;
+        }
+        return health;
+    }
+
+    public int checkIfHpExceedsMaxHp (){
+        if(hp > maxHp){
+            return hp = maxHp;
         }
         return hp;
     }
 
-    public float getSpeed() {
+    public int getHp() {
+        checkForNegativeHp(hp);
+        return hp;
+    }
+
+    public int getMaxHp(){
+        checkForNegativeHp(maxHp);
+        checkIfHpExceedsMaxHp();
+        return maxHp;
+    }
+
+    public double getSpeed() {
         return speed;
     }
 
