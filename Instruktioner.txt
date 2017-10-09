@@ -1,0 +1,25 @@
+Instruktioner
+
+Inlämningsuppgiften på kursen är på 3,5hp och består av ett grupparbete som betygssätts på skalan U/G. Uppgiften är avsedd att göras i grupper om 3--5 personer och motsvarar alltså ungefär 2--300 timmars arbete. Det mesta av denna tid förväntas ni lägga ner under kursens tre sista veckor, efter tentan, men miljön bör vara uppsatt innan dess. 
+
+Uppgiften går ut på att utveckla och testa ett klassbibliotek i grupp med hjälp av de verktyg och tekniker som tagits upp på kursen. Samtliga medlemmar i gruppen ska delta i samtliga aktiviteter och kunna diskutera dessa vid redovisningen. Samtliga delar ska också dokumenteras i den rapport som ska lämnas in i samband med redovisningen.
+
+Gruppstorlek, otillåtet samarbete, plagiat etc.
+
+Större grupper än fem personer tillåts normalt inte. Om ni absolut vill arbeta i en större grupp måste ni ha goda skäl eftersom uppgiften inte är anpassad efter detta. Det är inte tillåtet att arbeta själv eller i grupper om två personer eftersom ni då inte kan uppfylla de krav som finns på uppgiften.
+
+Samarbete mellan grupper är inte tillåtet annat än i rent tekniska frågor och samtliga inlämningar kommer att plagiatkontrolleras och även sparas så att de kan användas som underlag för framtida plagiatkontroller. 
+
+Generellt gäller att allt material ni producerar ska vara eget arbete. Allt som ni hämtar från andra källor ska citeras och/eller refereras till i vedertagen stil. Vid misstanke om otillåtet samarbete eller plagiat kommer ärendet att överlämnas för behandling i Stockholms universitets disciplinnämnd. 
+
+Observera också att grupperna är solidariskt ansvariga för det som lämnas in. Om en uppgift lämnas vidare till disciplinnämnden så kommer det alltså att drabba samtliga medlemmar i den eller de inblandade grupperna.
+
+Examination
+
+Uppgiften examineras via en muntlig redovisning i slutet av projektet, samt ett antal statusredovisningar under projektets gång. Om gruppen inte är klar med projektet när kursen är slut, eller det inte blir godkänt, så ges ytterligare en möjlighet till redovisning ungefär två veckor efter kursslut, och slutligen en sista möjlighet veckan innan jul. Grupper som inte är godkända då får börja om med uppgiften nästa gång kursen går och då göra den uppgift som gäller då.
+
+Grupper som blir klara tidigare kan om de vill kontakta kursansvarig och boka i en redovisning vid ett tidigare tillfälle. 
+
+Miljö
+
+Den rekommenderade utvecklingsmiljön består av Java, JUnit, Maven och Git eller Subverion. Detta är en miljö som är helt inriktad mot Java. Eftersom kursen handlar om testning och inte javaprogrammering så är det inget krav att använda sig av just dessa verktyg utan gruppen får välja språk och verktyg själva. Dessa är dock de enda verktyg som vi stödjer och ger handledning på.
