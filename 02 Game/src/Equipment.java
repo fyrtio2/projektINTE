@@ -8,7 +8,7 @@ public class Equipment {
         this.durability = durability;
     }
 
-    public Equipment(String type,int stat, boolean enchanted,){
+    public Equipment(String type,int stat, boolean enchanted){
         this.type = type;
         this.stat = stat;
         this.enchanted = enchanted;
