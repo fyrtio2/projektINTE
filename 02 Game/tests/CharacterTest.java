@@ -27,6 +27,8 @@ public class CharacterTest {
 
     @Test
     public void getName() throws Exception {
+        Character mainCharacter = new Character(0, 3.6f, "Gubbe");
+        assertEquals("kalle", mainCharacter.getName());
 
     }
 }
