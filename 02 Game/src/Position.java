@@ -1,21 +1,17 @@
 public class Position {
 
-    private int x, y;
+    private int posX, posY;
 
     public Position(int x, int y){
-
-        this.x = x;
-        this.y = y;
-
-
+        this.posX = x;
+        this.posY = y;
     }
 
-    public int getX() {
-        return x;
+    public int getposX(){
+        return posY;
     }
-
-    public int getY() {
-        return y;
+    public int getposY(){
+        return posX;
     }
 
 }

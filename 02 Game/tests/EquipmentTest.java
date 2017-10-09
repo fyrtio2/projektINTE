@@ -6,7 +6,6 @@ public class EquipmentTest {
     @Test
     public void getType() throws Exception {
         Equipment newEquip = new Equipment("Platearmor",100,false);
-        assertEquals();
     }
 
     @Test

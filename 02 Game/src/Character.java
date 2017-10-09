@@ -44,9 +44,8 @@ public class Character {
         return name;
     }
 
-    public boolean newPosition(int x, int y) {
+    public void newPosition(int x, int y) {
         Position p = new Position(x, y);
-
     }
 
     public Position getPosition() {
