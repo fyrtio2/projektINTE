@@ -3,7 +3,7 @@ public class Equipment {
     private String type;
     private int stat, durability;
     private boolean enchanted;
-    private int lvlreq;
+    private int lvlReq;
 
     public Equipment(int durability){
         this.durability = durability;
@@ -13,7 +13,7 @@ public class Equipment {
         this.type = type;
         this.stat = stat;
         this.enchanted = enchanted;
-        this.lvlreq = lvlreq;
+        this.lvlReq = lvlreq;
 
 
     }
@@ -30,12 +30,12 @@ public class Equipment {
         return enchanted;
     }
 
-    public int getLvlreq(){
-        return lvlreq;
+    public int getLvlReq(){
+        return lvlReq;
     }
 
     public boolean canWear(Character player){
-        if(player.getLvl() >= lvlreq){
+        if(player.getLvl() >= lvlReq){
             return true;
         }else{
             return false;
