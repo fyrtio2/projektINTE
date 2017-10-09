@@ -2,6 +2,7 @@ public class Character {
 
     private int speed;
     private double hp;
+    private String name;
 
 
     public Character(double hp, int speed){
