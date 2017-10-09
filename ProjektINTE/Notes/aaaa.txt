@@ -1,5 +1,4 @@
-<<<<<<< HEAD
+
 Test test
-=======
+
 Awdoijawdöliajwd
->>>>>>> bd12ad0631be0eaafd2ad3ec9ccfa001ce2d1536
