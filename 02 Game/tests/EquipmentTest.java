@@ -10,7 +10,7 @@ public class EquipmentTest {
     }
 
     @Test
-    public void getStats() throws Exception {
+    public void getStat() throws Exception {
     }
 
     @Test
