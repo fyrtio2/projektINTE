@@ -50,6 +50,10 @@ public class Character {
         return lvl;
     }
 
+        public void newPosition(int x, int y) {
+        Position p = new Position(x, y);
+
+    }
 
     public Position getPosition() {
         return position;
