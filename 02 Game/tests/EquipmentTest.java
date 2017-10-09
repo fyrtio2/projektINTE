@@ -3,14 +3,24 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class EquipmentTest {
+    private Equipment newEquip = new Equipment("Platearmor",100,false, 10);
+    private Character player = new Character(10,10,10,"Isaac");
     @Test
-    public void canWear() throws Exception {
-        Equipment newEquip = new Equipment("Platearmor",100,false, 10);
-        Character player = new Character(10,10,10,"Isaac");
+    public void canNotWear() throws Exception {
+
 
         assertNotEquals(player.getLvl(),newEquip.getLvlReq());
 
         //Kan inte bäras av player eftersom karaktären är lvl 0 när den skapas
+
+
+    }
+    @Test
+    public void canWear(){
+        player.lvlUp(10);
+        assertEquals(player.getLvl(),newEquip.getLvlReq());
+        player.resetLvl();
+
 
 
     }
