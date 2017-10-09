@@ -11,15 +11,15 @@ public class Character {
         this.name = name;
     }
 
-    public int checkForNegativeHp(int health){
-        if (health < 0){
+    public int checkForNegativeHp(int health) {
+        if (health < 0) {
             return 0;
         }
         return health;
     }
 
-    public int checkIfHpExceedsMaxHp (){
-        if(hp > maxHp){
+    public int checkIfHpExceedsMaxHp() {
+        if (hp > maxHp) {
             return hp = maxHp;
         }
         return hp;
@@ -30,7 +30,7 @@ public class Character {
         return hp;
     }
 
-    public int getMaxHp(){
+    public int getMaxHp() {
         checkForNegativeHp(maxHp);
         checkIfHpExceedsMaxHp();
         return maxHp;
@@ -43,4 +43,6 @@ public class Character {
     public String getName() {
         return name;
     }
+
 }
+
