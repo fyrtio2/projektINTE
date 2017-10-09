@@ -1,9 +1,11 @@
+
+
 public class Character {
 
     private float speed;
     private int hp;
     private String name;
-    private int posX, posY;
+    private Position position;
 
     public Character(int hp, float speed, String name) {
         this.hp = hp;
