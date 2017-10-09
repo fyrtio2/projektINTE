@@ -50,21 +50,20 @@ public class Character {
         return lvl;
     }
 
-        public void newPosition(int x, int y) {
+    public void newPosition(int x, int y) {
         Position p = new Position(x, y);
 
-        }
+    }
 
     public Position getPosition() {
         return position;
     }
 
-    public void lvlUp(int up){
+    public void lvlUp(int up) {
         lvl += up;
-
     }
 
-    public void resetLvl(){
+    public void resetLvl() {
         lvl = 0;
     }
 
