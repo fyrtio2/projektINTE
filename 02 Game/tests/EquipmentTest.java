@@ -6,8 +6,9 @@ public class EquipmentTest {
     @Test
     public void canWear() throws Exception {
         Equipment newEquip = new Equipment("Platearmor",100,false, 10);
-        Map map = new Map("Mapen",10,190);;
-        Character player = new Character(10,10,10,"Isaac",);
+        Character player = new Character(10,10,10,"Isaac");
+
+        assertNotEquals(player.getLvl(),newEquip.getLvlreq());
 
 
     }

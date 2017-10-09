@@ -30,8 +30,12 @@ public class Equipment {
         return enchanted;
     }
 
+    public int getLvlreq(){
+        return lvlreq;
+    }
+
     public boolean canWear(Character player){
-        if(player.getLvl() <= lvlreq){
+        if(player.getLvl() >= lvlreq){
             return true;
         }else{
             return false;
