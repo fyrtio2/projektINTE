@@ -23,6 +23,8 @@ public class CharacterTest {
 
     @Test
     public void getSpeed() throws Exception {
+        Character mainCharacter = new Character(0, 3.6f, "kalle");
+        assertEquals(3.6f, mainCharacter.getSpeed(), 0.5f);
     }
 
     @Test
