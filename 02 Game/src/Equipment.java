@@ -1,10 +1,12 @@
 public class Equipment {
 
     private String type;
-    private int stat;
+    private int stat, durability;
     private boolean enchanted;
 
-
+    public Equipment(int durability){
+        this.durability = durability;
+    }
 
     public Equipment(String type,int stat, boolean enchanted){
         this.type = type;
@@ -23,5 +25,9 @@ public class Equipment {
 
     public boolean isEnchanted(){
         return enchanted;
+    }
+
+    public int getDurability(){
+        return durability;
     }
 }

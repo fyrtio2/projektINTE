@@ -17,4 +17,10 @@ public class EquipmentTest {
     public void isEnchanted() throws Exception {
     }
 
+    @Test
+    public void getDurability() throws Exception {
+        Equipment sword = new Equipment(3);
+        assertEquals(0,sword.getDurability());
+    }
+
 }
