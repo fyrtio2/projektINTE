@@ -8,7 +8,7 @@ public class EquipmentTest {
         Equipment newEquip = new Equipment("Platearmor",100,false, 10);
         Character player = new Character(10,10,10,"Isaac");
 
-        assertNotEquals(player.getLvl(),newEquip.getLvlreq());
+        assertNotEquals(player.getLvl(),newEquip.getLvlReq());
 
 
     }
