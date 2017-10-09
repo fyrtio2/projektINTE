@@ -1,5 +1,7 @@
 public class Character {
 
+    // This is a comment from peter yakob
+    // Using Intellij Git plugin
     private int speed;
     private double hp;
     private String name;
