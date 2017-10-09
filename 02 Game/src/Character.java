@@ -4,10 +4,10 @@ public class Character {
     private double hp;
     private String name;
 
-
-    public Character(double hp, int speed){
+    public Character(double hp, int speed, String name){
         this.hp = hp;
         this.speed = speed;
+        this.name = name;
     }
 
     public double getHp() {
@@ -16,6 +16,10 @@ public class Character {
 
     public int getSpeed() {
         return speed;
+    }
+
+    public String getName(){
+        return name;
     }
 
 
