@@ -10,6 +10,8 @@ public class EquipmentTest {
 
         assertNotEquals(player.getLvl(),newEquip.getLvlReq());
 
+        //Kan inte bäras av player eftersom karaktären är lvl 0 när den skapas
+
 
     }
 
