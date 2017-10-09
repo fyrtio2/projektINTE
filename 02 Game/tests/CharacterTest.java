@@ -2,8 +2,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-//Test Comment
-
 public class CharacterTest {
     @Test
     public void getHp() throws Exception {
