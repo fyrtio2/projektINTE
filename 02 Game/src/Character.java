@@ -1,12 +1,11 @@
 public class Character {
 
-    // This is a comment from peter yakob
-    // Using Intellij Git plugin
     private int speed;
     private double hp;
     private String name;
+    private int posX, posY;
 
-    public Character(double hp, int speed, String name){
+    public Character(double hp, int speed, String name) {
         this.hp = hp;
         this.speed = speed;
         this.name = name;
@@ -20,9 +19,7 @@ public class Character {
         return speed;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
-
-
 }

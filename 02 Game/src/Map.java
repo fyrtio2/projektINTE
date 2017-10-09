@@ -1,11 +1,24 @@
 public class Map {
 
-    int location;
+    private String locationName;
 
-    public Map(){
+    private int mapHeight, mapWidth;
 
+    public Map(String locationName, int mapHeight, int mapWidth) {
+        this.locationName = locationName;
+        this.mapHeight = mapHeight;
+        this.mapWidth = mapWidth;
     }
 
-    //Comment
+    public String getLocationName() {
+        return locationName;
+    }
 
+    public int getMapHeight() {
+        return mapHeight;
+    }
+
+    public int getMapWidth() {
+        return mapWidth;
+    }
 }
