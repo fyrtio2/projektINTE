@@ -11,4 +11,9 @@ public class CharacterTest {
     public void getSpeed() throws Exception {
     }
 
+    @Test
+    public void getName() throws Exception {
+
+    }
+
 }
