@@ -7,6 +7,7 @@ public class Character {
     private String name;
     private Position position;
 
+
     public Character(int hp, float speed, String name) {
         this.hp = hp;
         this.speed = speed;
