@@ -1,0 +1,34 @@
+<project name="INTE Övning 4" default="test">
+    <description>
+        En enkel byggfil som ni kan utgå från om ni vill använda Ant. Just nu gör den inget förutom att kompilera koden.
+    </description>
+
+    <target name="test-compile" depends="compile">
+        <javac srcdir="Test" destdir="bin/test">
+            <classpath>
+                <path id="TempConverter"/>
+                <pathelement location="lib/junit-4.12.jar"/>
+                <pathelement location="lib/hamcrest-core-1.3.jar"/>
+                <pathelement location="bin/main"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="compile">
+        <javac srcdir="src" destdir="bin/main"/>
+    </target>
+
+    <target name="test" depends="test-compile">
+        <junit printsummary="on" haltonfailure="no" fork="yes" showoutput="true">
+            <classpath>
+                <path id="classpath.test"/>
+                <pathelement location="lib/junit-4.12.jar"/>
+                <pathelement location="lib/hamcrest-core-1.3.jar"/>
+                <pathelement location="bin/test"/>
+                <pathelement location="bin/main"/>
+            </classpath>
+            <formatter type="plain"/>
+            <test name="inte.ovn4.build.TempConverterTests" outfile="./testresult"/>
+        </junit>
+    </target>
+</project>
