@@ -21,4 +21,9 @@ public class Map {
     public int getMapWidth() {
         return mapWidth;
     }
+
+    public boolean isWithinMap(Character character) {
+        Position p = character.getPosition();
+        return (p)
+    }
 }

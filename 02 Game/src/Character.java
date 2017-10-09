@@ -44,9 +44,13 @@ public class Character {
         return name;
     }
 
-    public void newPosition(int x, int y) {
+    public boolean newPosition(int x, int y) {
         Position p = new Position(x, y);
 
+    }
+
+    public Position getPosition() {
+        return position;
     }
 
 }
