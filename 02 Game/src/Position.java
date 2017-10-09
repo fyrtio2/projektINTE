@@ -7,4 +7,10 @@ public class Position {
         this.y = y;
 
     }
+
+    public boolean isWithinMap(Map map) {
+
+        return (x >= 0 && y >= 0 && (x <= map.getMapWidth() && y <= map.getMapHeight()));
+
+    }
 }
