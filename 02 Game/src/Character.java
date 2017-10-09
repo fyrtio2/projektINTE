@@ -46,6 +46,7 @@ public class Character {
 
     public void newPosition(int x, int y) {
         Position p = new Position(x, y);
+
     }
 
     public Position getPosition() {
