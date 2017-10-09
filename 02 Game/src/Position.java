@@ -7,10 +7,10 @@ public class Position {
         this.posY = y;
     }
 
-    public int getposX(){
+    public int getPosX(){
         return posY;
     }
-    public int getposY(){
+    public int getPosY(){
         return posX;
     }
 
