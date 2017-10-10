@@ -47,4 +47,29 @@ public class MapTest {
         assertEquals(500, theWoods.getMapWidth());
 
     }
+
+    @Test
+    public void testMaxHeigth() {
+        Map maxMap = new Map("test", 1000, 500);
+        assertEquals(1000, maxMap.getMapHeight());
+    }
+
+    @Test
+    public void testOverMaxHeigth() {
+        Map overMax = new Map("overMax", 1200, 500);
+        assertEquals(1000, overMax.getMapHeight());
+    }
+
+    @Test
+    public void testValidHeigth() {
+        Map validHeight = new Map("validHeight", 500, 500 );
+        assertEquals(500, validHeight.getMapHeight());
+    }
+
+    @Test
+    public void testCharacterWithinMap(){
+        Map theWoods = new Map("The forbidden forest",500, 500 );
+        Character mainCharacter = new Character(100, 100, "Gubbe");
+        assertEquals(true, theWoods.isWithinMap(mainCharacter));
+    }
 }

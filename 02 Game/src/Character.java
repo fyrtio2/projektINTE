@@ -14,6 +14,7 @@ public class Character {
         level = 1;
         this.hp = hp;
         this.name = name;
+        position = new Position(10, 10);
     }
 
 
