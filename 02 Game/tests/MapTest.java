@@ -66,10 +66,10 @@ public class MapTest {
         assertEquals(500, validHeight.getMapHeight());
     }
 
-    @Test
+    /*@Test
     public void testCharacterWithinMap(){
         Map theWoods = new Map("The forbidden forest",500, 500 );
         Character mainCharacter = new Character(100, 100, "Gubbe");
         assertEquals(true, theWoods.isWithinMap(mainCharacter));
-    }
+    }*/
 }

@@ -10,19 +10,8 @@ public class Map {
         if (mapHeight < 0 || mapWidth < 0 ){
             throw new IllegalArgumentException("Something went wrong");
         }
-        if (mapHeight > mapMaxHeight && mapWidth > mapMaxWidth) {
-            this.mapHeight = mapMaxHeight;
-            this.mapWidth = mapMaxWidth;
-        } else if (mapHeight > mapMaxHeight && mapWidth < mapMaxWidth) {
-            this.mapHeight = mapMaxHeight;
-            this.mapMaxWidth = mapWidth;
-        } else if (mapWidth > mapMaxWidth && mapHeight < mapMaxHeight) {
-            this.mapWidth = mapMaxWidth;
-            this.mapHeight = mapHeight;
-        } else {
-            this.mapWidth = mapWidth;
-            this.mapHeight = mapHeight;
-        }
+        this.mapHeight = mapHeight > mapMaxHeight ? this.mapHeight = mapMaxHeight : mapHeight;
+        this.mapWidth = mapWidth > mapMaxWidth ? this.mapMaxWidth = mapWidth : mapWidth;
     }
 
     public String getLocationName() {
@@ -37,9 +26,9 @@ public class Map {
         return mapWidth;
     }
 
-    public boolean isWithinMap(Character character) {
+   /* public boolean isWithinMap(Character character) {
         Position p = character.getPosition();
         return !(p.getPosX() > mapWidth || p.getPosY() > mapHeight);
-    }
+    }*/
 
 }

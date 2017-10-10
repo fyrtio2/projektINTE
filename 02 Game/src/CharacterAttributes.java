@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class CharacterAttributes {
     private int strenght, dexterity, perception, intellegence, vitality, carryWeight;
     private double movementSpeed, attackSpeed, criticalChance, criticalDamage;
-    private int[] attributeArray  = new int[]{strenght, dexterity, perception, intellegence, vitality};
-
+    private int[] attributeArray  = new int[]{strenght, dexterity, perception, intellegence, vitality}; // <--- alla intar får värdet noll här
+    //Kanske funkar bättre med två hashtabeller, då kan man spara key som string och int/double som värde? mindre kod och snabbare program
 
 
     public CharacterAttributes(int strenght, int dexterity, int perception, int intellegence, int vitality) {
@@ -21,6 +21,8 @@ public class CharacterAttributes {
         checkIfAttributeIsNegative(attributeArray);
     }
 
+
+
     // Check for negative attribute values
     public void checkIfAttributeIsNegative(int [] attributeArray){
         for(int i = 0; i < attributeArray.length; i++){
@@ -31,12 +33,25 @@ public class CharacterAttributes {
         }
     }
 
-    private void checkIfAttributeExceedsMaxValue(int [] attributeArray){
-        for(int i = 0; i < attributeArray.length; i++){
+    private void checkIfAttributeExceedsMaxValue(int [] attributeArray) {
+        for (int i = 0; i < attributeArray.length; i++) {
             int currentValue = attributeArray[i];
-            if(currentValue > 40){
+            if (currentValue > 40) {
                 currentValue = 40;
+
             }
+
+            //Hela attribute array är tom då innehållet deklareras innan konstruktorn har tilldelat variabler
+            // sina värder, därav går testfallet igenom.
+
+            /*
+            System.out.println(attributeArray[i]);
+            if (attributeArray[i] > 40) {
+               attributeArray[i] = 40;
+            }
+             */
+
+
         }
     }
 
