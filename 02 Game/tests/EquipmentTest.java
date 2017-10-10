@@ -9,7 +9,7 @@ public class EquipmentTest {
     @Test
     public void isWearableByTest(){
         Character player = new Character(10,10, "Isaac"); // New player created level 1
-        Equipment ring = new Equipment("Ring", 100, false, 2, 10); // Creates equipment with lvl 2 requirement
+        Equipment ring = new Equipment("Ring", 100, false, 2, 10); // Creates equipment with level 2 requirement
 
         player.levelUp(); // levels upp player to lvl 2
 
