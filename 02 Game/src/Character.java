@@ -5,12 +5,17 @@ public class Character {
     private String name;
     private Position position;
     private int lvl;
+    private boolean isInCombat;
 
     public Character(int maxHp, int hp, double speed, String name) {
         lvl = 0;
         this.hp = hp;
         this.speed = speed;
         this.name = name;
+    }
+
+    public Character(){
+
     }
 
     public int checkForNegativeHp(int health) {
@@ -67,5 +72,11 @@ public class Character {
         lvl = 0;
     }
 
+    /**Character Combat**/
+
+    public boolean makeCharacterInCombat() {
+        isInCombat = true;
+        return isInCombat;
+    }
 }
 
