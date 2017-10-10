@@ -1,6 +1,7 @@
 public class CharacterAttributes {
-    private int strenght, dexterity, perception, intellegence, vitality;
-    private double movementSpeed, attackSpeed, criticalChance, criticalDamage, carryWeight;
+    private int strenght, dexterity, perception, intellegence, vitality, carryWeight;
+    private double movementSpeed, attackSpeed, criticalChance, criticalDamage;
+    private int attributeArray[] = new int[]{strenght, dexterity, perception, intellegence, vitality, carryWeight};
 
     public CharacterAttributes(int strenght, int dexterity, int perception, int intellegence, int vitality) {
         this.strenght = strenght;
@@ -11,6 +12,19 @@ public class CharacterAttributes {
         movementSpeed = 1.0;
         calcCriticalChance();
         calcCriticalDamage();
+        calcCarryWeight();
+    }
+
+    private void test(){
+        for (int i: attributeArray){
+            if(attributeArray[i] > 40){
+
+            }
+        }
+    }
+
+    private void calcCarryWeight(){
+        carryWeight = 100 + strenght*5;
     }
 
     // Check for negative attribute values
@@ -32,7 +46,6 @@ public class CharacterAttributes {
         criticalDamage = checkIfCritDamageExeedsMax(criticalDamage);
     }
 
-    //
     public double checkIfCritChanceExeedsMax(double critChance){
         if(critChance > 1)
             return 1;
@@ -47,7 +60,6 @@ public class CharacterAttributes {
             return critDamage;
     }
 
-
     // Get methods
     public double getCriticalChance(){
         calcCriticalChance();
@@ -57,6 +69,10 @@ public class CharacterAttributes {
     public double getCriticalDamage(){
         calcCriticalDamage();
         return criticalDamage;
+    }
+
+    public int getCarryWeight(){
+        return carryWeight;
     }
 
     public double getMovementSpeed(){
