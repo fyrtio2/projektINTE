@@ -9,6 +9,12 @@ public class CharacterAttributesTest {
     }
 
     @Test(expected = AssertionError.class)
+    public void AttributeExeedsMaxValue()throws Exception{
+        CharacterAttributes c = new CharacterAttributes(41,41,41,41,41);
+        assertEquals(41, c.getIntellegence(), 0);
+    }
+
+    @Test(expected = AssertionError.class)
     public void negativeCritChance() throws Exception{
         CharacterAttributes c = new CharacterAttributes(10,10,10,10,10);
         assertEquals(-10, c.getCriticalChance(), 0);
@@ -26,5 +32,17 @@ public class CharacterAttributesTest {
     public void ExeedsMaxCritDamage() throws Exception{
         CharacterAttributes c = new CharacterAttributes(51,10,10,10,10);
         assertEquals(2.01, c.getCriticalDamage(), 0.001);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void ExeedsCarryWeight() throws Exception{
+        CharacterAttributes c = new CharacterAttributes(10,10,10,10,10);
+        assertEquals(160, c.getCarryWeight());
+    }
+
+    @Test(expected = AssertionError.class)
+    public void ExeedsMaxCarryWeight() throws Exception{
+        CharacterAttributes c = new CharacterAttributes(40,10,10,10,10);
+        assertEquals(301, c.getCarryWeight());
     }
 }
