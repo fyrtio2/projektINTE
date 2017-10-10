@@ -73,10 +73,8 @@ public class Character {
         lvl = 0;
     }
 
-    public void fight(){
 
     public void fight(boolean isInCombat){
-
         experience += 10;
         if (experience>30){
             lvlUp();
