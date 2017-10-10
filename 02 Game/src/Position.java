@@ -7,6 +7,10 @@ public class Position {
         this.posY = y;
     }
 
+    public void setPosition(int x, int y) {
+
+    }
+
     public int getPosX(){
         return posY;
     }
