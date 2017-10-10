@@ -65,4 +65,11 @@ public class MapTest {
         Map validHeight = new Map("validHeight", 500, 500 );
         assertEquals(500, validHeight.getMapHeight());
     }
+
+    @Test
+    public void testCharacterWithinMap(){
+        Map theWoods = new Map("The forbidden forest",500, 500 );
+        Character mainCharacter = new Character(100, 100, "Gubbe");
+
+    }
 }
