@@ -68,7 +68,7 @@ public class Character {
         level = 0;
     }
 
-    public void fight(){
+
 
     public void fight(boolean isInCombat){
 

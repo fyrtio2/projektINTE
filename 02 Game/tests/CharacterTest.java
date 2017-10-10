@@ -54,6 +54,9 @@ public class CharacterTest {
         int level = character.getLevel();
         assertEquals(0, level);
     }
+
+    @Test
+    public void testLevelUp(){}
     //Character Combat Tests
 
     @Test
