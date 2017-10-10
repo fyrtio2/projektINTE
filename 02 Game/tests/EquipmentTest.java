@@ -15,7 +15,6 @@ public class EquipmentTest {
 
        assertEquals(ring.isWearableBy(player),true); // checks if player can wear the ring
 
-
     }
 
 
@@ -24,20 +23,20 @@ public class EquipmentTest {
     public void damageEquipmentTest(){
       Equipment helmet = new Equipment("Helmet", 100, false, 10, 10); // Helmet created with 10 durability
       helmet.damageEquipment(9); // Damages the equipments durability with 9 hit points
-      assertEquals(helmet.getDurability(),1);
-
+      assertEquals(helmet.getDurability(),1);  // Checks of helmets durability has gone down to 1
 
     }
 
     @Test
     public void testIfEquipmentBroken(){
         Equipment armor = new Equipment("Armor", 100, false, 10, 10); // Armor created with 10 durability
-        armor.damageEquipment(9); // Damages the equipments durability with 10 hit points
+        armor.damageEquipment(10); // Damages the equipments durability with 10 hit points
         assertEquals(armor.isBroken(),true);
 
-
-
     }
+
+
+
 
 
 
