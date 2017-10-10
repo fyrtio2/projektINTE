@@ -26,4 +26,8 @@ public class Map {
         Position p = character.getPosition();
         return !(p.getPosX() > mapWidth || p.getPosY() > mapHeight);
     }
+
+    public void testBranch() {
+
+    }
 }

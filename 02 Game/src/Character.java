@@ -5,13 +5,20 @@ public class Character {
     private String name;
     private Position position;
     private int lvl;
+
     private int experience;
+    private boolean isInCombat;
+
 
     public Character(int maxHp, int hp, double speed, String name) {
         lvl = 0;
         this.hp = hp;
         this.speed = speed;
         this.name = name;
+    }
+
+    public Character(){
+
     }
 
     public int checkForNegativeHp(int health) {
@@ -69,6 +76,7 @@ public class Character {
         lvl = 0;
     }
 
+<<<<<<< HEAD
     public void fight(){
         experience += 10;
         if (experience>30){
@@ -77,5 +85,13 @@ public class Character {
 
     }
 
+=======
+    /**Character Combat**/
+
+    public boolean makeCharacterInCombat() {
+        isInCombat = true;
+        return isInCombat;
+    }
+>>>>>>> a9246dbd72de6bd8604168d837ab43311bfa9d8e
 }
 

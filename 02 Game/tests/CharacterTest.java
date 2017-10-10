@@ -51,4 +51,18 @@ public class CharacterTest {
         Character mainCharacter = new Character(100, 0, 3.6, "kalle");
         assertEquals("kalle", mainCharacter.getName());
     }
+    //Character Combat Tests
+
+    @Test
+    public void makeCharacterInCombatTest() throws Exception{
+        Character mainCharacter = new Character();
+        assertEquals(true, mainCharacter.makeCharacterInCombat());
+
+    }
+
+    @Test
+    public void characterInPeacefulStance(){
+        Character mainCharacter = new Character();
+        assertEquals();
+    }
 }

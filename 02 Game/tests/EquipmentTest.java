@@ -3,7 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class EquipmentTest {
-    private Equipment newEquip = new Equipment("Platearmor", 100, false, 10);
+    private Equipment newEquip = new Equipment("Platearmor", 100, false, 10, 10);
     private Character player = new Character(10, 10, 10, "Isaac");
 
     @Test
@@ -34,7 +34,7 @@ public class EquipmentTest {
 
     @Test
     public void getDurability() throws Exception {
-        Equipment sword = new Equipment(3);
+        Equipment sword = new Equipment("weapon", 100, false, 10, 10);
         assertEquals(0, sword.getDurability());
     }
 

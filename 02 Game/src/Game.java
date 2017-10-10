@@ -2,19 +2,11 @@ import javax.swing.*;
 
 public class Game extends JFrame{
 
-    public Game(){
 
-        JFrame frame = new JFrame();
-
-        setSize(600, 600);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setVisible(true);
-
-    }
 
 
     public static void main(String[] args) {
+<<<<<<< HEAD
         new Game();
 
         Character mainCharacter = new Character(10, 5, 5,"DragonSlayer");
@@ -24,6 +16,8 @@ public class Game extends JFrame{
         System.out.println(world.getLocationName());
 
 
+=======
+>>>>>>> a9246dbd72de6bd8604168d837ab43311bfa9d8e
 
     }
 }
