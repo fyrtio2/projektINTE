@@ -3,7 +3,7 @@ public class Character {
     private int hp = 1;
     private int maxHp;
     private String name;
-    private Position position;
+    private int xPos, yPos;
     private int level;
 
     private int experience;
@@ -14,7 +14,6 @@ public class Character {
         level = 1;
         this.hp = hp;
         this.name = name;
-        position = new Position(10, 10);
     }
 
 
@@ -54,15 +53,6 @@ public class Character {
 
     public int getExperience(){
         return experience;
-    }
-
-    public void newPosition(int x, int y) {
-        Position p = new Position(x, y);
-
-    }
-
-    public Position getPosition() {
-        return position;
     }
 
     public void levelUp() {

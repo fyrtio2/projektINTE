@@ -2,6 +2,8 @@ public class CharacterAttributes {
     private int strenght, dexterity, perception, intellegence, vitality;
     private double movementSpeed, attackSpeed, criticalChance, criticalDamage, carryWeight;
 
+
+
     public CharacterAttributes(int strenght, int dexterity, int perception, int intellegence, int vitality) {
         this.strenght = strenght;
         this.dexterity = dexterity;
