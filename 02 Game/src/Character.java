@@ -76,7 +76,6 @@ public class Character {
         lvl = 0;
     }
 
-<<<<<<< HEAD
     public void fight(){
         experience += 10;
         if (experience>30){
@@ -85,13 +84,13 @@ public class Character {
 
     }
 
-=======
+
     /**Character Combat**/
 
     public boolean makeCharacterInCombat() {
         isInCombat = true;
         return isInCombat;
     }
->>>>>>> a9246dbd72de6bd8604168d837ab43311bfa9d8e
+
 }
 
