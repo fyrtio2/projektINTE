@@ -51,6 +51,10 @@ public class Character {
         return level;
     }
 
+    public int getExperience(){
+        return experience;
+    }
+
     public void newPosition(int x, int y) {
         Position p = new Position(x, y);
 
@@ -70,18 +74,26 @@ public class Character {
     }
 
 
-    public void fight(boolean isInCombat){
-        makeCharacterInCombat();
-        experience += 10;
-        if (experience>30){
-            levelUp();
+    public void afterCombat(boolean isInCombat){
+        if (isInCombat == true) {
+
+            makeCharacterInPeacefulStance();
+            experience += 10;
+            if (experience > 30) {
+                levelUp();
+                resetExperience();
+            }
+        }else {
+            return;
         }
+    }
 
-
+    public void resetExperience(){
+        experience = 0;
     }
 
 
-    /**Character Combat**/
+    //Character Combat
 
     public boolean makeCharacterInCombat() {
         isInCombat = true;

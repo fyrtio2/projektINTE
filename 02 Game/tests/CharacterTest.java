@@ -79,6 +79,19 @@ public class CharacterTest {
         assertEquals(0, character.getLevel());
     }
 
+    @Test
+    public void testGetExperience(){
+        Character mainCharacter = new Character(100, 0, "Gubbe");
+        assertEquals(0, mainCharacter.getExperience());
+    }
+
+    @Test
+    public void testExperienceReset(){
+        Character mainCharacter = new Character(100, 0, "Gubbe");
+        mainCharacter.resetExperience();
+        assertEquals(0, mainCharacter.getExperience());
+    }
+
 
     @Test
     public void testResetAfterTwoLevelUp(){
@@ -92,28 +105,57 @@ public class CharacterTest {
     //Character Combat Tests
 
     @Test
-    public void makeCharacterInCombatTest() throws Exception{
+    public void testMakeCharacterInCombat() throws Exception{
         Character mainCharacter = new Character(100, 0, "kalle");
         assertEquals(true, mainCharacter.makeCharacterInCombat());
 
     }
 
     @Test
-
-    public void testCharacterInPeacefulStance() {
+    public void testCharacterInPeacefulStance() throws Exception{
 
         Character mainCharacter = new Character(100, 0, "kalle");
         mainCharacter.makeCharacterInPeacefulStance();
         assertEquals(false, mainCharacter.getIsInCombat());
     }
+
     @Test
-    public void characterInPeacefulStance(){
-        Character mainCharacter = new Character(100, 0, "kalle");
-        mainCharacter.makeCharacterInPeacefulStance();
-        assertEquals(false, mainCharacter.getIsInCombat());
-
-
-
+    public void testAfterFight()throws Exception{
+        Character character = new Character(100, 0, "Gubbe");
+        character.afterCombat(true);
+        assertEquals(false, character.getIsInCombat());
+        assertEquals(10, character.getExperience());
+        assertEquals(1, character.getLevel());
     }
+
+    @Test
+    public void testAfterSeveralFights(){
+        Character character = new Character(100, 0, "Gubbe");
+        for (int i = 0; i < 4; i++){
+            character.afterCombat(true);
+        }
+        assertEquals(false, character.getIsInCombat());
+        assertEquals(0, character.getExperience());
+        assertEquals(2, character.getLevel());
+    }
+
+    @Test
+    public void testAfterEightFights(){
+        Character character = new Character(100, 0, "Gubbe");
+        for (int i = 0; i < 8; i++){
+            character.afterCombat(true);
+        }
+        assertEquals(false, character.getIsInCombat());
+        assertEquals(0, character.getExperience());
+        assertEquals(3, character.getLevel());
+    }
+
+    @Test
+    public void testAfterFightIfBooleanTrue(){
+        Character character = new Character(100, 0, "Gubbe");
+        character.afterCombat(false);
+        assertEquals(false, character.getIsInCombat());
+    }
+
 
 }
