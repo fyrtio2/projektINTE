@@ -1,16 +1,17 @@
 public class Character {
 
+    private double speed;
     private int hp, maxHp;
     private String name;
     private Position position;
-    private int level;
+    private int lvl;
 
     private int experience;
     private boolean isInCombat;
 
 
     public Character(int maxHp, int hp, String name) {
-        level = 0;
+        lvl = 0;
         this.hp = hp;
         this.name = name;
     }
@@ -42,12 +43,16 @@ public class Character {
         return maxHp;
     }
 
+    public double getSpeed() {
+        return speed;
+    }
+
     public String getName() {
         return name;
     }
 
-    public int getLevel() {
-        return level;
+    public int getLvl() {
+        return lvl;
     }
 
     public void newPosition(int x, int y) {
@@ -59,24 +64,25 @@ public class Character {
         return position;
     }
 
-    public void levelUp() {
-        level++;
+    public void lvlUp() {
+        lvl++;
         hp += 50;
     }
 
-    public void resetLevel() {
-        level = 0;
+    public void resetLvl() {
+        lvl = 0;
     }
 
+<<<<<<< HEAD
     public void fight(){
+=======
 
     public void fight(boolean isInCombat){
-
+>>>>>>> eb13bbfa8081f71e395693bda60c93d0072c94c6
         experience += 10;
         if (experience>30){
-            levelUp();
+            lvlUp();
         }
-        isInCombat = false;
 
     }
 
