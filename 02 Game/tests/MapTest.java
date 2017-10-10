@@ -18,14 +18,58 @@ public class MapTest {
     @Test(expected = IllegalArgumentException.class) //empty string skall inte accepteras
     public void testEmptyString(){
         Map emptyStringMap = new Map("", 500, 500);
-        assertEquals("", emptyStringMap.getLocationName());
+        assertEquals("The forbidden forest", emptyStringMap.getLocationName());
     }
 
     @Test
     public void getMapHeight() throws Exception {
+        Map theWoods = new Map("The forbidden forest",500, 500 );
+        assertEquals(500,500);
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNegativeHight(){
+        Map theWoods = new Map("The forbidden forest",-10, 500 );
+        assertEquals(500, theWoods.getMapHeight());
+
     }
 
     @Test
     public void getMapWidth() throws Exception {
+        Map theWoods = new Map("The forbidden forest",500, 500 );
+        assertEquals(500,500);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNegativeWidth() throws Exception {
+        Map theWoods = new Map("The forbidden forest",500, -10 );
+        assertEquals(500, theWoods.getMapWidth());
+
+    }
+
+    @Test
+    public void testMaxHeigth() {
+        Map maxMap = new Map("test", 1000, 500);
+        assertEquals(1000, maxMap.getMapHeight());
+    }
+
+    @Test
+    public void testOverMaxHeigth() {
+        Map overMax = new Map("overMax", 1200, 500);
+        assertEquals(1000, overMax.getMapHeight());
+    }
+
+    @Test
+    public void testValidHeigth() {
+        Map validHeight = new Map("validHeight", 500, 500 );
+        assertEquals(500, validHeight.getMapHeight());
+    }
+
+    @Test
+    public void testCharacterWithinMap(){
+        Map theWoods = new Map("The forbidden forest",500, 500 );
+        Character mainCharacter = new Character(100, 100, "Gubbe");
+        assertEquals(true, theWoods.isWithinMap(mainCharacter));
     }
 }
