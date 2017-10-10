@@ -15,6 +15,12 @@ public class MapTest {
         assertEquals(null, nullMap.getLocationName());
     }
 
+    @Test(expected = AssertionError.class) //empty string skall inte accepteras
+    public void testEmptyString(){
+        Map emptyStringMap = new Map("", 500, 500);
+        assertEquals("", emptyStringMap.getLocationName());
+    }
+
     @Test
     public void getMapHeight() throws Exception {
     }
