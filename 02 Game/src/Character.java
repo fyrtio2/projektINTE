@@ -66,7 +66,7 @@ public class Character {
     }
 
     public void resetLevel() {
-        level = 0;
+        level = 1;
     }
 
 
