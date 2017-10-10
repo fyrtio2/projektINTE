@@ -108,9 +108,9 @@ public class CharacterTest {
     }
     @Test
     public void characterInPeacefulStance(){
-            Character mainCharacter = new Character(100, 0, "kalle");
-
-        //assertEquals();
+        Character mainCharacter = new Character(100, 0, "kalle");
+        mainCharacter.makeCharacterInPeacefulStance();
+        assertEquals(false, mainCharacter.getIsInCombat());
 
 
 

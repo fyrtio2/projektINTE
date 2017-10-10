@@ -11,7 +11,7 @@ public class Character {
 
 
     public Character(int maxHp, int hp, String name) {
-        level = 0;
+        level = 1;
         this.hp = hp;
         this.name = name;
     }
@@ -66,7 +66,7 @@ public class Character {
     }
 
     public void resetLevel() {
-        level = 0;
+        level = 1;
     }
 
 
