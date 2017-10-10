@@ -21,18 +21,12 @@ public class EquipmentTest {
 
 
     @Test
-<<<<<<< Updated upstream
-    public void canWear() {
-        player.levelUp();
-        assertEquals(player.getLevel(), newEquip.getLvlReq());
-        player.resetLevel();
-=======
     public void damageEquipmentTest(){
       Equipment helmet = new Equipment("Helmet", 100, false, 10, 10); // Helmet created with 10 durability
       helmet.damageEquipment(9); // Damages the equipments durability with 9 hit points
       assertEquals(helmet.getDurability(),1);
 
->>>>>>> Stashed changes
+
     }
 
     @Test
