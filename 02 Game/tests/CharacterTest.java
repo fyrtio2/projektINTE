@@ -65,7 +65,11 @@ public class CharacterTest {
 
     @Test
     public void characterInPeacefulStance(){
+<<<<<<< HEAD
         Character mainCharacter = new Character(100, 0, "kalle");
         //assertEquals();
+=======
+        Character mainCharacter = new Character();
+>>>>>>> emilsBranch
     }
 }
