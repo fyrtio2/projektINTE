@@ -100,16 +100,16 @@ public class CharacterTest {
 
     @Test
 
-    public void testCharacterInPeacefulStance(){
+    public void testCharacterInPeacefulStance() {
 
         Character mainCharacter = new Character(100, 0, "kalle");
         mainCharacter.makeCharacterInPeacefulStance();
         assertEquals(false, mainCharacter.getIsInCombat());
     }
-
+    @Test
     public void characterInPeacefulStance(){
+            Character mainCharacter = new Character(100, 0, "kalle");
 
-        Character mainCharacter = new Character(100, 0, "kalle");
         //assertEquals();
 
 
