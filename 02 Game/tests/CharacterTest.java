@@ -99,18 +99,19 @@ public class CharacterTest {
     }
 
     @Test
-<<<<<<< HEAD
+
     public void testCharacterInPeacefulStance(){
 
         Character mainCharacter = new Character(100, 0, "kalle");
         mainCharacter.makeCharacterInPeacefulStance();
         assertEquals(false, mainCharacter.getIsInCombat());
-=======
+    }
+
     public void characterInPeacefulStance(){
 
         Character mainCharacter = new Character(100, 0, "kalle");
         //assertEquals();
->>>>>>> 363913c066f84fd399fb253ed76744f00464b4c0
+
 
 
     }

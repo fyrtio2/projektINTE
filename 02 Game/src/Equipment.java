@@ -35,7 +35,10 @@ public class Equipment {
         return lvlReq;
     }
 
-    public boolean canWear(Character player){
+    public boolean isWearableBy(Character player){
+        if(isBroken){
+            return false;
+        }
         if(player.getLevel() >= lvlReq){
             return true;
         }else{
@@ -46,6 +49,13 @@ public class Equipment {
 
     public int getDurability(){
         return durability;
+    }
+
+    public void damageEquipment(int damage){
+        durability -= damage;
+        if (durability <= 0){
+            isBroken = true;
+        }
     }
 
     public boolean isBroken(){
