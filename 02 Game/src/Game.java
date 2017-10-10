@@ -15,5 +15,11 @@ public class Game extends JFrame{
         System.out.println(mainCharacter.getName());
         System.out.println(world.getLocationName());
 
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
     }
 }
