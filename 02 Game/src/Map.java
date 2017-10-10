@@ -2,6 +2,8 @@ public class Map {
 
     private String locationName;
     private int mapHeight, mapWidth;
+    private int mapMaxHeight = 1000;
+    private int mapMaxWidth = 1000;
 
     public Map(String locationName, int mapHeight, int mapWidth) {
         this.locationName = locationName;
