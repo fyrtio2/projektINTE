@@ -1,7 +1,6 @@
 public class Map {
 
     private String locationName;
-
     private int mapHeight, mapWidth;
 
     public Map(String locationName, int mapHeight, int mapWidth) {
