@@ -1,6 +1,7 @@
 public class Character {
 
-    private int hp, maxHp;
+    private int hp = 1;
+    private int maxHp;
     private String name;
     private Position position;
     private int level;
@@ -71,12 +72,12 @@ public class Character {
 
 
     public void fight(boolean isInCombat){
-
+        makeCharacterInCombat();
         experience += 10;
         if (experience>30){
             levelUp();
         }
-        isInCombat = false;
+
 
     }
 
@@ -85,6 +86,15 @@ public class Character {
 
     public boolean makeCharacterInCombat() {
         isInCombat = true;
+        return isInCombat;
+    }
+
+    public boolean makeCharacterInPeacefulStance(){
+        isInCombat = false;
+        return isInCombat;
+    }
+
+    public boolean getIsInCombat(){
         return isInCombat;
     }
 

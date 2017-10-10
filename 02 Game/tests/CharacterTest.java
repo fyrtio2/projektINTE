@@ -3,6 +3,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CharacterTest {
+
+    //HP Tests
     @Test
     public void hpTest() throws Exception {
         Character mainCharacter = new Character(100, 100, "Gubbe");
@@ -37,9 +39,16 @@ public class CharacterTest {
     @Test
     public void hpZeroTest() throws Exception {
         Character mainCharacter = new Character(100, 0, "Gubbe");
+        assertEquals(1, mainCharacter.getHp());
+    }
+
+    @Test
+    public void testStartHp(){
+        Character mainCharacter = new Character(100, 0, "Gubbe");
         assertEquals(0, mainCharacter.getHp());
     }
 
+    //Name Test
 
     @Test
     public void NameTest() throws Exception {
@@ -56,7 +65,30 @@ public class CharacterTest {
     }
 
     @Test
-    public void testLevelUp(){}
+    public void testLevelUp(){
+        Character character = new Character(100, 0, "kalle");
+        character.levelUp();
+        assertEquals(1, character.getLevel());
+    }
+
+    @Test
+    public void testResetLevel(){
+        Character character = new Character(100, 0, "kalle");
+        character.levelUp();
+        character.resetLevel();
+        assertEquals(0, character.getLevel());
+    }
+
+
+    @Test
+    public void testResetAfterTwoLevelUp(){
+        Character character = new Character(100, 0, "kalle");
+        for(int i = 0; i < 3; i++){
+            character.levelUp();
+        }
+        character.resetLevel();
+        assertEquals(0, character.getLevel());
+    }
     //Character Combat Tests
 
     @Test
@@ -67,12 +99,13 @@ public class CharacterTest {
     }
 
     @Test
-    public void characterInPeacefulStance(){
-<<<<<<< HEAD
+    public void testCharacterInPeacefulStance(){
+
         Character mainCharacter = new Character(100, 0, "kalle");
-        //assertEquals();
-=======
-        Character mainCharacter = new Character();
->>>>>>> emilsBranch
+        mainCharacter.makeCharacterInPeacefulStance();
+        assertEquals(false, mainCharacter.getIsInCombat());
+
+
     }
+
 }
