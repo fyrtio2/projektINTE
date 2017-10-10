@@ -20,7 +20,6 @@ public class Game extends JFrame{
         Character mainCharacter = new Character(10, 5, 5,"DragonSlayer");
         Map world = new Map("Emils world", 3,4);
 
-
         System.out.println(mainCharacter.getName());
         System.out.println(world.getLocationName());
 

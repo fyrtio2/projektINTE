@@ -15,7 +15,7 @@ public class EquipmentTest {
 
     @Test
     public void canWear() {
-        player.lvlUp(10);
+        player.lvlUp();
         assertEquals(player.getLvl(), newEquip.getLvlReq());
         player.resetLvl();
     }

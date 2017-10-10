@@ -5,6 +5,7 @@ public class Character {
     private String name;
     private Position position;
     private int lvl;
+    private int experience;
 
     public Character(int maxHp, int hp, double speed, String name) {
         lvl = 0;
@@ -14,7 +15,7 @@ public class Character {
     }
 
     public int checkForNegativeHp(int health) {
-        if (health < 0) {
+        if (health <= 0) {
             return 0;
         }
         return health;
@@ -59,12 +60,21 @@ public class Character {
         return position;
     }
 
-    public void lvlUp(int up) {
-        lvl += up;
+    public void lvlUp() {
+        lvl++;
+        hp += 50;
     }
 
     public void resetLvl() {
         lvl = 0;
+    }
+
+    public void fight(){
+        experience += 10;
+        if (experience>30){
+            lvlUp();
+        }
+
     }
 
 }

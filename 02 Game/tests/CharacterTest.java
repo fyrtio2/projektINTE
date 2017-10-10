@@ -28,6 +28,13 @@ public class CharacterTest {
     }
 
     @Test
+    public void testMinimumIntHp() throws Exception{
+        Character mainCharacter = new Character(100, Integer.MIN_VALUE, 3.6, "Gubbe");
+        assertEquals(Integer.MIN_VALUE, mainCharacter.getHp()); //Makes no sense right now
+
+    }
+
+    @Test
     public void hpZeroTest() throws Exception {
         Character mainCharacter = new Character(100, 0, 3.6, "Gubbe");
         assertEquals(0, mainCharacter.getHp());
