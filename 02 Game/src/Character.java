@@ -70,7 +70,6 @@ public class Character {
     }
 
 
-
     public void fight(boolean isInCombat){
         makeCharacterInCombat();
         experience += 10;
