@@ -35,7 +35,7 @@ public class Equipment {
     }
 
     public boolean canWear(Character player){
-        if(player.getLvl() >= lvlReq){
+        if(player.getLevel() >= lvlReq){
             return true;
         }else{
             return false;
