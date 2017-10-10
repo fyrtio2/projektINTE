@@ -44,7 +44,7 @@ public class MapTest {
     @Test(expected = IllegalArgumentException.class)
     public void testNegativeWidth() throws Exception {
         Map theWoods = new Map("The forbidden forest",500, -10 );
-        assertEquals(500, theWoods.getMapHeight());
+        assertEquals(500, theWoods.getMapWidth());
 
     }
 }
