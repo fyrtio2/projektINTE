@@ -4,6 +4,7 @@ public class Equipment {
     private int stat, durability;
     private boolean enchanted;
     private int lvlReq;
+    private boolean isBroken;
 
 
     public Equipment(String type,int stat, boolean enchanted, int lvlReq, int durability){
@@ -45,5 +46,9 @@ public class Equipment {
 
     public int getDurability(){
         return durability;
+    }
+
+    public boolean isBroken(){
+        return isBroken;
     }
 }
