@@ -63,6 +63,5 @@ public class CharacterTest {
     @Test
     public void characterInPeacefulStance(){
         Character mainCharacter = new Character();
-        assertEquals();
     }
 }
