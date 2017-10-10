@@ -2,20 +2,17 @@ public class Equipment {
 
     private String type;
     private int stat, durability;
-    private boolean enchanted;
+    private boolean isEnchanted;
     private int lvlReq;
     private boolean isBroken;
 
 
-    public Equipment(String type,int stat, boolean enchanted, int lvlReq, int durability){
+    public Equipment(String type,int stat,int lvlReq, int durability){
         this.type = type;
         this.stat = stat;
-        this.enchanted = enchanted;
+        isEnchanted = false;
         this.lvlReq = lvlReq;
         this.durability = durability;
-
-
-
 
     }
 
@@ -28,12 +25,14 @@ public class Equipment {
     }
 
     public boolean isEnchanted(){
-        return enchanted;
+        return isEnchanted;
     }
 
-    public int getLvlReq(){
-        return lvlReq;
+    public void enchantItem(){
+        isEnchanted = true;
+
     }
+
 
     public boolean isWearableBy(Character player){
         if(isBroken){
