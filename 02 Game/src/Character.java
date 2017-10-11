@@ -8,6 +8,7 @@ public class Character {
 
     private int experience;
     private boolean isInCombat;
+    private boolean isAlive = true;
 
 
     public Character(int maxHp, int hp, String name) {
@@ -65,8 +66,10 @@ public class Character {
     }
 
 
+
+
     public void afterCombat(boolean isInCombat){
-        if (isInCombat == true) {
+        if (isInCombat) {
 
             makeCharacterInPeacefulStance();
             experience += 10;
@@ -100,5 +103,17 @@ public class Character {
         return isInCombat;
     }
 
+    //Character Alive or Dead
+
+    public void makeCharacterDead(int hp){
+        if(isInCombat && hp == 0){
+            isAlive = false;
+            resetExperience();
+        }
+    }
+
+    public boolean getIsAlive() {
+        return isAlive;
+    }
 }
 
