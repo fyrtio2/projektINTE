@@ -21,6 +21,6 @@ public class Game extends JFrame {
 
         System.out.println(mainCharacter.getName());
         System.out.println(world.getLocationName());
-        System.out.println("Current hp: " + mainCharacter.getHp() + " Max hp: " + mainCharacter.getMaxHp());
+        System.out.println("Current hp: " + mainCharacter.getCurrentHp() + " Max hp: " + mainCharacter.getMaxHp());
     }
 }

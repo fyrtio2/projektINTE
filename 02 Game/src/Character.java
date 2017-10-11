@@ -1,17 +1,14 @@
 public class Character {
 
-    private int hp = 1;
-    private int maxHp;
+    private int currentHp = 1;
+    private int maxHp, level, experience;
     private String name;
     private int xPos = 20;
     private int yPos = 10;
-    private int level;
-    private Bag bag;
-    private int experience;
     private boolean isInCombat;
     private boolean isAlive = true;
     private CharacterAttributes charAttributes;
-
+    private Bag bag;
 
     public Character(String name) {
         level = 1;
@@ -19,7 +16,7 @@ public class Character {
         charAttributes = new CharacterAttributes(10, 10, 10, 10);
         bag = new Bag(10);
         maxHp = charAttributes.convertVitalityToHp();
-        hp = maxHp;
+        currentHp = maxHp;
     }
 
     public int checkForNegativeHp(int health) {
@@ -30,15 +27,15 @@ public class Character {
     }
 
     public int checkIfHpExceedsMaxHp() {
-        if (hp > maxHp) {
-            return hp = maxHp;
+        if (currentHp > maxHp) {
+            return currentHp = maxHp;
         }
-        return hp;
+        return currentHp;
     }
 
-    public int getHp() {
-        checkForNegativeHp(hp);
-        return hp;
+    public int getCurrentHp() {
+        checkForNegativeHp(currentHp);
+        return currentHp;
     }
 
     public int getMaxHp() {
@@ -55,20 +52,20 @@ public class Character {
         return level;
     }
 
-    public int getExperience(){
+    public int getExperience() {
         return experience;
     }
 
     public void levelUp() {
         level++;
-        hp += 50;
+        currentHp += 50;
     }
 
     public void resetLevel() {
         level = 1;
     }
 
-    public void afterCombat(boolean isInCombat){
+    public void afterCombat(boolean isInCombat) {
         if (isInCombat) {
 
             makeCharacterInPeacefulStance();
@@ -77,36 +74,33 @@ public class Character {
                 levelUp();
                 resetExperience();
             }
-        }else {
+        } else {
             return;
         }
     }
 
-    public void resetExperience(){
+    public void resetExperience() {
         experience = 0;
     }
 
-
     //Character Combat
-
     public boolean makeCharacterInCombat() {
         isInCombat = true;
         return isInCombat;
     }
 
-    public boolean makeCharacterInPeacefulStance(){
+    public boolean makeCharacterInPeacefulStance() {
         isInCombat = false;
         return isInCombat;
     }
 
-    public boolean getIsInCombat(){
+    public boolean getIsInCombat() {
         return isInCombat;
     }
 
     //Character Alive or Dead
-
-    public void makeCharacterDead(int hp){
-        if(isInCombat && hp == 0){
+    public void makeCharacterDead(int hp) {
+        if (isInCombat && hp == 0) {
             isAlive = false;
             resetExperience();
             resetPosition();
@@ -117,9 +111,7 @@ public class Character {
         return isAlive;
     }
 
-
     //Character Position
-
     public int getXPos() {
         return xPos;
     }
@@ -128,23 +120,19 @@ public class Character {
         return yPos;
     }
 
-    public void resetPosition(){
-        if (!isAlive){
+    public void resetPosition() {
+        if (!isAlive) {
             xPos = 20;
             yPos = 10;
         }
     }
 
-    public void pickUp(Item item){
+    public void pickUp(Item item) {
         bag.addToBag(item);
-
     }
 
-    public Bag getBag(){
+    public Bag getBag() {
         return bag;
     }
-
-
-
 }
 

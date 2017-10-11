@@ -8,13 +8,13 @@ public class CharacterTest {
     @Test
     public void hpTest() throws Exception {
         Character mainCharacter = new Character("Gubbe");
-        assertEquals(100, mainCharacter.getHp());
+        assertEquals(100, mainCharacter.getCurrentHp());
     }
 
     @Test
     public void hpExceedsMaxHpLimitTest() throws Exception {
         Character mainCharacter = new Character("Gubbe");
-        assertEquals(mainCharacter.getMaxHp(), mainCharacter.getHp());
+        assertEquals(mainCharacter.getMaxHp(), mainCharacter.getCurrentHp());
     }
 
     @Test
@@ -26,26 +26,26 @@ public class CharacterTest {
     @Test
     public void hpNegativeTest() throws Exception {
         Character mainCharacter = new Character("Gubbe");
-        assertEquals(-10, mainCharacter.getHp());
+        assertEquals(-10, mainCharacter.getCurrentHp());
     }
 
     @Test
     public void testMinimumIntHp() throws Exception {
         Character mainCharacter = new Character("Gubbe");
-        assertEquals(Integer.MIN_VALUE, mainCharacter.getHp()); //Makes no sense right now
+        assertEquals(Integer.MIN_VALUE, mainCharacter.getCurrentHp()); //Makes no sense right now
 
     }
 
     @Test
     public void hpZeroTest() throws Exception {
         Character mainCharacter = new Character("Gubbe");
-        assertEquals(0, mainCharacter.getHp());
+        assertEquals(0, mainCharacter.getCurrentHp());
     }
 
     @Test
     public void testStartHp() {
         Character mainCharacter = new Character("Gubbe");
-        assertEquals(100, mainCharacter.getHp());
+        assertEquals(100, mainCharacter.getCurrentHp());
     }
 
     //Name Test
@@ -169,7 +169,7 @@ public class CharacterTest {
     public void testMakeAliveFalse(){
         Character mainCharacter = new Character("kalle");
         mainCharacter.makeCharacterInCombat();
-        int currentHp = mainCharacter.getHp();
+        int currentHp = mainCharacter.getCurrentHp();
         int latterHp = 0;
         while (currentHp != 0){
              latterHp = currentHp - 1;
