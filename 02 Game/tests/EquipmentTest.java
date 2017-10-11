@@ -20,14 +20,14 @@ public class EquipmentTest {
     @Test
     public void isNotWearableByTest() {
         Character player = new Character(10, 10, "Isaac"); // New player created level 1
-        Equipment ring = new Equipment("Ring", 100, 2, 10); // Creates equipment with level 2 requiremen
+        Equipment ring = new Equipment("Ring", 100, 2, 10); // Creates equipment with level 2 requirement
 
         assertEquals(ring.isWearableBy(player), false); // tests if player can wear the ring
 
     }
 
     @Test
-    public void brokenWearableByTest() {
+    public void brokenWearableTest() {
         Character player = new Character(10, 10, "Isaac"); // New player created level 1
         Equipment ring = new Equipment("Ring", 100, 2, 10); // Creates equipment with level 2 requirement
         ring.damageEquipment(10);
