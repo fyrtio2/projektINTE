@@ -203,7 +203,7 @@ public class CharacterTest {
 
     @Test
     public void pickUpItemTest(){
-        Character mainCharacter = new Character(100, 0, "kalle");
+        Character mainCharacter = new Character("kalle");
         Equipment helmet = new Equipment("Helmet", 100,  10, 10,10,10);
 
         mainCharacter.pickUp(helmet);
