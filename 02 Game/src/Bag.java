@@ -17,7 +17,7 @@ public class Bag {
         bag.put(item.getName(),item);
     }
 
-  public HashMap getBagMap(){
+  public HashMap getHashMap(){
         return bag;
   }
 }

@@ -137,7 +137,6 @@ public class Character {
     public void pickUp(Item item){
         bag.addToBag(item);
 
-
     }
 
     public Bag getBag(){
