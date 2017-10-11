@@ -16,13 +16,7 @@ public class Equipment {
 
     }
 
-    public String getType(){
-     return type;
-    }
 
-    public int getStat(){
-        return stat;
-    }
 
     public boolean isEnchanted(){
         return isEnchanted;

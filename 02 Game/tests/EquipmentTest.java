@@ -16,6 +16,17 @@ public class EquipmentTest {
 
     }
 
+
+    @Test
+    public void isNotWearableByTest() {
+        Character player = new Character(10, 10, "Isaac"); // New player created level 1
+        Equipment ring = new Equipment("Ring", 100, 2, 10); // Creates equipment with level 2 requirement
+
+
+        assertEquals(ring.isWearableBy(player), false); // tests if player can wear the ring
+
+    }
+
     @Test
     public void damageEquipmentTest() {
         Equipment helmet = new Equipment("Helmet", 100,  10, 10); // Helmet created with 10 durability
@@ -46,17 +57,9 @@ public class EquipmentTest {
 
 
     @Test
-    public void getType() throws Exception {
-    }
-
-    @Test
-    public void getStat() throws Exception {
-    }
-
-    @Test
     public void getDurability() throws Exception {
         Equipment sword = new Equipment("Sword", 100, 10, 10);
-        assertEquals(0, sword.getDurability());
+        assertEquals(10, sword.getDurability());
     }
 
 }
