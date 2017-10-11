@@ -11,7 +11,7 @@ public class Map {
             throw new IllegalArgumentException("Something went wrong");
         }
         this.mapHeight = mapHeight > mapMaxHeight ? this.mapHeight = mapMaxHeight : mapHeight;
-        this.mapWidth = mapWidth > mapMaxWidth ? this.mapMaxWidth = mapWidth : mapWidth;
+        this.mapWidth = mapWidth > mapMaxWidth ? this.mapWidth = mapMaxWidth : mapWidth;
     }
 
     public String getLocationName() {

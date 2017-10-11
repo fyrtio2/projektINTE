@@ -39,7 +39,7 @@ public class CharacterTest {
     @Test
     public void hpZeroTest() throws Exception {
         Character mainCharacter = new Character(100, 0, "Gubbe");
-        assertEquals(1, mainCharacter.getHp());
+        assertEquals(0, mainCharacter.getHp());
     }
 
     @Test
@@ -61,14 +61,14 @@ public class CharacterTest {
     public void getLevelTest() {
         Character character = new Character(100, 0, "kalle");
         int level = character.getLevel();
-        assertEquals(0, level);
+        assertEquals(1, level);
     }
 
     @Test
     public void testLevelUp() {
         Character character = new Character(100, 0, "kalle");
         character.levelUp();
-        assertEquals(1, character.getLevel());
+        assertEquals(2, character.getLevel());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class CharacterTest {
         Character character = new Character(100, 0, "kalle");
         character.levelUp();
         character.resetLevel();
-        assertEquals(0, character.getLevel());
+        assertEquals(1, character.getLevel());
     }
 
     @Test
@@ -100,7 +100,7 @@ public class CharacterTest {
             character.levelUp();
         }
         character.resetLevel();
-        assertEquals(0, character.getLevel());
+        assertEquals(1, character.getLevel());
     }
     //Character Combat Tests
 
@@ -155,6 +155,28 @@ public class CharacterTest {
         Character character = new Character(100, 0, "Gubbe");
         character.afterCombat(false);
         assertEquals(false, character.getIsInCombat());
+    }
+
+    //Character Alive Tests
+
+    @Test
+    public void testVariableIsAlive(){
+        Character mainCharacter = new Character(100, 0, "kalle");
+        assertEquals(true, mainCharacter.getIsAlive());
+    }
+
+    @Test
+    public void testMakeAliveFalse(){
+        Character mainCharacter = new Character(100, 0, "kalle");
+        mainCharacter.makeCharacterInCombat();
+        int currentHp = mainCharacter.getHp();
+        int latterHp = 0;
+        while (currentHp != 0){
+             latterHp = currentHp - 1;
+        }
+        mainCharacter.makeCharacterDead(latterHp);
+        assertEquals(false, mainCharacter.getIsAlive());
+        assertEquals(0, mainCharacter.getExperience());
     }
 
 
