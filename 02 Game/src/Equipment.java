@@ -25,6 +25,9 @@ public class Equipment {
     public void enchantItem(){
         isEnchanted = true;
 
+        durability += 20;
+        stat += 10;
+
     }
 
 
