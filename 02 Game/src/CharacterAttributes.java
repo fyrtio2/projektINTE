@@ -2,14 +2,13 @@ import java.util.HashMap;
 
 public class CharacterAttributes {
     private int carryWeight;
-    private double movementSpeed, attackSpeed, criticalChance, criticalDamage;
+    private double movementSpeed, criticalChance, criticalDamage;
     private HashMap<String, Integer> primaryAttributeHashMap = new HashMap<>();
 
-    public CharacterAttributes(int strenght, int dexterity, int perception, int intellegence, int vitality) {
+    public CharacterAttributes(int strenght, int dexterity, int intellegence, int vitality) {
         movementSpeed = 1.0;
         addIntegerToHashMap("Strength", strenght);
         addIntegerToHashMap("Dexterity", dexterity);
-        addIntegerToHashMap("Perception", perception);
         addIntegerToHashMap("Intellegence", intellegence);
         addIntegerToHashMap("Vitality", vitality);
         calcCriticalChance();
@@ -17,23 +16,24 @@ public class CharacterAttributes {
         calcCarryWeight();
         checkIfAttributeExceedsMaxValue(primaryAttributeHashMap);
         checkIfAttributeIsNegative(primaryAttributeHashMap);
+        checkIfMovementSpeedExeedsMax(movementSpeed);
     }
 
-    public void addIntegerToHashMap(String name, int value){
+    public void addIntegerToHashMap(String name, int value) {
         primaryAttributeHashMap.put(name, value);
     }
 
     // Check for negative attribute values
     public void checkIfAttributeIsNegative(HashMap<String, Integer> hashMap) {
-        for(HashMap.Entry<String, Integer> m : hashMap.entrySet()){
-            if( m.getValue() < 0)
+        for (HashMap.Entry<String, Integer> m : hashMap.entrySet()) {
+            if (m.getValue() < 0)
                 m.setValue(0);
         }
     }
 
     private void checkIfAttributeExceedsMaxValue(HashMap<String, Integer> hashMap) {
-        for(HashMap.Entry<String, Integer> map : hashMap.entrySet()){
-            if( map.getValue() > 40)
+        for (HashMap.Entry<String, Integer> map : hashMap.entrySet()) {
+            if (map.getValue() > 40)
                 map.setValue(40);
         }
     }
@@ -50,6 +50,13 @@ public class CharacterAttributes {
             return 2;
         else
             return critDamage;
+    }
+
+    public double checkIfMovementSpeedExeedsMax(double movementSpeed) {
+        if (movementSpeed > 2)
+            return 2;
+        else
+            return movementSpeed;
     }
 
     // Calculate Methods
@@ -74,10 +81,6 @@ public class CharacterAttributes {
 
     public int getDexterity() {
         return primaryAttributeHashMap.get("Dexterity");
-    }
-
-    public int getPerception() {
-        return primaryAttributeHashMap.get("Perception");
     }
 
     public int getIntellegence() {
