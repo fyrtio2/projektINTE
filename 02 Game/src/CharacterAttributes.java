@@ -1,10 +1,12 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CharacterAttributes {
     private int strenght, dexterity, perception, intellegence, vitality, carryWeight;
     private double movementSpeed, attackSpeed, criticalChance, criticalDamage;
     private int[] attributeArray  = new int[]{strenght, dexterity, perception, intellegence, vitality}; // <--- alla intar får värdet noll här
     //Kanske funkar bättre med två hashtabeller, då kan man spara key som string och int/double som värde? mindre kod och snabbare program
+    //private HashMap<String, Integer> integerAttributes = new HashMap<>();
 
 
     public CharacterAttributes(int strenght, int dexterity, int perception, int intellegence, int vitality) {
