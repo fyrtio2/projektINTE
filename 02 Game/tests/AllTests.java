@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(value = Suite.class)
-@SuiteClasses(value = {MapTest.class, CharacterAttributesTest.class, EquipmentTest.class, CharacterTest.class})
+@SuiteClasses(value = {MapTest.class, CharacterAttributesTest.class, EquipmentTest.class, CharacterTest.class, BagTest.class})
 
 
 public class AllTests {

@@ -10,6 +10,6 @@ public class BagTest {
         Equipment ring = new Equipment("Ring", 100, 2, 10,10,10); // Creates equipment with level 2 requirement
         bag.addToBag(ring);
 
-        assertEquals( ring ,bag.getBagMap().get(ring.getName()));
+        assertEquals( ring ,bag.getHashMap().get(ring.getName()));
     }
 }

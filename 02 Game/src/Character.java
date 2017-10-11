@@ -17,9 +17,8 @@ public class Character {
         level = 1;
         this.hp = hp;
         this.name = name;
-        Bag = new Bag();
         charAttributes = new CharacterAttributes(10, 10, 10, 10);
-        bag = new Bag();
+        bag = new Bag(10);
         maxHp = charAttributes.convertVitalityToHp();
         hp = maxHp;
     }
@@ -139,7 +138,6 @@ public class Character {
 
     public void pickUp(Item item){
         bag.addToBag(item);
-
 
     }
 
