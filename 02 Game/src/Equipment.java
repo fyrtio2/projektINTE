@@ -5,14 +5,17 @@ public class Equipment {
     private boolean isEnchanted;
     private int lvlReq;
     private boolean isBroken;
+    private int weight;
 
 
-    public Equipment(String type,int stat,int lvlReq, int durability){
+
+    public Equipment(String type,int stat,int lvlReq, int durability,int weight){
         this.type = type;
         this.stat = stat;
         isEnchanted = false;
         this.lvlReq = lvlReq;
         this.durability = durability;
+        this.weight = weight;
 
     }
 
