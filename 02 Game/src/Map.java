@@ -7,7 +7,7 @@ public class Map {
 
     public Map(String locationName, int mapHeight, int mapWidth) {
         this.locationName = locationName;
-        if (mapHeight < 0 || mapWidth < 0 ){
+        if (mapHeight < 0 || mapWidth < 0 || locationName == null ||locationName.isEmpty()){
             throw new IllegalArgumentException("Something went wrong");
         }
         this.mapHeight = mapHeight > mapMaxHeight ? this.mapHeight = mapMaxHeight : mapHeight;
