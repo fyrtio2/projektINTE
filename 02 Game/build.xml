@@ -30,7 +30,6 @@
                 <pathelement location="bin/main"/>
             </classpath>
             <formatter type="plain"/>
-            -->
         </junit>
     </target>
 </project>
