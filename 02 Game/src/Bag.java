@@ -3,17 +3,20 @@ import java.util.HashMap;
 public class Bag {
 
     private int size;
-    private HashMap<String,Equipment> bag = new HashMap<>();
+    private HashMap<String,Item> bag = new HashMap<>();
 
-    private Bag(){
+    public Bag(){
 
 
     }
 
 
 
-    public void addToBag(Equipment equipment){
-        bag.put(equipment.getName(),equipment);
+    public void addToBag(Item item){
+        bag.put(item.getName(),item);
     }
 
+  public HashMap getBagMap(){
+        return bag;
+  }
 }
