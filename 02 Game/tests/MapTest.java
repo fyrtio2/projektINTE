@@ -50,7 +50,7 @@ public class MapTest {
 
     @Test
     public void testMaxHeigth() {
-        Map maxMap = new Map("test", 1000, 500);
+        Map maxMap = new Map("addIntegerToHashMap", 1000, 500);
         assertEquals(1000, maxMap.getMapHeight());
     }
 
