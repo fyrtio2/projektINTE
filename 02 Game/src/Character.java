@@ -15,7 +15,6 @@ public class Character {
 
     public Character(String name) {
         level = 1;
-        this.hp = hp;
         this.name = name;
         charAttributes = new CharacterAttributes(10, 10, 10, 10);
         bag = new Bag(10);
