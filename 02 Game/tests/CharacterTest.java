@@ -3,7 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CharacterTest {
-
+/*
     //HP Tests
     @Test
     public void hpTest() throws Exception {
@@ -198,6 +198,7 @@ public class CharacterTest {
         int y = mainCharacter.getYPos();
 
     }
+*/
 
 
     @Test
