@@ -3,7 +3,8 @@ public class Character {
     private int hp = 1;
     private int maxHp;
     private String name;
-    private int xPos, yPos;
+    private int xPos = 20;
+    private int yPos = 10;
     private int level;
     private Bag bag;
     private int experience;
@@ -66,9 +67,6 @@ public class Character {
         level = 1;
     }
 
-
-
-
     public void afterCombat(boolean isInCombat){
         if (isInCombat) {
 
@@ -110,11 +108,30 @@ public class Character {
         if(isInCombat && hp == 0){
             isAlive = false;
             resetExperience();
+            resetPosition();
         }
     }
 
     public boolean getIsAlive() {
         return isAlive;
+    }
+
+
+    //Character Position
+
+    public int getXPos() {
+        return xPos;
+    }
+
+    public int getYPos() {
+        return yPos;
+    }
+
+    public void resetPosition(){
+        if (!isAlive){
+            xPos = 20;
+            yPos = 10;
+        }
     }
 
     public void pickUp(Item item){
@@ -126,6 +143,7 @@ public class Character {
     public Bag getBag(){
         return bag;
     }
+
 
 
 }
