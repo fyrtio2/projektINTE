@@ -115,5 +115,7 @@ public class Character {
     public boolean getIsAlive() {
         return isAlive;
     }
+
+
 }
 
