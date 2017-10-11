@@ -9,15 +9,15 @@ public class CharacterAttributesTest {
     }
 
     @Test(expected = AssertionError.class)
-    public void AttributeExeedsMaxValue()throws Exception{
-        CharacterAttributes c = new CharacterAttributes(41,41,41,41,41);
-        assertEquals(41, c.getIntellegence(), 0);
-    }
-
-    @Test(expected = AssertionError.class)
     public void negativeCritChance() throws Exception{
         CharacterAttributes c = new CharacterAttributes(10,10,10,10,10);
         assertEquals(-10, c.getCriticalChance(), 0);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void AttributeExeedsMaxValue()throws Exception{
+        CharacterAttributes c = new CharacterAttributes(41,41,41,41,41);
+        assertEquals(41, c.getIntellegence(), 0);
     }
 
     // 101 Dexterity results in critChance exceeding the max limit which is 1.0 (100%)

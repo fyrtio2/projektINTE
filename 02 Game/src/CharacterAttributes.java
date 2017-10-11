@@ -1,71 +1,52 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CharacterAttributes {
-    private int strenght, dexterity, perception, intellegence, vitality, carryWeight;
+    private int carryWeight;
     private double movementSpeed, attackSpeed, criticalChance, criticalDamage;
-    private int[] attributeArray  = new int[]{strenght, dexterity, perception, intellegence, vitality}; // <--- alla intar får värdet noll här
-    //Kanske funkar bättre med två hashtabeller, då kan man spara key som string och int/double som värde? mindre kod och snabbare program
-    //private HashMap<String, Integer> integerAttributes = new HashMap<>();
-
+    private HashMap<String, Integer> primaryAttributeHashMap = new HashMap<>();
 
     public CharacterAttributes(int strenght, int dexterity, int perception, int intellegence, int vitality) {
-        this.strenght = strenght;
-        this.dexterity = dexterity;
-        this.perception = perception;
-        this.intellegence = intellegence;
-        this.vitality = vitality;
         movementSpeed = 1.0;
+        addIntegerToHashMap("Strength", strenght);
+        addIntegerToHashMap("Dexterity", dexterity);
+        addIntegerToHashMap("Perception", perception);
+        addIntegerToHashMap("Intellegence", intellegence);
+        addIntegerToHashMap("Vitality", vitality);
         calcCriticalChance();
         calcCriticalDamage();
         calcCarryWeight();
-        checkIfAttributeExceedsMaxValue(attributeArray);
-        checkIfAttributeIsNegative(attributeArray);
+        checkIfAttributeExceedsMaxValue(primaryAttributeHashMap);
+        checkIfAttributeIsNegative(primaryAttributeHashMap);
     }
 
-
+    public void addIntegerToHashMap(String name, int value){
+        primaryAttributeHashMap.put(name, value);
+    }
 
     // Check for negative attribute values
-    public void checkIfAttributeIsNegative(int [] attributeArray){
-        for(int i = 0; i < attributeArray.length; i++){
-            int currentValue = attributeArray[i];
-            if(currentValue < 0){
-                currentValue = 0;
-            }
+    public void checkIfAttributeIsNegative(HashMap<String, Integer> hashMap) {
+        for(HashMap.Entry<String, Integer> m : hashMap.entrySet()){
+            if( m.getValue() < 0)
+                m.setValue(0);
         }
     }
 
-    private void checkIfAttributeExceedsMaxValue(int [] attributeArray) {
-        for (int i = 0; i < attributeArray.length; i++) {
-            int currentValue = attributeArray[i];
-            if (currentValue > 40) {
-                currentValue = 40;
-
-            }
-
-            //Hela attribute array är tom då innehållet deklareras innan konstruktorn har tilldelat variabler
-            // sina värder, därav går testfallet igenom.
-
-            /*
-            System.out.println(attributeArray[i]);
-            if (attributeArray[i] > 40) {
-               attributeArray[i] = 40;
-            }
-             */
-
-
+    private void checkIfAttributeExceedsMaxValue(HashMap<String, Integer> hashMap) {
+        for(HashMap.Entry<String, Integer> map : hashMap.entrySet()){
+            if( map.getValue() > 40)
+                map.setValue(40);
         }
     }
 
-    public double checkIfCritChanceExeedsMax(double critChance){
-        if(critChance > 1)
+    public double checkIfCritChanceExeedsMax(double critChance) {
+        if (critChance > 1)
             return 1;
         else
             return critChance;
     }
 
-    public double checkIfCritDamageExeedsMax(double critDamage){
-        if(critDamage > 2)
+    public double checkIfCritDamageExeedsMax(double critDamage) {
+        if (critDamage > 2)
             return 2;
         else
             return critDamage;
@@ -73,56 +54,56 @@ public class CharacterAttributes {
 
     // Calculate Methods
     private void calcCriticalChance() {
-        criticalChance = dexterity / 100;
+        criticalChance = getDexterity() / 100;
         criticalChance = checkIfCritChanceExeedsMax(criticalChance);
     }
 
     private void calcCriticalDamage() {
-        criticalDamage = 1 + (strenght / 50);
+        criticalDamage = 1 + (getStrenght() / 50);
         criticalDamage = checkIfCritDamageExeedsMax(criticalDamage);
     }
 
-    private void calcCarryWeight(){
-        carryWeight = 100 + strenght*5;
+    private void calcCarryWeight() {
+        carryWeight = 100 + getStrenght() * 5;
     }
 
+    // Get methods Primary Attributes
+    public int getStrenght() {
+        return primaryAttributeHashMap.get("Strength");
+    }
 
-    // Get methods
-    public double getCriticalChance(){
+    public int getDexterity() {
+        return primaryAttributeHashMap.get("Dexterity");
+    }
+
+    public int getPerception() {
+        return primaryAttributeHashMap.get("Perception");
+    }
+
+    public int getIntellegence() {
+        return primaryAttributeHashMap.get("Intellegence");
+    }
+
+    public int getVitality() {
+        return primaryAttributeHashMap.get("Vitality");
+    }
+
+    // Get methods Secondary Attributes
+    public double getCriticalChance() {
         calcCriticalChance();
         return criticalChance;
     }
 
-    public double getCriticalDamage(){
+    public double getCriticalDamage() {
         calcCriticalDamage();
         return criticalDamage;
     }
 
-    public int getCarryWeight(){
+    public int getCarryWeight() {
         return carryWeight;
     }
 
-    public double getMovementSpeed(){
+    public double getMovementSpeed() {
         return movementSpeed;
-    }
-
-    public int getStrenght() {
-        return strenght;
-    }
-
-    public int getDexterity() {
-        return dexterity;
-    }
-
-    public int getPerception() {
-        return perception;
-    }
-
-    public int getIntellegence() {
-        return intellegence;
-    }
-
-    public int getVitality() {
-        return vitality;
     }
 }
