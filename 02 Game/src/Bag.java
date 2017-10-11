@@ -5,7 +5,8 @@ public class Bag {
     private int size;
     private HashMap<String,Item> bag = new HashMap<>();
 
-    public Bag(){
+    public Bag(int size){
+        this.size = size;
 
 
     }

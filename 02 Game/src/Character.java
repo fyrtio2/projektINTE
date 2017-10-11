@@ -12,7 +12,7 @@ public class Character {
 
 
     public Character(int maxHp, int hp, String name) {
-        bag = new Bag();
+        bag = new Bag(10);
         level = 1;
         this.hp = hp;
         this.name = name;
