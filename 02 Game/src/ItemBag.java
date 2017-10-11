@@ -9,4 +9,9 @@ public class ItemBag {
 
 
     }
+
+    public void pickUp(Equipment equipment){
+        equipments.put(equipment.getName(),equipment);
+    }
+
 }

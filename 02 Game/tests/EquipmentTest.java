@@ -67,4 +67,14 @@ public class EquipmentTest {
         assertEquals(10, sword.getDurability());
     }
 
+
+    @Test
+    public void getNameTest(){
+        Equipment sword = new Equipment("Sword", 100, 10, 10,10);
+        assertEquals(sword.getName(),"Sword");
+
+    }
+
+
+
 }

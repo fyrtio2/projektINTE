@@ -1,6 +1,6 @@
 public class Equipment {
 
-    private String type;
+    private String name;
     private int stat, durability;
     private boolean isEnchanted;
     private int lvlReq;
@@ -9,8 +9,8 @@ public class Equipment {
 
 
 
-    public Equipment(String type,int stat,int lvlReq, int durability,int weight){
-        this.type = type;
+    public Equipment(String name,int stat,int lvlReq, int durability,int weight){
+        this.name = name;
         this.stat = stat;
         isEnchanted = false;
         this.lvlReq = lvlReq;
@@ -59,5 +59,9 @@ public class Equipment {
 
     public boolean isBroken(){
         return isBroken;
+    }
+
+    public String getName(){
+        return name;
     }
 }
