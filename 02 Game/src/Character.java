@@ -5,7 +5,7 @@ public class Character {
     private String name;
     private int xPos, yPos;
     private int level;
-
+    private ItemBag itembag;
     private int experience;
     private boolean isInCombat;
 
