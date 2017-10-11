@@ -6,13 +6,14 @@ public class Character {
     private int xPos = 20;
     private int yPos = 10;
     private int level;
-    private ItemBag itemBag;
+    private Bag bag;
     private int experience;
     private boolean isInCombat;
     private boolean isAlive = true;
 
 
     public Character(int maxHp, int hp, String name) {
+        bag = new Bag();
         level = 1;
         this.hp = hp;
         this.name = name;
@@ -115,6 +116,7 @@ public class Character {
         return isAlive;
     }
 
+
     //Character Position
 
     public int getXPos() {
@@ -131,5 +133,18 @@ public class Character {
             yPos = 10;
         }
     }
+
+    public void pickUp(Item item){
+        bag.addToBag(item);
+
+
+    }
+
+    public Bag getBag(){
+        return bag;
+    }
+
+
+
 }
 

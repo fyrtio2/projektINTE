@@ -1,21 +1,22 @@
-public class Equipment {
+public class Equipment extends Item {
 
-    private String name;
+
     private int stat, durability;
     private boolean isEnchanted;
     private int lvlReq;
     private boolean isBroken;
-    private int weight;
 
 
 
-    public Equipment(String name,int stat,int lvlReq, int durability,int weight){
-        this.name = name;
+
+    public Equipment(String name,int stat,int lvlReq, int durability,int weight,int value){
+        super(name,value,weight);
+
         this.stat = stat;
         isEnchanted = false;
         this.lvlReq = lvlReq;
         this.durability = durability;
-        this.weight = weight;
+
 
     }
 
@@ -61,7 +62,5 @@ public class Equipment {
         return isBroken;
     }
 
-    public String getName(){
-        return name;
-    }
+
 }
