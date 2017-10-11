@@ -179,5 +179,25 @@ public class CharacterTest {
         assertEquals(0, mainCharacter.getExperience());
     }
 
+    //Character Position Tests
+
+    @Test
+    public void testStartingPosition(){
+        Character mainCharacter = new Character(100, 0, "kalle");
+        int x = mainCharacter.getXPos();
+        int y = mainCharacter.getYPos();
+        assertEquals(20, x);
+        assertEquals(10, y);
+    }
+
+    @Test
+    public void testResetPosition(){
+        Character mainCharacter = new Character(100, 0, "kalle");
+        mainCharacter.resetPosition();
+        int x = mainCharacter.getXPos();
+        int y = mainCharacter.getYPos();
+
+    }
+
 
 }
