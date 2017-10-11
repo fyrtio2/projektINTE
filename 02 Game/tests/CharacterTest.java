@@ -30,7 +30,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void testMinimumIntHp() throws Exception{
+    public void testMinimumIntHp() throws Exception {
         Character mainCharacter = new Character(100, Integer.MIN_VALUE, "Gubbe");
         assertEquals(Integer.MIN_VALUE, mainCharacter.getHp()); //Makes no sense right now
 
@@ -43,7 +43,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void testStartHp(){
+    public void testStartHp() {
         Character mainCharacter = new Character(100, 0, "Gubbe");
         assertEquals(0, mainCharacter.getHp());
     }
@@ -58,21 +58,21 @@ public class CharacterTest {
 
     //Character Level Tests
     @Test
-    public void getLevelTest(){
+    public void getLevelTest() {
         Character character = new Character(100, 0, "kalle");
         int level = character.getLevel();
         assertEquals(0, level);
     }
 
     @Test
-    public void testLevelUp(){
+    public void testLevelUp() {
         Character character = new Character(100, 0, "kalle");
         character.levelUp();
         assertEquals(1, character.getLevel());
     }
 
     @Test
-    public void testResetLevel(){
+    public void testResetLevel() {
         Character character = new Character(100, 0, "kalle");
         character.levelUp();
         character.resetLevel();
@@ -80,13 +80,13 @@ public class CharacterTest {
     }
 
     @Test
-    public void testGetExperience(){
+    public void testGetExperience() {
         Character mainCharacter = new Character(100, 0, "Gubbe");
         assertEquals(0, mainCharacter.getExperience());
     }
 
     @Test
-    public void testExperienceReset(){
+    public void testExperienceReset() {
         Character mainCharacter = new Character(100, 0, "Gubbe");
         mainCharacter.resetExperience();
         assertEquals(0, mainCharacter.getExperience());
@@ -94,9 +94,9 @@ public class CharacterTest {
 
 
     @Test
-    public void testResetAfterTwoLevelUp(){
+    public void testResetAfterTwoLevelUp() {
         Character character = new Character(100, 0, "kalle");
-        for(int i = 0; i < 3; i++){
+        for (int i = 0; i < 3; i++) {
             character.levelUp();
         }
         character.resetLevel();
@@ -105,14 +105,14 @@ public class CharacterTest {
     //Character Combat Tests
 
     @Test
-    public void testMakeCharacterInCombat() throws Exception{
+    public void testMakeCharacterInCombat() throws Exception {
         Character mainCharacter = new Character(100, 0, "kalle");
         assertEquals(true, mainCharacter.makeCharacterInCombat());
 
     }
 
     @Test
-    public void testCharacterInPeacefulStance() throws Exception{
+    public void testCharacterInPeacefulStance() throws Exception {
 
         Character mainCharacter = new Character(100, 0, "kalle");
         mainCharacter.makeCharacterInPeacefulStance();
@@ -120,7 +120,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void testAfterFight()throws Exception{
+    public void testAfterFight() throws Exception {
         Character character = new Character(100, 0, "Gubbe");
         character.afterCombat(true);
         assertEquals(false, character.getIsInCombat());
@@ -129,9 +129,9 @@ public class CharacterTest {
     }
 
     @Test
-    public void testAfterSeveralFights(){
+    public void testAfterSeveralFights() {
         Character character = new Character(100, 0, "Gubbe");
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
             character.afterCombat(true);
         }
         assertEquals(false, character.getIsInCombat());
@@ -140,9 +140,9 @@ public class CharacterTest {
     }
 
     @Test
-    public void testAfterEightFights(){
+    public void testAfterEightFights() {
         Character character = new Character(100, 0, "Gubbe");
-        for (int i = 0; i < 8; i++){
+        for (int i = 0; i < 8; i++) {
             character.afterCombat(true);
         }
         assertEquals(false, character.getIsInCombat());
@@ -151,7 +151,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void testAfterFightIfBooleanTrue(){
+    public void testAfterFightIfBooleanTrue() {
         Character character = new Character(100, 0, "Gubbe");
         character.afterCombat(false);
         assertEquals(false, character.getIsInCombat());

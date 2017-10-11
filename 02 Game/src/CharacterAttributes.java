@@ -19,21 +19,21 @@ public class CharacterAttributes {
         checkIfAttributeIsNegative(primaryAttributeHashMap);
     }
 
-    public void addIntegerToHashMap(String name, int value){
+    public void addIntegerToHashMap(String name, int value) {
         primaryAttributeHashMap.put(name, value);
     }
 
     // Check for negative attribute values
     public void checkIfAttributeIsNegative(HashMap<String, Integer> hashMap) {
-        for(HashMap.Entry<String, Integer> m : hashMap.entrySet()){
-            if( m.getValue() < 0)
+        for (HashMap.Entry<String, Integer> m : hashMap.entrySet()) {
+            if (m.getValue() < 0)
                 m.setValue(0);
         }
     }
 
     private void checkIfAttributeExceedsMaxValue(HashMap<String, Integer> hashMap) {
-        for(HashMap.Entry<String, Integer> map : hashMap.entrySet()){
-            if( map.getValue() > 40)
+        for (HashMap.Entry<String, Integer> map : hashMap.entrySet()) {
+            if (map.getValue() > 40)
                 map.setValue(40);
         }
     }
@@ -50,6 +50,13 @@ public class CharacterAttributes {
             return 2;
         else
             return critDamage;
+    }
+
+    public double checkIfMovementSpeedExeedsMax(double movementSpeed) {
+        if (movementSpeed > 2)
+            return 2;
+        else
+            return movementSpeed;
     }
 
     // Calculate Methods
