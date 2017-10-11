@@ -12,7 +12,7 @@ public class Bag {
 
 
 
-    public void pickUp(Equipment equipment){
+    public void addToBag(Equipment equipment){
         bag.put(equipment.getName(),equipment);
     }
 
