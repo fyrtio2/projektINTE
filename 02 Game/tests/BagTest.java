@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 public class BagTest {
 
-
     @Test
     public void addToBagTest() {
         Bag bag = new Bag(10);
@@ -12,12 +11,5 @@ public class BagTest {
         bag.addToBag(ring);
 
         assertEquals( ring ,bag.getBagMap().get(ring.getName()));
-
-
-
-
-
-
     }
-
 }

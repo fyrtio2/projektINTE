@@ -3,6 +3,13 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CharacterAttributesTest {
+    @Test
+    public void increasePrimaryAttributeTest() throws Exception {
+        CharacterAttributes c = new CharacterAttributes(10, 10, 10, 10);
+        c.increasePrimaryAttribute("Strength", 7);
+        assertEquals(17, c.getStrenght(), 0);
+    }
+
     @Test(expected = AssertionError.class)
     public void negativeAttributesTest() throws Exception {
         CharacterAttributes c = new CharacterAttributes(10, 10, 10, 10);

@@ -10,16 +10,19 @@ public class Character {
     private int experience;
     private boolean isInCombat;
     private boolean isAlive = true;
+    private CharacterAttributes charAttributes;
 
 
-    public Character(int maxHp, int hp, String name) {
-        bag = new Bag(10);
+    public Character(String name) {
         level = 1;
         this.hp = hp;
         this.name = name;
+        Bag = new Bag();
+        charAttributes = new CharacterAttributes(10, 10, 10, 10);
+        bag = new Bag();
+        maxHp = charAttributes.convertVitalityToHp();
+        hp = maxHp;
     }
-
-
 
     public int checkForNegativeHp(int health) {
         if (health <= 0) {

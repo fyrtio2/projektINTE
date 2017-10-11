@@ -23,7 +23,18 @@ public class CharacterAttributes {
         primaryAttributeHashMap.put(name, value);
     }
 
-    // Check for negative attribute values
+    public void increasePrimaryAttribute(String s, int value) {
+        if (primaryAttributeHashMap.containsKey(s)) {
+            primaryAttributeHashMap.put(s, primaryAttributeHashMap.get(s) + value);
+        }
+    }
+
+    public int convertVitalityToHp() {
+        int vitality = primaryAttributeHashMap.get("Vitality");
+        return vitality * 10;
+    }
+
+    // Methods that check if attributes are negative
     public void checkIfAttributeIsNegative(HashMap<String, Integer> hashMap) {
         for (HashMap.Entry<String, Integer> m : hashMap.entrySet()) {
             if (m.getValue() < 0)
@@ -31,6 +42,7 @@ public class CharacterAttributes {
         }
     }
 
+    // Methods that check if attributes exeed max values.
     private void checkIfAttributeExceedsMaxValue(HashMap<String, Integer> hashMap) {
         for (HashMap.Entry<String, Integer> map : hashMap.entrySet()) {
             if (map.getValue() > 40)
@@ -59,7 +71,7 @@ public class CharacterAttributes {
             return movementSpeed;
     }
 
-    // Calculate Methods
+    // Methods that calculate attribute values
     private void calcCriticalChance() {
         criticalChance = getDexterity() / 100;
         criticalChance = checkIfCritChanceExeedsMax(criticalChance);
