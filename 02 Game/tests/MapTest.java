@@ -36,19 +36,6 @@ public class MapTest {
     }
 
     @Test
-    public void getMapWidth() throws Exception {
-        Map theWoods = new Map("The forbidden forest",500, 500 );
-        assertEquals(500,500);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testNegativeWidth() throws Exception {
-        Map theWoods = new Map("The forbidden forest",500, -10 );
-        assertEquals(500, theWoods.getMapWidth());
-
-    }
-
-    @Test
     public void testMaxHeigth() {
         Map maxMap = new Map("addIntegerToHashMap", 1000, 500);
         assertEquals(1000, maxMap.getMapHeight());
@@ -66,6 +53,24 @@ public class MapTest {
         assertEquals(500, validHeight.getMapHeight());
     }
 
+    @Test
+    public void getMapWidth() throws Exception {
+        Map theWoods = new Map("The forbidden forest",500, 500 );
+        assertEquals(500,500);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNegativeWidth() throws Exception {
+        Map theWoods = new Map("The forbidden forest",500, -10 );
+        assertEquals(500, theWoods.getMapWidth());
+
+    }
+
+    @Test
+    public void testOverMaxWidth() {
+        Map overMaxWidth = new Map("overMaxWidth", 500, 1200);
+        assertEquals(1000, overMaxWidth.getMapWidth());
+    }
     /*@Test
     public void testCharacterWithinMap(){
         Map theWoods = new Map("The forbidden forest",500, 500 );
