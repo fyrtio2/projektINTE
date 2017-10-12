@@ -3,8 +3,8 @@ public class GameCharacter {
     private int currentHp;
     private int maxHp, level, experience;
     private String name;
-    private int xPos = 20;
-    private int yPos = 10;
+    private double xPos = 20;
+    private double yPos = 10;
     private boolean isInCombat;
     private boolean isAlive = true;
     private CharacterAttributes charAttributes;
@@ -113,12 +113,28 @@ public class GameCharacter {
     }
 
     //GameCharacter Position
-    public int getXPos() {
+    public double getXPos() {
         return xPos;
     }
 
-    public int getYPos() {
+    public double getYPos() {
         return yPos;
+    }
+
+    public void moveRight() {
+        xPos += charAttributes.getMovementSpeed();
+    }
+
+    public void moveLeft() {
+        xPos -= charAttributes.getMovementSpeed();
+    }
+
+    public void moveUp() {
+        yPos += charAttributes.getMovementSpeed();
+    }
+
+    public void moveDown() {
+        yPos -= charAttributes.getMovementSpeed();
     }
 
     public void resetPosition() {
