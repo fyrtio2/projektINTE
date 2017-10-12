@@ -1,8 +1,8 @@
 public class Equipment extends Item {
 
 
-    private int stat, durability;
-    private boolean isEnchanted;
+
+
     private int lvlReq;
     private boolean isBroken;
 
@@ -10,33 +10,18 @@ public class Equipment extends Item {
 
 
 
-    public Equipment(String name,int stat,int lvlReq, int durability,int weight,int value,CharacterAttributes attributes){
-        super(name,value,weight);
+    public Equipment(String name,int lvlReq, int durability,int weight,int value){
+        super(name,value,weight,durability);
 
-        this.stat = stat;
-        isEnchanted = false;
         this.lvlReq = lvlReq;
-        this.durability = durability;
 
 
     }
 
 
 
-    public boolean isEnchanted(){
-        return isEnchanted;
-    }
 
-    public void enchantItem(){
-        isEnchanted = true;
-
-        durability += 20;
-        stat += 10;
-
-    }
-
-
-    public boolean isWearableBy(Character player){
+    public boolean isWearableBy(GameCharacter player){
         if(isBroken){
             return false;
         }
@@ -48,12 +33,12 @@ public class Equipment extends Item {
 
     }
 
-    public int getDurability(){
-        return durability;
-    }
+
 
     public void damageEquipment(int damage){
+        int durability = getDurability();
         durability -= damage;
+        setDurability(durability);
         if (durability <= 0){
             isBroken = true;
         }

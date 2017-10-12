@@ -9,6 +9,7 @@ public class Item {
         this.name = name;
         this.value = value;
         this.weight = weight;
+        this.durability = durability;
     }
 
     public String getName() {
@@ -23,11 +24,11 @@ public class Item {
         return weight;
     }
 
-    public int getDurability(){
+    protected int getDurability(){
         return durability;
     }
 
-    public void setDurability(int durability){
+    protected void setDurability(int durability){
         this.durability = durability;
     }
 }
