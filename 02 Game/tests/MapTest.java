@@ -6,19 +6,19 @@ public class MapTest {
     @Test
     public void getLocationName() throws Exception {
         Map theWoods = new Map("The forbidden forest", 500, 500);
-        assertEquals("The forbidden forest", theWoods.getLocationName());
+        assertEquals("The forbidden forest", theWoods.getMapName());
     }
 
     @Test(expected = IllegalArgumentException.class) //Skall ej gå igenom förrän felhantering i klassen är ordnat
     public void testNullLocationName() {
         Map nullMap = new Map(null, 500, 500);
-        assertEquals(null, nullMap.getLocationName());
+        assertEquals(null, nullMap.getMapName());
     }
 
     @Test(expected = IllegalArgumentException.class) //empty string skall inte accepteras
     public void testEmptyString() {
         Map emptyStringMap = new Map("", 500, 500);
-        assertEquals("The forbidden forest", emptyStringMap.getLocationName());
+        assertEquals("The forbidden forest", emptyStringMap.getMapName());
     }
 
     @Test

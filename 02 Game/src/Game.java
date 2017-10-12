@@ -20,7 +20,7 @@ public class Game extends JFrame {
         Map world = new Map("Emils world", 3, 4);
 
         System.out.println(mainGameCharacter.getName());
-        System.out.println(world.getLocationName());
+        System.out.println(world.getMapName());
         System.out.println("Current hp: " + mainGameCharacter.getCurrentHp() + " Max hp: " + mainGameCharacter.getMaxHp());
     }
 }
