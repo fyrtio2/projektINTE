@@ -8,7 +8,7 @@ public class ItemTest {
     @Test
     public void isWearableByTest() {
         GameCharacter player = new GameCharacter("Isaac"); // New player created level 1
-        Equipment ring = new Equipment("Ring",  2, 10,10,10); // Creates equipment with level 2 requirement
+        Equipment ring = new Equipment(,"Ring",  2, 10,10,10); // Creates equipment with level 2 requirement
 
         player.levelUp(); // levels upp player to lvl 2
 

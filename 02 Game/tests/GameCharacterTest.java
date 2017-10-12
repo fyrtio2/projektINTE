@@ -242,5 +242,12 @@ public class GameCharacterTest {
         assertEquals(24.5, g.getXPos(), 0.1);
     }
 
+    @Test
+    public void moveLeft() {
+        GameCharacter g = new GameCharacter("Oscar");
+        g.moveLeft();
+        assertEquals(19.0, g.getXPos(), 0.1);
+    }
+
 
 }
