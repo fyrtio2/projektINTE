@@ -228,28 +228,22 @@ public class GameCharacterTest {
         int y = mainCharacter.getYPos();
 
     }
-*/
-/*
+    */
 
     @Test
-    public void pickUpItemTest(){
+    public void pickUpItemTest() {
         GameCharacter mainGameCharacter = new GameCharacter("kalle");
-
-        Equipment helmet = new Equipment("Helmet",  10, 10,10,10);
-
+        Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10, 10);
         mainGameCharacter.pickUp(helmet);
         Bag bag = mainGameCharacter.getBag();
-
-        assertEquals(helmet,bag.getHashMap().get(helmet.getName()));
-
-
+        assertEquals(helmet, bag.getHashMap().get(helmet.getName()));
     }
 
     @Test
     public void moveRightTest() { // Testar flytta 1.0 till höger
         GameCharacter g = new GameCharacter("Oscar");
         g.moveRight();
-        assertEquals(21.0, g.getXPos(), 0.1 );
+        assertEquals(21.0, g.getXPos(), 0.1);
     }
 
     @Test
@@ -271,6 +265,4 @@ public class GameCharacterTest {
         g.moveRight();
         assertEquals(24.5, g.getXPos(), 0.1);
     }
-
-*/
 }
