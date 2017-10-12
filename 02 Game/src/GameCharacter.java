@@ -5,8 +5,8 @@ public class GameCharacter {
     private int currentHp;
     private int maxHp, level, experience;
     private String name;
-    private double xPos = 20;
-    private double yPos = 10;
+    private double xPos = 20.0;
+    private double yPos = 10.0;
     private boolean isInCombat;
     private boolean isAlive = true;
     private CharacterAttributes charAttributes;
@@ -146,6 +146,10 @@ public class GameCharacter {
             xPos = 20;
             yPos = 10;
         }
+    }
+
+    public CharacterAttributes getCharAttributes() {
+        return charAttributes;
     }
 
     public void pickUp(Item item) {
