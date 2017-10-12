@@ -59,7 +59,6 @@ public class GameCharacter {
 
     public void levelUp() {
         level++;
-        currentHp += 50;
     }
 
     public void resetLevel() {

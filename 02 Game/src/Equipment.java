@@ -9,8 +9,8 @@ public class Equipment extends Item {
 
 
 
-    public Equipment(String name,int lvlReq, ItemAttributes itemAttributes,int weight,int value){
-        super(name,value,weight);
+    public Equipment(String name,int lvlReq, ItemAttributes itemAttributes,int weight,int value, int durability){
+        super(name,value,weight,durability);
         this.itemAttributes = itemAttributes;
 
         isEnchanted = false;
