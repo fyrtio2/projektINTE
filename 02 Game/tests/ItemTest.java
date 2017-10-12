@@ -20,9 +20,9 @@ public class ItemTest {
     @Test
     public void isNotWearableByTest() {
         GameCharacter player = new GameCharacter("Isaac"); // New player created level 1
-        Equipment ring = new Equipment(Equipment.Type.shoes,"fast shoes",  2, 10,10,10); // Creates equipment with level 2 requirement
+        Equipment shoes = new Equipment(Equipment.Type.shoes,"fast shoes",  2, 10,10,10); // Creates equipment with level 2 requirement
 
-        assertEquals(false,ring.isWearableBy(player)); // tests if player can wear the ring
+        assertEquals(false,shoes.isWearableBy(player)); // tests if player can wear the ring
     }
 
     @Test
@@ -55,8 +55,8 @@ public class ItemTest {
 
     @Test
     public void getDurability() throws Exception {
-        Equipment sword = new Equipment(Equipment.Type.shield,"shield",  10, 10,10,10);
-        assertEquals(10, sword.getDurability());
+        Equipment shield = new Equipment(Equipment.Type.shield,"shield",  10, 10,10,10);
+        assertEquals(10, shield.getDurability());
     }
 
 
