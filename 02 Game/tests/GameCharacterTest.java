@@ -1,59 +1,74 @@
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class GameCharacterTest {
-/*
+    //
     //HP Tests
     @Test
-    public void hpTest() throws Exception {
+    public void testStartHpTest() throws Exception {
         GameCharacter mainCharacter = new GameCharacter("Gubbe");
         assertEquals(100, mainCharacter.getCurrentHp());
     }
 
-    @Test
+    @Test(expected = AssertionError.class)
     public void hpExceedsMaxHpLimitTest() throws Exception {
         GameCharacter mainCharacter = new GameCharacter("Gubbe");
-        assertEquals(mainCharacter.getMaxHp(), mainCharacter.getCurrentHp());
+        int max = mainCharacter.getMaxHp();
+        int current = mainCharacter.getCurrentHp();
+        assertEquals(max, current + max);
     }
 
     @Test
-    public void maxHpNegativeTest() throws Exception {
+    public void takeDamageBelowZeroHpTest() throws Exception {
         GameCharacter mainCharacter = new GameCharacter("Gubbe");
-        assertNotEquals(-100, mainCharacter.getMaxHp());
+        assertEquals(0, mainCharacter.takeDamage(1000));
     }
 
-    @Test
+    @Test(expected = AssertionError.class)
     public void hpNegativeTest() throws Exception {
         GameCharacter mainCharacter = new GameCharacter("Gubbe");
-        assertEquals(-10, mainCharacter.getCurrentHp());
+        assertEquals(-1, mainCharacter.takeDamage(1000));
     }
 
     @Test
-    public void testMinimumIntHp() throws Exception {
-        GameCharacter mainCharacter = new GameCharacter("Gubbe");
-        assertEquals(Integer.MIN_VALUE, mainCharacter.getCurrentHp()); //Makes no sense right now
-
+    public void testDamageTaken() {
+        GameCharacter g = new GameCharacter("gubbe");
+        g.takeDamage(50);
+        assertEquals(50, g.getCurrentHp());
     }
 
     @Test
-    public void hpZeroTest() throws Exception {
+    public void damageEqualToMaxHpTest() throws Exception {
         GameCharacter mainCharacter = new GameCharacter("Gubbe");
-        assertEquals(0, mainCharacter.getCurrentHp());
-    }
-
-    @Test
-    public void testStartHp() {
-        GameCharacter mainCharacter = new GameCharacter("Gubbe");
-        assertEquals(100, mainCharacter.getCurrentHp());
+        assertEquals(0, mainCharacter.takeDamage(100));
     }
 
     //Name Test
-
     @Test
     public void NameTest() throws Exception {
         GameCharacter mainCharacter = new GameCharacter("kalle");
         assertEquals("kalle", mainCharacter.getName());
+    }
+
+    @Test(expected = AssertionError.class)
+    public void checkEmptyStringTest() throws Exception {
+        GameCharacter mainCharacter = new GameCharacter("");
+        assertEquals("", mainCharacter.getName());
+    }
+
+    @Test
+    public void checkNullStringTest() throws Exception {
+        GameCharacter mainCharacter = new GameCharacter(null);
+        assertNotNull(mainCharacter.getName());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void nameLengthTest() throws Exception {
+        GameCharacter mainCharacter = new GameCharacter("Peter Yakob Test Namn");
+        int size = mainCharacter.getName().length();
+        assertEquals(21, size);
     }
 
     //GameCharacter Level Tests
@@ -65,20 +80,35 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void testLevelUp() {
+    public void levelUpTest() {
         GameCharacter character = new GameCharacter("kalle");
         character.levelUp();
         assertEquals(2, character.getLevel());
     }
 
     @Test
-    public void testResetLevel() {
+    public void levelUpMaxHpTest() {
+        GameCharacter character = new GameCharacter("kalle");
+        character.levelUp();
+        assertEquals(110, character.getMaxHp());
+    }
+
+    @Test
+    public void resetLevelTest() {
         GameCharacter character = new GameCharacter("kalle");
         character.levelUp();
         character.resetLevel();
         assertEquals(1, character.getLevel());
     }
 
+    @Test
+    public void resetMaxHpTest() {
+        GameCharacter character = new GameCharacter("kalle");
+        character.levelUp();
+        character.resetLevel();
+        assertEquals(100, character.getMaxHp());
+    }
+/*
     @Test
     public void testGetExperience() {
         GameCharacter mainCharacter = new GameCharacter("Gubbe");
@@ -198,14 +228,14 @@ public class GameCharacterTest {
         int y = mainCharacter.getYPos();
 
     }
-
 */
+/*
 
     @Test
     public void pickUpItemTest(){
         GameCharacter mainGameCharacter = new GameCharacter("kalle");
 
-        Equipment helmet = new Equipment(Equipment.Type.helmet,"Helmet",  10, 10,10,10);
+        Equipment helmet = new Equipment("Helmet",  10, 10,10,10);
 
         mainGameCharacter.pickUp(helmet);
         Bag bag = mainGameCharacter.getBag();
@@ -242,12 +272,5 @@ public class GameCharacterTest {
         assertEquals(24.5, g.getXPos(), 0.1);
     }
 
-    @Test
-    public void moveLeft() {
-        GameCharacter g = new GameCharacter("Oscar");
-        g.moveLeft();
-        assertEquals(19.0, g.getXPos(), 0.1);
-    }
-
-
+*/
 }
