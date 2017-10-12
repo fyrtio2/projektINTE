@@ -1,7 +1,7 @@
 public class Equipment extends Item {
 
 
-    private ItemAttributes itemAttributes;
+
     private boolean isEnchanted;
     private int lvlReq;
     private boolean isBroken;
@@ -9,9 +9,9 @@ public class Equipment extends Item {
 
 
 
-    public Equipment(String name,int lvlReq, ItemAttributes itemAttributes,int weight,int value, int durability){
+    public Equipment(String name,int lvlReq,int weight,int value, int durability){
         super(name,value,weight,durability);
-        this.itemAttributes = itemAttributes;
+
 
         isEnchanted = false;
         this.lvlReq = lvlReq;
@@ -31,9 +31,6 @@ public class Equipment extends Item {
 
     }
 
-    public ItemAttributes getItemAttributes(){
-        return itemAttributes;
-    }
 
 
     public boolean isWearableBy(GameCharacter player){
