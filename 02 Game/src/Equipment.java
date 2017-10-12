@@ -4,16 +4,14 @@ public class Equipment extends Item {
     private boolean isBroken;
     private Enum type;
 
-    public enum Type{
-        helmet,chestPlate,legPlate,shoes,shield,gloves,jewelry
+    public enum Type {
+        helmet, chestPlate, legPlate, shoes, shield, gloves, jewelry
     }
 
 
-
-
-    public Equipment(Enum type,String name,int lvlReq, int durability,int weight,int value){
-        super(name,value,weight,durability);
-        if ( name == null || name.isEmpty()) {
+    public Equipment(Enum type, String name, int lvlReq, int durability, int weight, int value) {
+        super(name, value, weight, durability);
+        if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Something went wrong");
         }
         this.type = type;
@@ -49,7 +47,7 @@ public class Equipment extends Item {
     }
 
 
-    public Enum getType(){
+    public Enum getType() {
         return type;
     }
 
