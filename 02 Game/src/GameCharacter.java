@@ -1,3 +1,4 @@
+
 import java.util.HashMap;
 
 public class GameCharacter {
@@ -12,8 +13,8 @@ public class GameCharacter {
     private CharacterAttributes charAttributes;
     private Bag bag;
 
-    private HashMap<String,Weapon> weildedWeapons = new HashMap<>();//
-    private HashMap<Equipment,Equipment> equipedEquipment = new HashMap<>();
+    private HashMap<String,Weapon> wieldedWeapons = new HashMap<>();//
+    private HashMap<Enum,Equipment> equipedEquipment = new HashMap<>();
 
     public GameCharacter(String name) {
         level = 1;
@@ -163,15 +164,26 @@ public class GameCharacter {
 
 
     public void equipEquipment(Equipment equipment){
+        Enum type = equipment.getType();
+       if(equipedEquipment.get(type)== null){
+           equipedEquipment.put(type,equipment);
+       }else{
+           System.out.printf("%s already equipped",type);
+       }
+
+
+
+
+
 
 
     }
 
     public void weildWeapon(Weapon weapon){
-        if(weildedWeapons.get(weapon.getName())== null){
-            weildedWeapons.put(weapon.getName(),weapon);
+        if(wieldedWeapons.get(weapon.getName())== null){
+            wieldedWeapons.put(weapon.getName(),weapon);
         }else{
-            System.out.println("cant weild two weapons");
+            System.out.println("cant wield two weapons");
         }
 
     }

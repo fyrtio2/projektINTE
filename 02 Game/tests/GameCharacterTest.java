@@ -205,7 +205,7 @@ public class GameCharacterTest {
     public void pickUpItemTest(){
         GameCharacter mainGameCharacter = new GameCharacter("kalle");
 
-        Equipment helmet = new Equipment("Helmet",  10, 10,10,10);
+        Equipment helmet = new Equipment(Equipment.type.helmet,"Helmet",  10, 10,10,10);
 
         mainGameCharacter.pickUp(helmet);
         Bag bag = mainGameCharacter.getBag();

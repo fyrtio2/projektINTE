@@ -2,10 +2,10 @@ public class Equipment extends Item {
 
     private int lvlReq;
     private boolean isBroken;
-    private String type;
+    private Enum type;
 
-    private enum type{
-        helmet,chestplate,legplate,shoes,shield,gloves,jewelry
+    public enum Type{
+        helmet,chestPlate,legPlate,shoes,shield,gloves,jewelry
     }
 
 
@@ -16,6 +16,7 @@ public class Equipment extends Item {
         if ( name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Something went wrong");
         }
+        this.type = type;
 
         this.lvlReq = lvlReq;
 
@@ -45,6 +46,11 @@ public class Equipment extends Item {
 
     public boolean isBroken() {
         return isBroken;
+    }
+
+
+    public Enum getType(){
+        return type;
     }
 
 

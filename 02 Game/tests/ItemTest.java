@@ -8,7 +8,7 @@ public class ItemTest {
     @Test
     public void isWearableByTest() {
         GameCharacter player = new GameCharacter("Isaac"); // New player created level 1
-        Equipment ring = new Equipment(,"Ring",  2, 10,10,10); // Creates equipment with level 2 requirement
+        Equipment ring = new Equipment(Equipment.Type.jewelry,"Ring",  2, 10,10,10); // Creates equipment with level 2 requirement
 
         player.levelUp(); // levels upp player to lvl 2
 
@@ -20,7 +20,7 @@ public class ItemTest {
     @Test
     public void isNotWearableByTest() {
         GameCharacter player = new GameCharacter("Isaac"); // New player created level 1
-        Equipment ring = new Equipment("Ring",  2, 10,10,10); // Creates equipment with level 2 requirement
+        Equipment ring = new Equipment(Equipment.Type.shoes,"fast shoes",  2, 10,10,10); // Creates equipment with level 2 requirement
 
         assertEquals(false,ring.isWearableBy(player)); // tests if player can wear the ring
     }
@@ -28,7 +28,7 @@ public class ItemTest {
     @Test
     public void brokenWearableTest() {
         GameCharacter player = new GameCharacter("Isaac"); // New player created level 1
-        Equipment ring = new Equipment("Ring",  2, 10,10,10); // Creates equipment with level 2 requirement
+        Equipment ring = new Equipment(Equipment.Type.jewelry,"Ring",  2, 10,10,10); // Creates equipment with level 2 requirement
         ring.damageEquipment(10);
         assertEquals(false,ring.isWearableBy(player)); // tests if player can wear the ring
 
@@ -37,7 +37,7 @@ public class ItemTest {
 
     @Test
     public void damageEquipmentTest() {
-        Equipment helmet = new Equipment("Helmet",  10, 10,10,10); // Helmet created with 10 durability
+        Equipment helmet = new Equipment(Equipment.Type.helmet,"Helmet",  10, 10,10,10); // Helmet created with 10 durability
         helmet.damageEquipment(9); // Damages the equipments durability with 9 hit points
         assertEquals(1,helmet.getDurability());  // tests if helmets durability has gone down to 1
 
@@ -45,7 +45,7 @@ public class ItemTest {
 
     @Test
     public void testIfEquipmentBroken() {
-        Equipment armor = new Equipment("Armor",  10, 10,10,10); // Armor created with 10 durability
+        Equipment armor = new Equipment(Equipment.Type.chestPlate,"Armor",  10, 10,10,10); // Armor created with 10 durability
         armor.damageEquipment(10); // Damages the equipments durability with 10 hit points
         assertEquals(true,armor.isBroken());
 
@@ -55,28 +55,28 @@ public class ItemTest {
 
     @Test
     public void getDurability() throws Exception {
-        Equipment sword = new Equipment("Sword",  10, 10,10,10);
+        Equipment sword = new Equipment(Equipment.Type.shield,"shield",  10, 10,10,10);
         assertEquals(10, sword.getDurability());
     }
 
 
     @Test
     public void getNameTest(){
-        Equipment sword = new Equipment("Sword", 10, 10,10,10);
-        assertEquals("Sword",sword.getName());
+        Equipment sword = new Equipment(Equipment.Type.shield,"big shield", 10, 10,10,10);
+        assertEquals("big shield",sword.getName());
 
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testEmptyName(){
-        Equipment sword = new Equipment("", 10, 10,10,10);
+        Equipment sword = new Equipment(Equipment.Type.gloves,"", 10, 10,10,10);
         assertEquals("Sword",sword.getName());
 
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testNullName(){
-        Equipment sword = new Equipment(null, 10, 10,10,10);
+        Equipment sword = new Equipment(Equipment.Type.legPlate,null, 10, 10,10,10);
         assertEquals("Sword",sword.getName());
 
     }
