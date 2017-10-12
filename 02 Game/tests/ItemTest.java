@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 public class ItemTest {
 
-
+// TESTS EQUIPMENT
     @Test
     public void isWearableByTest() {
         GameCharacter player = new GameCharacter("Isaac"); // New player created level 1
@@ -69,18 +69,18 @@ public class ItemTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testEmptyName(){
-        Equipment sword = new Equipment(Equipment.Type.gloves,"", 10, 10,10,10);
-        assertEquals("Sword",sword.getName());
+        Equipment gloves = new Equipment(Equipment.Type.gloves,"", 10, 10,10,10);
+        assertEquals("gloves",gloves.getName());
 
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testNullName(){
-        Equipment sword = new Equipment(Equipment.Type.legPlate,null, 10, 10,10,10);
-        assertEquals("Sword",sword.getName());
+        Equipment legPlate = new Equipment(Equipment.Type.legPlate,null, 10, 10,10,10);
+        assertEquals("legPlate",legPlate.getName());
 
     }
 
-
+/// TEST WEAPON
 
 }

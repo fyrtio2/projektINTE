@@ -172,11 +172,6 @@ public class GameCharacter {
        }
 
 
-
-
-
-
-
     }
 
     public void weildWeapon(Weapon weapon){
