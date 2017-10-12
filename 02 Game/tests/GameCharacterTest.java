@@ -215,5 +215,11 @@ public class GameCharacterTest {
 
     }
 
+    @Test
+    public void moveRightTest() {
+        GameCharacter g = new GameCharacter("Oscar");
+
+    }
+
 
 }
