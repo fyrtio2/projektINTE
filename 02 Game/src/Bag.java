@@ -7,14 +7,11 @@ public class Bag {
 
     public Bag(int size) {
         this.size = size;
-
     }
-
 
     public void addToBag(Item item) {
         bag.put(item.getName(), item);
     }
-
     public HashMap getHashMap() {
         return bag;
     }

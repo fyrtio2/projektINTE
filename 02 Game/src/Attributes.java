@@ -21,26 +21,38 @@ public class Attributes {
         primaryAttributeHashMap.put(name, value);
     }
 
-    // Denna metoder behöver nog skrivas om då de är svåra att läsa och förstå
-    // Ökar ett primär attribut med ett utvalt värde
-    // om ökningen är < 40 så säts värdet normal
-    // om ökningen är > 40 så säts värdet till 40 som då är max värdet
-    public void increasePrimaryAttribute(String valueName, int value) {
-        if (primaryAttributeHashMap.containsKey(valueName) && primaryAttributeHashMap.get(valueName) + value < 40)
-            primaryAttributeHashMap.put(valueName, primaryAttributeHashMap.get(valueName) + value);
-        else if (primaryAttributeHashMap.containsKey(valueName) && primaryAttributeHashMap.get(valueName) + value > 40)
-            primaryAttributeHashMap.put(valueName, 40);
+    public void increasePrimaryAttribute(String valueName, int valueIncrease) {
+        if (valueName == null || valueName.isEmpty() || valueName.trim().equals("")) {
+            throw new IllegalArgumentException("Invalid valueName");
+        } else {
+            try {
+                boolean key = primaryAttributeHashMap.containsKey(valueName);
+                int value = primaryAttributeHashMap.get(valueName);
+                if (key && value + valueIncrease < 40)
+                    primaryAttributeHashMap.put(valueName, value + valueIncrease);
+                else if (key && value + valueIncrease > 40)
+                    primaryAttributeHashMap.put(valueName, 40);
+            } catch (NullPointerException e) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
-    // Denna metoder behöver nog skrivas om då de är svåra att läsa och förstå
-    // minskar ett primär attribut med ett utvalt värde
-    // om minskningen är > 0 så säts värdet normal
-    // om minskningen är < 0 så säts värdet till 0 som då är min värdet
-    public void lowerPrimaryAttribute(String valueName, int value) {
-        if (primaryAttributeHashMap.containsKey(valueName) && primaryAttributeHashMap.get(valueName) > value)
-            primaryAttributeHashMap.put(valueName, primaryAttributeHashMap.get(valueName) - value);
-        else if (primaryAttributeHashMap.containsKey(valueName) && primaryAttributeHashMap.get(valueName) < value)
-            primaryAttributeHashMap.put(valueName, 0);
+    public void decreasePrimaryAttribute(String valueName, int valueIncrease) {
+        if (valueName == null || valueName.isEmpty() || valueName.trim().equals("")) {
+            throw new IllegalArgumentException("Invalid valueName");
+        } else {
+            try {
+                boolean key = primaryAttributeHashMap.containsKey(valueName);
+                int value = primaryAttributeHashMap.get(valueName);
+                if (key && value > valueIncrease)
+                    primaryAttributeHashMap.put(valueName, primaryAttributeHashMap.get(valueName) - valueIncrease);
+                else if (key && value < valueIncrease)
+                    primaryAttributeHashMap.put(valueName, 0);
+            } catch (NullPointerException e) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     public int convertVitalityToHp() {
