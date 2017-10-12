@@ -36,7 +36,7 @@ public class Equipment extends Item {
     }
 
 
-    public boolean isWearableBy(Character player){
+    public boolean isWearableBy(GameCharacter player){
         if(isBroken){
             return false;
         }

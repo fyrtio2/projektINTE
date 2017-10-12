@@ -15,12 +15,12 @@ public class Game extends JFrame {
     public static void main(String[] args) {
         new Game();
 
-        Character mainCharacter = new Character("DragonSlayer");
+        GameCharacter mainGameCharacter = new GameCharacter("DragonSlayer");
 
         Map world = new Map("Emils world", 3, 4);
 
-        System.out.println(mainCharacter.getName());
+        System.out.println(mainGameCharacter.getName());
         System.out.println(world.getLocationName());
-        System.out.println("Current hp: " + mainCharacter.getCurrentHp() + " Max hp: " + mainCharacter.getMaxHp());
+        System.out.println("Current hp: " + mainGameCharacter.getCurrentHp() + " Max hp: " + mainGameCharacter.getMaxHp());
     }
 }

@@ -2,49 +2,49 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class CharacterTest {
+public class GameCharacterTest {
 /*
     //HP Tests
     @Test
     public void hpTest() throws Exception {
-        Character mainCharacter = new Character("Gubbe");
+        GameCharacter mainCharacter = new GameCharacter("Gubbe");
         assertEquals(100, mainCharacter.getCurrentHp());
     }
 
     @Test
     public void hpExceedsMaxHpLimitTest() throws Exception {
-        Character mainCharacter = new Character("Gubbe");
+        GameCharacter mainCharacter = new GameCharacter("Gubbe");
         assertEquals(mainCharacter.getMaxHp(), mainCharacter.getCurrentHp());
     }
 
     @Test
     public void maxHpNegativeTest() throws Exception {
-        Character mainCharacter = new Character("Gubbe");
+        GameCharacter mainCharacter = new GameCharacter("Gubbe");
         assertNotEquals(-100, mainCharacter.getMaxHp());
     }
 
     @Test
     public void hpNegativeTest() throws Exception {
-        Character mainCharacter = new Character("Gubbe");
+        GameCharacter mainCharacter = new GameCharacter("Gubbe");
         assertEquals(-10, mainCharacter.getCurrentHp());
     }
 
     @Test
     public void testMinimumIntHp() throws Exception {
-        Character mainCharacter = new Character("Gubbe");
+        GameCharacter mainCharacter = new GameCharacter("Gubbe");
         assertEquals(Integer.MIN_VALUE, mainCharacter.getCurrentHp()); //Makes no sense right now
 
     }
 
     @Test
     public void hpZeroTest() throws Exception {
-        Character mainCharacter = new Character("Gubbe");
+        GameCharacter mainCharacter = new GameCharacter("Gubbe");
         assertEquals(0, mainCharacter.getCurrentHp());
     }
 
     @Test
     public void testStartHp() {
-        Character mainCharacter = new Character("Gubbe");
+        GameCharacter mainCharacter = new GameCharacter("Gubbe");
         assertEquals(100, mainCharacter.getCurrentHp());
     }
 
@@ -52,28 +52,28 @@ public class CharacterTest {
 
     @Test
     public void NameTest() throws Exception {
-        Character mainCharacter = new Character("kalle");
+        GameCharacter mainCharacter = new GameCharacter("kalle");
         assertEquals("kalle", mainCharacter.getName());
     }
 
-    //Character Level Tests
+    //GameCharacter Level Tests
     @Test
     public void getLevelTest() {
-        Character character = new Character("kalle");
+        GameCharacter character = new GameCharacter("kalle");
         int level = character.getLevel();
         assertEquals(1, level);
     }
 
     @Test
     public void testLevelUp() {
-        Character character = new Character("kalle");
+        GameCharacter character = new GameCharacter("kalle");
         character.levelUp();
         assertEquals(2, character.getLevel());
     }
 
     @Test
     public void testResetLevel() {
-        Character character = new Character("kalle");
+        GameCharacter character = new GameCharacter("kalle");
         character.levelUp();
         character.resetLevel();
         assertEquals(1, character.getLevel());
@@ -81,13 +81,13 @@ public class CharacterTest {
 
     @Test
     public void testGetExperience() {
-        Character mainCharacter = new Character("Gubbe");
+        GameCharacter mainCharacter = new GameCharacter("Gubbe");
         assertEquals(0, mainCharacter.getExperience());
     }
 
     @Test
     public void testExperienceReset() {
-        Character mainCharacter = new Character("Gubbe");
+        GameCharacter mainCharacter = new GameCharacter("Gubbe");
         mainCharacter.resetExperience();
         assertEquals(0, mainCharacter.getExperience());
     }
@@ -95,18 +95,18 @@ public class CharacterTest {
 
     @Test
     public void testResetAfterTwoLevelUp() {
-        Character character = new Character("kalle");
+        GameCharacter character = new GameCharacter("kalle");
         for (int i = 0; i < 3; i++) {
             character.levelUp();
         }
         character.resetLevel();
         assertEquals(1, character.getLevel());
     }
-    //Character Combat Tests
+    //GameCharacter Combat Tests
 
     @Test
     public void testMakeCharacterInCombat() throws Exception {
-        Character mainCharacter = new Character("kalle");
+        GameCharacter mainCharacter = new GameCharacter("kalle");
         assertEquals(true, mainCharacter.makeCharacterInCombat());
 
     }
@@ -114,14 +114,14 @@ public class CharacterTest {
     @Test
     public void testCharacterInPeacefulStance() throws Exception {
 
-        Character mainCharacter = new Character("kalle");
+        GameCharacter mainCharacter = new GameCharacter("kalle");
         mainCharacter.makeCharacterInPeacefulStance();
         assertEquals(false, mainCharacter.getIsInCombat());
     }
 
     @Test
     public void testAfterFight() throws Exception {
-        Character character = new Character("Gubbe");
+        GameCharacter character = new GameCharacter("Gubbe");
         character.afterCombat(true);
         assertEquals(false, character.getIsInCombat());
         assertEquals(10, character.getExperience());
@@ -130,7 +130,7 @@ public class CharacterTest {
 
     @Test
     public void testAfterSeveralFights() {
-        Character character = new Character("Gubbe");
+        GameCharacter character = new GameCharacter("Gubbe");
         for (int i = 0; i < 4; i++) {
             character.afterCombat(true);
         }
@@ -141,7 +141,7 @@ public class CharacterTest {
 
     @Test
     public void testAfterEightFights() {
-        Character character = new Character("Gubbe");
+        GameCharacter character = new GameCharacter("Gubbe");
         for (int i = 0; i < 8; i++) {
             character.afterCombat(true);
         }
@@ -152,22 +152,22 @@ public class CharacterTest {
 
     @Test
     public void testAfterFightIfBooleanTrue() {
-        Character character = new Character("Gubbe");
+        GameCharacter character = new GameCharacter("Gubbe");
         character.afterCombat(false);
         assertEquals(false, character.getIsInCombat());
     }
 
-    //Character Alive Tests
+    //GameCharacter Alive Tests
 
     @Test
     public void testVariableIsAlive(){
-        Character mainCharacter = new Character("kalle");
+        GameCharacter mainCharacter = new GameCharacter("kalle");
         assertEquals(true, mainCharacter.getIsAlive());
     }
 
     @Test
     public void testMakeAliveFalse(){
-        Character mainCharacter = new Character("kalle");
+        GameCharacter mainCharacter = new GameCharacter("kalle");
         mainCharacter.makeCharacterInCombat();
         int currentHp = mainCharacter.getCurrentHp();
         int latterHp = 0;
@@ -179,11 +179,11 @@ public class CharacterTest {
         assertEquals(0, mainCharacter.getExperience());
     }
 
-    //Character Position Tests
+    //GameCharacter Position Tests
 
     @Test
     public void testStartingPosition(){
-        Character mainCharacter = new Character("kalle");
+        GameCharacter mainCharacter = new GameCharacter("kalle");
         int x = mainCharacter.getXPos();
         int y = mainCharacter.getYPos();
         assertEquals(20, x);
@@ -192,7 +192,7 @@ public class CharacterTest {
 
     @Test
     public void testResetPosition(){
-        Character mainCharacter = new Character("kalle");
+        GameCharacter mainCharacter = new GameCharacter("kalle");
         mainCharacter.resetPosition();
         int x = mainCharacter.getXPos();
         int y = mainCharacter.getYPos();
@@ -203,12 +203,12 @@ public class CharacterTest {
 
     @Test
     public void pickUpItemTest(){
-        Character mainCharacter = new Character("kalle");
+        GameCharacter mainGameCharacter = new GameCharacter("kalle");
         ItemAttributes itemAttributes = new ItemAttributes(10);
         Equipment helmet = new Equipment("Helmet",  10, itemAttributes,10,10);
 
-        mainCharacter.pickUp(helmet);
-        Bag bag = mainCharacter.getBag();
+        mainGameCharacter.pickUp(helmet);
+        Bag bag = mainGameCharacter.getBag();
 
         assertEquals(helmet,bag.getHashMap().get(helmet.getName()));
 

@@ -7,7 +7,7 @@ public class EquipmentTest {
     @Test
     public void isWearableByTest() {
         ItemAttributes itemAttributes = new ItemAttributes(10);
-        Character player = new Character("Isaac"); // New player created level 1
+        GameCharacter player = new GameCharacter("Isaac"); // New player created level 1
         Equipment ring = new Equipment("Ring", 2, itemAttributes, 10,10); // Creates equipment with level 2 requirement
 
         player.levelUp(); // levels upp player to lvl 2
@@ -18,7 +18,7 @@ public class EquipmentTest {
     @Test
     public void isNotWearableByTest() {
         ItemAttributes itemAttributes = new ItemAttributes(10);
-        Character player = new Character("Isaac"); // New player created level 1
+        GameCharacter player = new GameCharacter("Isaac"); // New player created level 1
         Equipment ring = new Equipment("Ring", 2, itemAttributes, 10,10); // Creates equipment with level 2 requirement
 
         assertEquals(ring.isWearableBy(player), false); // tests if player can wear the ring
@@ -27,7 +27,7 @@ public class EquipmentTest {
     @Test
     public void brokenWearableTest() {
         ItemAttributes itemAttributes = new ItemAttributes(10);
-        Character player = new Character("Isaac"); // New player created level 1
+        GameCharacter player = new GameCharacter("Isaac"); // New player created level 1
         Equipment ring = new Equipment("Ring",  2, itemAttributes, 10,10); // Creates equipment with level 2 requirement
         ring.damageEquipment(10);
         assertEquals(ring.isWearableBy(player), false); // tests if player can wear the ring

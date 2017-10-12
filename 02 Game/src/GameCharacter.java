@@ -1,4 +1,4 @@
-public class Character {
+public class GameCharacter {
 
     private int currentHp = 1;
     private int maxHp, level, experience;
@@ -10,7 +10,7 @@ public class Character {
     private CharacterAttributes charAttributes;
     private Bag bag;
 
-    public Character(String name) {
+    public GameCharacter(String name) {
         level = 1;
         this.name = name;
         charAttributes = new CharacterAttributes(10, 10, 10, 10);
@@ -83,7 +83,7 @@ public class Character {
         experience = 0;
     }
 
-    //Character Combat
+    //GameCharacter Combat
     public boolean makeCharacterInCombat() {
         isInCombat = true;
         return isInCombat;
@@ -98,7 +98,7 @@ public class Character {
         return isInCombat;
     }
 
-    //Character Alive or Dead
+    //GameCharacter Alive or Dead
     public void makeCharacterDead(int hp) {
         if (isInCombat && hp == 0) {
             isAlive = false;
@@ -111,7 +111,7 @@ public class Character {
         return isAlive;
     }
 
-    //Character Position
+    //GameCharacter Position
     public int getXPos() {
         return xPos;
     }

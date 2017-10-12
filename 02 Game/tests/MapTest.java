@@ -74,7 +74,7 @@ public class MapTest {
     /*@Test
     public void testCharacterWithinMap(){
         Map theWoods = new Map("The forbidden forest",500, 500 );
-        Character mainCharacter = new Character(100, 100, "Gubbe");
+        GameCharacter mainCharacter = new GameCharacter(100, 100, "Gubbe");
         assertEquals(true, theWoods.isWithinMap(mainCharacter));
     }*/
 }

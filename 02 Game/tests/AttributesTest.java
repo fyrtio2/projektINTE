@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import static org.junit.Assert.*;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({CharacterAttributesTest.class, ArmourAttributesTest.class, WeaponAttributesTest.class })
+@Suite.SuiteClasses({GameCharacterAttributesTest.class, ArmourAttributesTest.class, WeaponAttributesTest.class })
 public class AttributesTest {
     @Test(expected = AssertionError.class)
     public void increasePrimaryAttributeTest() throws Exception {
