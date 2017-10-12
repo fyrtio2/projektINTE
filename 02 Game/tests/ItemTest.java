@@ -53,7 +53,6 @@ public class ItemTest {
 
 
 
-
     @Test
     public void getDurability() throws Exception {
         Equipment sword = new Equipment("Sword",  10, 10,10,10);
@@ -67,6 +66,21 @@ public class ItemTest {
         assertEquals("Sword",sword.getName());
 
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testEmptyName(){
+        Equipment sword = new Equipment("", 10, 10,10,10);
+        assertEquals("Sword",sword.getName());
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNullName(){
+        Equipment sword = new Equipment(null, 10, 10,10,10);
+        assertEquals("Sword",sword.getName());
+
+    }
+
 
 
 }
