@@ -216,9 +216,30 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void moveRightTest() {
+    public void moveRightTest() { // Testar flytta 1.0 till höger
         GameCharacter g = new GameCharacter("Oscar");
+        g.moveRight();
+        assertEquals(21.0, g.getXPos(), 0.1 );
+    }
 
+    @Test
+    public void moveRightWithHigherSpeed() {
+        GameCharacter g = new GameCharacter("Oscar");
+        g.getCharAttributes().increaseMovementSpeed(0.5);
+        g.moveRight();
+        g.moveRight();
+        assertEquals(23, g.getXPos(), 0.1);
+    }
+
+    @Test
+    public void moveRightAndChangeSpeedInTheMiddle() {
+        GameCharacter g = new GameCharacter("Oscar");
+        g.moveRight();
+        g.getCharAttributes().increaseMovementSpeed(0.5);
+        g.moveRight();
+        g.getCharAttributes().increaseMovementSpeed(0.5);
+        g.moveRight();
+        assertEquals(24.5, g.getXPos(), 0.1);
     }
 
 

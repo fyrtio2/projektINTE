@@ -8,7 +8,6 @@ import org.junit.runners.Suite.SuiteClasses;
         GameCharacterAttributesTest.class,
         ArmourAttributesTest.class,
         WeaponAttributesTest.class,
-        EquipmentTest.class,
         GameCharacterTest.class,
         BagTest.class})
 public class AllTests {
