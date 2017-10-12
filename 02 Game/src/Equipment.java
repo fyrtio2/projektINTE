@@ -2,10 +2,16 @@ public class Equipment extends Item {
 
     private int lvlReq;
     private boolean isBroken;
+    private String type;
+
+    private enum type{
+        helmet,chestplate,legplate,shoes,shield,gloves,jewelry
+    }
 
 
-    public Equipment(String name, int lvlReq, int durability, int weight, int value) {
+    public Equipment(Enum type,String name, int lvlReq, int durability, int weight, int value) {
         super(name, value, weight, durability);
+
 
         this.lvlReq = lvlReq;
 

@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class GameCharacter {
 
     private int currentHp;
@@ -9,6 +11,9 @@ public class GameCharacter {
     private boolean isAlive = true;
     private CharacterAttributes charAttributes;
     private Bag bag;
+
+    private HashMap<String,Weapon> weildedWeapons = new HashMap<>();//
+    private HashMap<Equipment,Equipment> equipedEquipment = new HashMap<>();
 
     public GameCharacter(String name) {
         level = 1;
@@ -149,6 +154,22 @@ public class GameCharacter {
 
     public Bag getBag() {
         return bag;
+    }
+
+
+
+    public void equipEquipment(Equipment equipment){
+
+
+    }
+
+    public void weildWeapon(Weapon weapon){
+        if(weildedWeapons.get(weapon.getName())== null){
+            weildedWeapons.put(weapon.getName(),weapon);
+        }else{
+            System.out.println("cant weild two weapons");
+        }
+
     }
 }
 
