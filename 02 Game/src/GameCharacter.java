@@ -18,15 +18,23 @@ public class GameCharacter {
 
     public GameCharacter(String name) {
         level = 1;
-        this.name = name;
+        this.name = nameCheck(name);
         charAttributes = new CharacterAttributes(10, 10, 10, 10);
         bag = new Bag(10);
         maxHp = charAttributes.convertVitalityToHp();
         currentHp = maxHp;
     }
 
+    public String nameCheck(String name){
+        if(name == null || name.isEmpty() || name.trim().equals("")){
+            return "A.Nonym";
+        }else if (name.length() > 20)
+            throw new IllegalArgumentException("Namn får inte överskrida 20 tecken");
+        return name;
+    }
+
     public int checkForNegativeHp(int health) {
-        if (health <= 0) {
+        if (health < 0) {
             return 0;
         }
         return health;
@@ -34,21 +42,23 @@ public class GameCharacter {
 
     public int checkIfHpExceedsMaxHp() {
         if (currentHp > maxHp) {
-            return currentHp = maxHp;
+            currentHp = maxHp;
+            return currentHp;
         }
         return currentHp;
     }
 
     public int getCurrentHp() {
-        checkForNegativeHp(currentHp);
         return currentHp;
     }
 
-
     public int getMaxHp() {
-        checkForNegativeHp(maxHp);
-        checkIfHpExceedsMaxHp();
         return maxHp;
+    }
+
+    public int takeDamage(int damageTaken){
+        currentHp -= damageTaken;
+        return checkForNegativeHp(currentHp);
     }
 
     public String getName() {
@@ -65,10 +75,20 @@ public class GameCharacter {
 
     public void levelUp() {
         level++;
+        charAttributes.increasePrimaryAttribute("Strength", 2);
+        charAttributes.increasePrimaryAttribute("Dexterity", 2);
+        charAttributes.increasePrimaryAttribute("Intellegence", 2);
+        charAttributes.increasePrimaryAttribute("Vitality", 1);
+        maxHp = charAttributes.convertVitalityToHp();
+        currentHp = maxHp;
+
     }
 
     public void resetLevel() {
         level = 1;
+        charAttributes.resetPrimaryAttributeValues();
+        maxHp = charAttributes.convertVitalityToHp();
+        currentHp = maxHp;
     }
 
     public void afterCombat(boolean isInCombat) {

@@ -55,9 +55,18 @@ public class Attributes {
         }
     }
 
+    public void resetPrimaryAttributeValues(){
+        primaryAttributeHashMap.put("Strength", 10);
+        primaryAttributeHashMap.put("Dexterity", 10);
+        primaryAttributeHashMap.put("Intellegence", 10);
+        primaryAttributeHashMap.put("Vitality", 10);
+        calcCriticalChance();
+        calcCriticalDamage();
+        calcCarryWeight();
+    }
+
     public int convertVitalityToHp() {
-        int vitality = primaryAttributeHashMap.get("Vitality");
-        return vitality * 10;
+        return primaryAttributeHashMap.get("Vitality") * 10;
     }
 
     // Methods that check if attributes are negative
