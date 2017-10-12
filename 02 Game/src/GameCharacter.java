@@ -1,6 +1,6 @@
 public class GameCharacter {
 
-    private int currentHp = 1;
+    private int currentHp;
     private int maxHp, level, experience;
     private String name;
     private int xPos = 20;
@@ -37,6 +37,7 @@ public class GameCharacter {
         checkForNegativeHp(currentHp);
         return currentHp;
     }
+
 
     public int getMaxHp() {
         checkForNegativeHp(maxHp);
