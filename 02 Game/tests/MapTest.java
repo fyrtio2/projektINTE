@@ -139,4 +139,30 @@ public class MapTest {
         assertTrue(theWoods.isWithinMap(g));
     }
 
+    @Test
+    public void testNotWithinMap() {
+        Map theWoods = new Map("theWoods", 1000, 1000);
+        GameCharacter g = new GameCharacter("g");
+        for (int i  = 1; i < 12000; i++) {
+            g.moveUp();
+            g.moveRight();
+        }
+        assertFalse(theWoods.isWithinMap(g));
+    }
+
+    @Test
+    public void testResetWithinMap() {
+        Map theWoods = new Map("theWoods", 1000, 1000);
+        GameCharacter g = new GameCharacter("g");
+        for (int i  = 1; i < 12000; i++) {
+            g.moveUp();
+            g.moveRight();
+        }
+        g.makeCharacterInCombat();
+        g.hpCounter(g.getCurrentHp());
+        g.makeCharacterDead();
+        System.out.println(g.getIsAlive());
+        assertTrue(theWoods.isWithinMap(g));
+    }
+
 }
