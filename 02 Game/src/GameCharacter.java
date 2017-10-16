@@ -125,11 +125,17 @@ public class GameCharacter {
     }
 
     //GameCharacter Alive or Dead
-    public void makeCharacterDead(int hp) {
-        if (isInCombat && hp == 0) {
+    public void makeCharacterDead() {
+        if (isInCombat && currentHp == 0) {
             isAlive = false;
             resetExperience();
             resetPosition();
+        }
+    }
+
+    public void hpCounter(int hp){
+        for (int i = 0; i < hp; i++){
+            currentHp = currentHp - 1;
         }
     }
 

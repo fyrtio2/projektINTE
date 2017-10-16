@@ -44,7 +44,7 @@ public class GameCharacterTest {
         GameCharacter mainCharacter = new GameCharacter("Gubbe");
         assertEquals(0, mainCharacter.takeDamage(100));
     }
-
+    //
     //Name Test
     @Test
     public void NameTest() throws Exception {
@@ -108,7 +108,7 @@ public class GameCharacterTest {
         character.resetLevel();
         assertEquals(100, character.getMaxHp());
     }
-/*
+
     @Test
     public void testGetExperience() {
         GameCharacter mainCharacter = new GameCharacter("Gubbe");
@@ -150,34 +150,78 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void testAfterFight() throws Exception {
+    public void testIsInCombatAfterFight() throws Exception {
         GameCharacter character = new GameCharacter("Gubbe");
         character.afterCombat(true);
         assertEquals(false, character.getIsInCombat());
+    }
+
+    @Test
+    public void testExperienceAfterFight() throws Exception {
+        GameCharacter character = new GameCharacter("Gubbe");
+        character.afterCombat(true);
         assertEquals(10, character.getExperience());
+    }
+
+    @Test
+    public void testLevelAfterFight() throws Exception {
+        GameCharacter character = new GameCharacter("Gubbe");
+        character.afterCombat(true);
         assertEquals(1, character.getLevel());
     }
 
     @Test
-    public void testAfterSeveralFights() {
+    public void testIsInCombatAfterSeveralFights() {
         GameCharacter character = new GameCharacter("Gubbe");
         for (int i = 0; i < 4; i++) {
             character.afterCombat(true);
         }
         assertEquals(false, character.getIsInCombat());
+    }
+
+    @Test
+    public void testExperienceAfterSeveralFights() {
+        GameCharacter character = new GameCharacter("Gubbe");
+        for (int i = 0; i < 4; i++) {
+            character.afterCombat(true);
+        }
         assertEquals(0, character.getExperience());
+    }
+
+    @Test
+    public void testLevelAfterSeveralFights() {
+        GameCharacter character = new GameCharacter("Gubbe");
+        for (int i = 0; i < 4; i++) {
+            character.afterCombat(true);
+        }
         assertEquals(2, character.getLevel());
     }
 
     @Test
-    public void testAfterEightFights() {
+    public void testExperienceAfterEightFights() {
+        GameCharacter character = new GameCharacter("Gubbe");
+        for (int i = 0; i < 8; i++) {
+            character.afterCombat(true);
+        }
+        assertEquals(0, character.getExperience());
+    }
+
+    @Test
+    public void testLevelAfterEightFights() {
+        GameCharacter character = new GameCharacter("Gubbe");
+        for (int i = 0; i < 8; i++) {
+            character.afterCombat(true);
+        }
+        assertEquals(3, character.getLevel());
+    }
+
+    @Test
+    public void testInCombatAfterEightFights() {
         GameCharacter character = new GameCharacter("Gubbe");
         for (int i = 0; i < 8; i++) {
             character.afterCombat(true);
         }
         assertEquals(false, character.getIsInCombat());
-        assertEquals(0, character.getExperience());
-        assertEquals(3, character.getLevel());
     }
 
     @Test
@@ -195,40 +239,78 @@ public class GameCharacterTest {
         assertEquals(true, mainCharacter.getIsAlive());
     }
 
+    //
     @Test
     public void testMakeAliveFalse(){
         GameCharacter mainCharacter = new GameCharacter("kalle");
         mainCharacter.makeCharacterInCombat();
         int currentHp = mainCharacter.getCurrentHp();
-        int latterHp = 0;
-        while (currentHp != 0){
-             latterHp = currentHp - 1;
-        }
-        mainCharacter.makeCharacterDead(latterHp);
+        mainCharacter.hpCounter(currentHp);
+        mainCharacter.makeCharacterDead();
         assertEquals(false, mainCharacter.getIsAlive());
+    }
+
+    @Test
+    public void testHpCounter(){
+        GameCharacter mainCharacter = new GameCharacter("kalle");
+        int currentHp = mainCharacter.getCurrentHp();
+        mainCharacter.hpCounter(currentHp);
+        assertEquals(0, mainCharacter.getCurrentHp());
+    }
+    //
+    @Test
+    public void testCheckExperienceAfterCharacterIsDead(){
+        GameCharacter mainCharacter = new GameCharacter("kalle");
+        mainCharacter.makeCharacterInCombat();
+        int currentHp = mainCharacter.getCurrentHp();
+        mainCharacter.hpCounter(currentHp);
+        mainCharacter.makeCharacterDead();
         assertEquals(0, mainCharacter.getExperience());
     }
 
     //GameCharacter Position Tests
 
     @Test
-    public void testStartingPosition(){
+    public void testStartingPositionX(){
         GameCharacter mainCharacter = new GameCharacter("kalle");
-        int x = mainCharacter.getXPos();
-        int y = mainCharacter.getYPos();
-        assertEquals(20, x);
-        assertEquals(10, y);
+        assertEquals(20.0, mainCharacter.getXPos(), 0.1);
     }
 
     @Test
-    public void testResetPosition(){
+    public void testStartingPositionY(){
         GameCharacter mainCharacter = new GameCharacter("kalle");
+        double y = mainCharacter.getYPos();
+        assertEquals(10.0, y, 0.1);
+    }
+
+    @Test
+    public void testResetPositionX(){
+        GameCharacter mainCharacter = new GameCharacter("kalle");
+        System.out.println(mainCharacter.getXPos());
+        mainCharacter.moveRight();
+        System.out.println(mainCharacter.getXPos());
+        mainCharacter.makeCharacterInCombat();
+        System.out.println(mainCharacter.getXPos());
+        mainCharacter.makeCharacterDead();
+        System.out.println(mainCharacter.getXPos());
         mainCharacter.resetPosition();
-        int x = mainCharacter.getXPos();
-        int y = mainCharacter.getYPos();
+        System.out.println(mainCharacter.getXPos());
+        assertEquals(20.0, mainCharacter.getXPos(), 0.1);
 
     }
-    */
+
+    @Test
+    public void testResetPositionY(){
+        GameCharacter mainCharacter = new GameCharacter("kalle");
+        mainCharacter.moveRight();
+        mainCharacter.moveDown();
+        mainCharacter.makeCharacterInCombat();
+        mainCharacter.makeCharacterDead();
+        mainCharacter.resetPosition();
+        assertEquals(10.0, mainCharacter.getYPos(), 0.1);
+    }
+
+    //
 
     @Test
     public void pickUpItemTest() {
