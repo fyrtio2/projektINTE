@@ -71,10 +71,64 @@ public class MapTest {
         Map overMaxWidth = new Map("overMaxWidth", 500, 1200);
         assertEquals(1000, overMaxWidth.getMapWidth());
     }
-    /*@Test
-    public void testCharacterWithinMap(){
-        Map theWoods = new Map("The forbidden forest",500, 500 );
-        GameCharacter mainCharacter = new GameCharacter(100, 100, "Gubbe");
-        assertEquals(true, theWoods.isWithinMap(mainCharacter));
-    }*/
+    @Test
+    public void testCharacterXPosLessThenZero(){
+        Map theWoods = new Map("theWoods", 1000, 1000);
+        GameCharacter g = new GameCharacter("g");
+        g.getCharAttributes().increaseMovementSpeed(1.0);
+        for (int i = 1; i < 100; i++) {
+            g.moveLeft();
+        }
+        assertFalse(theWoods.isWithinMap(g));
+    }
+
+    @Test
+    public void testCharacterYPosLessThenZero() {
+        Map theWoods = new Map("theWoods", 1000, 1000);
+        GameCharacter g = new GameCharacter("g");
+
+        g.getCharAttributes().increaseMovementSpeed(1.0);
+        for (int i = 1; i < 100; i++) {
+            g.moveDown();
+        }
+        assertFalse(theWoods.isWithinMap(g));
+    }
+
+    @Test
+    public void testCharacterXPosMoreThanWidth() {
+        Map theWoods = new Map("theWoods", 1000, 1000);
+        GameCharacter g = new GameCharacter("g");
+
+        g.getCharAttributes().increaseMovementSpeed(1.0);
+        for (int i = 1; i < 1000; i++) {
+            g.moveRight();
+        }
+
+        assertFalse(theWoods.isWithinMap(g));
+    }
+
+    @Test
+    public void testCharacterYPosMoreThanWidth() {
+        Map theWoods = new Map("theWoods", 1000, 1000);
+        GameCharacter g = new GameCharacter("g");
+
+        g.getCharAttributes().increaseMovementSpeed(1.0);
+        for (int i = 1; i < 1000; i++) {
+            g.moveUp();
+        }
+
+        assertFalse(theWoods.isWithinMap(g));
+    }
+
+    @Test
+    public void testCharWithinMap() {
+        Map theWoods = new Map("theWoods", 1000, 1000);
+        GameCharacter g = new GameCharacter("g");
+        for (int i  = 1; i < 500; i++) {
+            g.moveUp();
+            g.moveRight();
+        }
+        assertTrue(theWoods.isWithinMap(g));
+    }
+
 }

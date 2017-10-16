@@ -26,9 +26,16 @@ public class Map {
         return mapWidth;
     }
 
-   /* public boolean isWithinMap(GameCharacter character) {
-        Position p = character.getPosition();
-        return !(p.getPosX() > mapWidth || p.getPosY() > mapHeight);
-    }*/
+    public boolean isWithinMap(GameCharacter character) {
+        double xPos = character.getXPos();
+        double yPos = character.getYPos();
+        if (xPos < 0 || yPos < 0) {
+            return false;
+        } else if (xPos > mapWidth || yPos > mapHeight) {
+            return false;
+        }
+        return true;
+
+    }
 
 }
