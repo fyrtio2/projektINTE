@@ -16,13 +16,13 @@ public class MapTest {
     }
 
 
-    @Test(expected = IllegalArgumentException.class) //Skall ej gå igenom förrän felhantering i klassen är ordnat
+    @Test(expected = IllegalArgumentException.class)
     public void testNullMapName() {
         Map map = new Map(null, 500, 500);
         assertEquals(null, map.getMapName());
     }
 
-    @Test(expected = IllegalArgumentException.class) //empty string skall inte accepteras
+    @Test(expected = IllegalArgumentException.class)
     public void testEmptyString() {
         Map map = new Map("", 500, 500);
         assertEquals("The forbidden forest", map.getMapName());
@@ -79,8 +79,9 @@ public class MapTest {
         Map map = new Map("The forbidden forest", 500, 1200);
         assertEquals(1000, map.getMapWidth());
     }
+
     @Test
-    public void testCharacterXPosLessThenZero(){
+    public void testCharacterXPosLessThenZero() {
         Map theWoods = new Map("theWoods", 1000, 1000);
         GameCharacter g = new GameCharacter("g");
         g.getCharAttributes().increaseMovementSpeed(1.0);
@@ -132,7 +133,7 @@ public class MapTest {
     public void testCharWithinMap() {
         Map theWoods = new Map("theWoods", 1000, 1000);
         GameCharacter g = new GameCharacter("g");
-        for (int i  = 1; i < 500; i++) {
+        for (int i = 1; i < 500; i++) {
             g.moveUp();
             g.moveRight();
         }
@@ -143,7 +144,7 @@ public class MapTest {
     public void testNotWithinMap() {
         Map theWoods = new Map("theWoods", 1000, 1000);
         GameCharacter g = new GameCharacter("g");
-        for (int i  = 1; i < 12000; i++) {
+        for (int i = 1; i < 12000; i++) {
             g.moveUp();
             g.moveRight();
         }
@@ -154,7 +155,7 @@ public class MapTest {
     public void testResetWithinMap() {
         Map theWoods = new Map("theWoods", 1000, 1000);
         GameCharacter g = new GameCharacter("g");
-        for (int i  = 1; i < 12000; i++) {
+        for (int i = 1; i < 12000; i++) {
             g.moveUp();
             g.moveRight();
         }
