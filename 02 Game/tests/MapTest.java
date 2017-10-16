@@ -4,10 +4,17 @@ import static org.junit.Assert.*;
 
 public class MapTest {
     @Test
-    public void getLocationName() throws Exception {
+    public void getMapName() throws Exception {
         Map theWoods = new Map("The forbidden forest", 500, 500);
         assertEquals("The forbidden forest", theWoods.getMapName());
     }
+
+    @Test
+    public void testShortName() {
+        Map map = new Map("Mordor", 500, 500);
+        assertEquals("Mordor", map.getMapName());
+    }
+
 
     @Test(expected = IllegalArgumentException.class) //Skall ej gå igenom förrän felhantering i klassen är ordnat
     public void testNullLocationName() {
@@ -24,7 +31,7 @@ public class MapTest {
     @Test
     public void getMapHeight() throws Exception {
         Map theWoods = new Map("The forbidden forest", 500, 500);
-        assertEquals(500, 500);
+        assertEquals(500, theWoods.getMapHeight());
 
     }
 
@@ -56,7 +63,7 @@ public class MapTest {
     @Test
     public void getMapWidth() throws Exception {
         Map theWoods = new Map("The forbidden forest", 500, 500);
-        assertEquals(500, 500);
+        assertEquals(500, theWoods.getMapWidth());
     }
 
     @Test(expected = IllegalArgumentException.class)
