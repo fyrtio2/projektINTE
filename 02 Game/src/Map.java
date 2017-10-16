@@ -7,11 +7,15 @@ public class Map {
 
     public Map(String mapName, int mapHeight, int mapWidth) {
         this.mapName = mapName;
-        if (mapHeight < 0 || mapWidth < 0 || mapName == null || mapName.isEmpty()) {
+        if (mapName == null || mapHeight < 0 || mapWidth < 0 ||  mapName.isEmpty()) {
             throw new IllegalArgumentException("Something went wrong");
+        } else if (mapWidth > mapMaxWidth || mapHeight > mapMaxHeight ) {
+            throw new IllegalArgumentException("Something went wrong");
+        } else {
+            this.mapWidth = mapWidth;
+            this.mapHeight = mapHeight;
         }
-        this.mapHeight = mapHeight > mapMaxHeight ? this.mapHeight = mapMaxHeight : mapHeight;
-        this.mapWidth = mapWidth > mapMaxWidth ? this.mapWidth = mapMaxWidth : mapWidth;
+
     }
 
     public String getMapName() {
