@@ -11,7 +11,7 @@ public class Weapon extends Item {
 
     }
 
-    public boolean isWearableBy(GameCharacter player) {
+    public boolean isUsableBy(GameCharacter player) {
         if (isBroken) {
             return false;
         }
@@ -23,7 +23,7 @@ public class Weapon extends Item {
 
     }
 
-    public void damageEquipment(int damage) {
+    public void damageWeapon(int damage) {
         int durability = getDurability();
         durability -= damage;
         setDurability(durability);
