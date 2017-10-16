@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 public class MapTest {
     @Test
-    public void getMapName() throws Exception {
-        Map theWoods = new Map("The forbidden forest", 500, 500);
-        assertEquals("The forbidden forest", theWoods.getMapName());
+    public void testMapName() {
+        Map map = new Map("The forbidden forest", 500, 500);
+        assertEquals("The forbidden forest", map.getMapName());
     }
 
     @Test
@@ -17,66 +17,67 @@ public class MapTest {
 
 
     @Test(expected = IllegalArgumentException.class) //Skall ej gå igenom förrän felhantering i klassen är ordnat
-    public void testNullLocationName() {
-        Map nullMap = new Map(null, 500, 500);
-        assertEquals(null, nullMap.getMapName());
+    public void testNullMapName() {
+        Map map = new Map(null, 500, 500);
+        assertEquals(null, map.getMapName());
     }
 
     @Test(expected = IllegalArgumentException.class) //empty string skall inte accepteras
     public void testEmptyString() {
-        Map emptyStringMap = new Map("", 500, 500);
-        assertEquals("The forbidden forest", emptyStringMap.getMapName());
+        Map map = new Map("", 500, 500);
+        assertEquals("The forbidden forest", map.getMapName());
     }
 
     @Test
-    public void getMapHeight() throws Exception {
-        Map theWoods = new Map("The forbidden forest", 500, 500);
-        assertEquals(500, theWoods.getMapHeight());
+    public void testMapHeight() {
+        Map map = new Map("The forbidden forest", 500, 500);
+        assertEquals(500, map.getMapHeight());
 
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testNegativeHight() {
-        Map theWoods = new Map("The forbidden forest", -10, 500);
-        assertEquals(500, theWoods.getMapHeight());
+        Map map = new Map("The forbidden forest", -10, 500);
+        assertEquals(500, map.getMapHeight());
 
     }
 
     @Test
     public void testMaxHeigth() {
-        Map maxMap = new Map("addIntegerToHashMap", 1000, 500);
-        assertEquals(1000, maxMap.getMapHeight());
+        Map map = new Map("The forbidden forest", 1000, 500);
+        assertEquals(1000, map.getMapHeight());
     }
 
     @Test
     public void testOverMaxHeigth() {
-        Map overMax = new Map("overMax", 1200, 500);
-        assertEquals(1000, overMax.getMapHeight());
+        Map map = new Map("The forbidden forest", 1200, 500);
+        assertEquals(1000, map.getMapHeight());
     }
 
-    @Test
-    public void testValidHeigth() {
-        Map validHeight = new Map("validHeight", 500, 500);
-        assertEquals(500, validHeight.getMapHeight());
-    }
 
     @Test
-    public void getMapWidth() throws Exception {
-        Map theWoods = new Map("The forbidden forest", 500, 500);
-        assertEquals(500, theWoods.getMapWidth());
+    public void testMapWidth() {
+        Map map = new Map("The forbidden forest", 500, 500);
+        assertEquals(500, map.getMapWidth());
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testNegativeWidth() throws Exception {
-        Map theWoods = new Map("The forbidden forest", 500, -10);
-        assertEquals(500, theWoods.getMapWidth());
+    public void testNegativeWidth() {
+        Map map = new Map("The forbidden forest", 500, -10);
+        assertEquals(500, map.getMapWidth());
 
+    }
+
+    @Test
+    public void testMaxWidth() {
+        Map map = new Map("The forbidden forest", 500, 1000);
+        assertEquals(1000, map.getMapWidth());
     }
 
     @Test
     public void testOverMaxWidth() {
-        Map overMaxWidth = new Map("overMaxWidth", 500, 1200);
-        assertEquals(1000, overMaxWidth.getMapWidth());
+        Map map = new Map("The forbidden forest", 500, 1200);
+        assertEquals(1000, map.getMapWidth());
     }
     @Test
     public void testCharacterXPosLessThenZero(){
