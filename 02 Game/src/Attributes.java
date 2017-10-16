@@ -93,20 +93,20 @@ public class Attributes {
     }
 
     public double checkIfCritDamageExeedsMax(double critDamage) {
-        if (critDamage > 2)
-            return 2;
+        if (critDamage > 2.75)
+            return 2.75;
         else
             return critDamage;
     }
 
     // Methods that calculate attribute values
     private void calcCriticalChance() {
-        criticalChance = (double) getDexterity() / 100;
+        criticalChance = (double) getDexterity() / 100 + 0.1;
         criticalChance = checkIfCritChanceExeedsMax(criticalChance);
     }
 
     private void calcCriticalDamage() {
-        criticalDamage = (double) getStrenght() / 50 + 1;
+        criticalDamage = (double) getStrenght() / 50 + 2;
         criticalDamage = checkIfCritDamageExeedsMax(criticalDamage);
     }
 
