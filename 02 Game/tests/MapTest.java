@@ -48,7 +48,7 @@ public class MapTest {
         assertEquals(1000, map.getMapHeight());
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testOverMaxHeigth() {
         Map map = new Map("The forbidden forest", 1200, 500);
         assertEquals(1000, map.getMapHeight());
@@ -74,7 +74,7 @@ public class MapTest {
         assertEquals(1000, map.getMapWidth());
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testOverMaxWidth() {
         Map map = new Map("The forbidden forest", 500, 1200);
         assertEquals(1000, map.getMapWidth());
