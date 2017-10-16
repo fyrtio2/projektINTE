@@ -1,7 +1,7 @@
 public class WeaponAttributes extends Attributes {
     private int weaponDamageMin, weaponDamageMax;
     private double attackSpeed;
-    private int durability;
+
 
     public WeaponAttributes(int weaponDamageMin, int weaponDamageMax, double attackSpeed, int strenght, int dexterity, int intellegence, int vitality) {
         super(strenght, dexterity, intellegence, vitality);
@@ -39,5 +39,7 @@ public class WeaponAttributes extends Attributes {
     public double getAttackSpeed() {
         return attackSpeed;
     }
+
+
 
 }
