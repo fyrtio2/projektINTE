@@ -1,4 +1,3 @@
-
 import java.util.HashMap;
 
 public class GameCharacter {
@@ -25,6 +24,11 @@ public class GameCharacter {
         currentHp = maxHp;
     }
 
+    public int meleeAttack(){
+        int attack = getCharAttributes().checkIfCrit();
+        return attack;
+    }
+
     public String nameCheck(String name){
         if(name == null || name.isEmpty() || name.trim().equals("")){
             return "A.Nonym";
@@ -35,7 +39,8 @@ public class GameCharacter {
 
     public int checkForNegativeHp(int health) {
         if (health < 0) {
-            return 0;
+            currentHp = 0;
+            return currentHp;
         }
         return health;
     }
@@ -81,7 +86,6 @@ public class GameCharacter {
         charAttributes.increasePrimaryAttribute("Vitality", 1);
         maxHp = charAttributes.convertVitalityToHp();
         currentHp = maxHp;
-
     }
 
     public void resetLevel() {
@@ -93,7 +97,6 @@ public class GameCharacter {
 
     public void afterCombat(boolean isInCombat) {
         if (isInCombat) {
-
             makeCharacterInPeacefulStance();
             experience += 10;
             if (experience > 30) {
@@ -181,8 +184,6 @@ public class GameCharacter {
         return bag;
     }
 
-
-
     public void equipEquipment(Equipment equipment){
         Enum type = equipment.getType();
        if(equipedEquipment.get(type)== null){
@@ -190,8 +191,6 @@ public class GameCharacter {
        }else{
            System.out.printf("%s already equipped",type);
        }
-
-
     }
 
     public void weildWeapon(Weapon weapon){
@@ -200,7 +199,6 @@ public class GameCharacter {
         }else{
             System.out.println("cant wield two weapons");
         }
-
     }
 }
 
