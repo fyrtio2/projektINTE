@@ -13,6 +13,7 @@ public class Bag {
 
     public void addToBag(Item item) {
         bag.put(item.getName(), item);
+        addWeight(item);
     }
     public HashMap getHashMap() {
         return bag;

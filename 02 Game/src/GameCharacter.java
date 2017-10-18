@@ -184,7 +184,6 @@ public class GameCharacter {
 
     public void pickUp(Item item) {
         bag.addToBag(item);
-        bag.addWeight(item);
     }
 
     public Bag getBag() {
