@@ -1,5 +1,8 @@
 import org.junit.Test;
 
+import java.util.HashMap;
+
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -44,6 +47,10 @@ public class GameCharacterTest {
         assertEquals(0, mainCharacter.takeDamage(100));
     }
 
+<<<<<<< HEAD
+=======
+    //
+>>>>>>> 3dd2f3d34b75b78342e045e3d665d33fcc3b6a4f
     //Name Test
     @Test
     public void NameTest() throws Exception {
@@ -233,14 +240,14 @@ public class GameCharacterTest {
     //GameCharacter Alive Tests
 
     @Test
-    public void testVariableIsAlive(){
+    public void testVariableIsAlive() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
         assertEquals(true, mainCharacter.getIsAlive());
     }
 
     //
     @Test
-    public void testMakeAliveFalse(){
+    public void testMakeAliveFalse() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
         mainCharacter.makeCharacterInCombat();
         int currentHp = mainCharacter.getCurrentHp();
@@ -250,15 +257,16 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void testHpCounter(){
+    public void testHpCounter() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
         int currentHp = mainCharacter.getCurrentHp();
         mainCharacter.hpCounter(currentHp);
         assertEquals(0, mainCharacter.getCurrentHp());
     }
+
     //
     @Test
-    public void testCheckExperienceAfterCharacterIsDead(){
+    public void testCheckExperienceAfterCharacterIsDead() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
         mainCharacter.makeCharacterInCombat();
         int currentHp = mainCharacter.getCurrentHp();
@@ -270,20 +278,20 @@ public class GameCharacterTest {
     //GameCharacter Position Tests
 
     @Test
-    public void testStartingPositionX(){
+    public void testStartingPositionX() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
         assertEquals(20.0, mainCharacter.getXPos(), 0.1);
     }
 
     @Test
-    public void testStartingPositionY(){
+    public void testStartingPositionY() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
         double y = mainCharacter.getYPos();
         assertEquals(10.0, y, 0.1);
     }
 
     @Test
-    public void testResetPositionX(){
+    public void testResetPositionX() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
         mainCharacter.moveRight();
         mainCharacter.makeCharacterInCombat();
@@ -295,7 +303,7 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void testResetPositionY(){
+    public void testResetPositionY() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
         mainCharacter.moveRight();
         mainCharacter.moveDown();
@@ -347,12 +355,65 @@ public class GameCharacterTest {
     //Equipment Tests
     /*
     @Test
+<<<<<<< HEAD
     public void equipEquipmentTest(){
         GameCharacter mainGameCharacter = new GameCharacter("kalle");
         Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10);
         mainGameCharacter.equipEquipment(helmet);
+=======
+    public void addTooManyEquipmentsTest() {
+
+
+
+        GameCharacter player = new GameCharacter("Oscar");
+        HashMap equippedEquipment = player.getEquippedEquipment();
+        equippedEquipment.clear();
+
+
+        Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 10);
+        Equipment chestPlate = new Equipment(Equipment.Type.chestPlate, "chestplate", 10, 10, 10);
+        Equipment legPlate = new Equipment(Equipment.Type.legPlate, "legplate", 10, 10, 10);
+        Equipment shoes = new Equipment(Equipment.Type.shoes, "shoes", 10, 10, 10);
+        Equipment gloves = new Equipment(Equipment.Type.gloves, "gloves", 10, 10, 10);
+        Equipment jewelry = new Equipment(Equipment.Type.jewelry, "jewelry", 10, 10, 10);
+        //****************************************************************************// All equipment slots filled
+        Equipment helmet2 = new Equipment(Equipment.Type.helmet, "helmet2", 10, 10, 10);
+
+        player.equipEquipment(helmet);
+        player.equipEquipment(chestPlate);
+        player.equipEquipment(legPlate);
+        player.equipEquipment(shoes);
+        player.equipEquipment(gloves);
+        player.equipEquipment(jewelry);
+
+
+        player.equipEquipment(helmet2); //Should not be added
+
+
+
+
+        assertTrue(!(equippedEquipment.containsKey(helmet2.getType())));
+
+>>>>>>> 3dd2f3d34b75b78342e045e3d665d33fcc3b6a4f
 
 
     }*/
 
+    @Test
+    public void addEquipmentOfSameTypeTest() {
+
+        GameCharacter player = new GameCharacter("Oscar");
+
+
+        Equipment chestPlate = new Equipment(Equipment.Type.chestPlate, "chestplate", 10, 10, 10);
+        Equipment chestPlate2 = new Equipment(Equipment.Type.chestPlate, "chestplate2", 10, 10, 10);
+        player.equipEquipment(chestPlate); // Should still exist in hashMap after we try to add chestplate2
+        player.equipEquipment(chestPlate2);
+
+        Bag bag = player.getBag();
+
+        assertTrue((bag.getHashMap().containsKey(chestPlate.getName())) && bag.getHashMap().get(chestPlate.getName()) != null);
+
+
+    }
 }

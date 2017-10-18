@@ -1,15 +1,15 @@
-<project name="INTE Övning 4" default="test">
+<project name="Projekt Build Script" default="TestSuite">
     <description>
         En enkel byggfil som ni kan utgå från om ni vill använda Ant. Just nu gör den inget förutom att kompilera koden.
     </description>
 
     <!-- Kompilerar .java filer i mappen "src"-->
-    <target name="compile">
+    <target name="Compile">
         <javac srcdir="src" destdir="bin/main"/>
     </target>
 
     <!-- Kompilerar .java filer i mappen "tests"-->
-    <target name="test-compile" depends="compile">
+    <target name="CompileTests" depends="Compile">
         <javac srcdir="tests" destdir="bin/test">
             <classpath>
                 <pathelement location="lib/junit-4.12.jar"/>
@@ -20,7 +20,7 @@
     </target>
 
     <!-- Does amazing stuff, trust me on this! -->
-    <target name="test" depends="test-compile">
+    <target name="TestSuite" depends="CompileTests">
         <junit printsummary="on" haltonfailure="no" fork="yes" showoutput="true">
             <classpath>
                 <path id="classpath.test"/>
@@ -29,7 +29,12 @@
                 <pathelement location="bin/test"/>
                 <pathelement location="bin/main"/>
             </classpath>
-            <formatter type="plain"/>
+            <batchtest>
+                <fileset dir="tests">
+                    <include name="AllTests"/>
+                </fileset>
+            </batchtest>
+            <formatter type="brief" usefile="false"/>
         </junit>
     </target>
 </project>
