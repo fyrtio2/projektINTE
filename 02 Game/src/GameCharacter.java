@@ -1,9 +1,7 @@
 import java.util.HashMap;
 
 public class GameCharacter {
-
-    private int currentHp;
-    private int maxHp, level, experience;
+    private int currentHp, maxHp, level, experience;
     private String name;
     private double xPos = 20.0;
     private double yPos = 10.0;
@@ -11,7 +9,6 @@ public class GameCharacter {
     private boolean isAlive = true;
     private CharacterAttributes charAttributes;
     private Bag bag;
-
     private Weapon weapon;
     private HashMap<Enum,Equipment> equipedEquipment = new HashMap<>();
 

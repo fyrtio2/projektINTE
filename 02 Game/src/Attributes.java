@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class Attributes {
-    private int carryWeight;
+    private int carryWeight, maxCarryWeight;
     private double criticalChance, criticalDamage;
     private HashMap<String, Integer> primaryAttributeHashMap = new HashMap<>();
 
@@ -12,7 +12,7 @@ public class Attributes {
         addIntegerToHashMap("Vitality", vitality);
         calcCriticalChance();
         calcCriticalDamage();
-        calcCarryWeight();
+        calcMaxCarryWeight();
         checkIfAttributeExceedsMaxValue(primaryAttributeHashMap);
         checkForNegativeAttributesInMap(primaryAttributeHashMap);
     }
@@ -55,14 +55,14 @@ public class Attributes {
         }
     }
 
-    public void resetPrimaryAttributeValues(){
+    public void resetPrimaryAttributeValues() {
         primaryAttributeHashMap.put("Strength", 10);
         primaryAttributeHashMap.put("Dexterity", 10);
         primaryAttributeHashMap.put("Intellegence", 10);
         primaryAttributeHashMap.put("Vitality", 10);
         calcCriticalChance();
         calcCriticalDamage();
-        calcCarryWeight();
+        calcMaxCarryWeight();
     }
 
     public int convertVitalityToHp() {
@@ -86,17 +86,26 @@ public class Attributes {
     }
 
     public double checkIfCritChanceExeedsMax(double critChance) {
-        if (critChance > 1)
-            return 1;
-        else
+        if (critChance > 1) {
+            critChance = 1;
+            return critChance;
+        } else
             return critChance;
     }
 
     public double checkIfCritDamageExeedsMax(double critDamage) {
-        if (critDamage > 2.75)
-            return 2.75;
-        else
+        if (critDamage > 2.75) {
+            critDamage = 2.75;
             return critDamage;
+        } else
+            return critDamage;
+    }
+
+    public boolean checkIfCarryWeightExeedsMax() {
+        if (carryWeight > maxCarryWeight) {
+            return true;
+        } else
+            return false;
     }
 
     // Methods that calculate attribute values
@@ -110,8 +119,8 @@ public class Attributes {
         criticalDamage = checkIfCritDamageExeedsMax(criticalDamage);
     }
 
-    private void calcCarryWeight() {
-        carryWeight = 100 + getStrenght() * 5;
+    private void calcMaxCarryWeight() {
+        maxCarryWeight = 100 + getStrenght() * 5;
     }
 
     // Get methods Primary Attributes
@@ -144,5 +153,10 @@ public class Attributes {
 
     public int getCarryWeight() {
         return carryWeight;
+    }
+
+    public int getMaxCarryWeight() {
+        calcMaxCarryWeight();
+        return maxCarryWeight;
     }
 }

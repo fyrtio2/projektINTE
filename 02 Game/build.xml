@@ -18,7 +18,7 @@
             </classpath>
         </javac>
     </target>
-
+B
     <!-- Does amazing stuff, trust me on this! -->
     <target name="TestSuite" depends="CompileTests">
         <junit printsummary="on" haltonfailure="no" fork="yes" showoutput="true">

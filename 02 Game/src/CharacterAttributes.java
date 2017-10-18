@@ -8,6 +8,7 @@ public class CharacterAttributes extends Attributes {
         super(strenght, dexterity, intellegence, vitality);
         movementSpeed = 1.0;
         calculateCharacterDamage();
+
     }
 
     public int checkIfCrit() {
@@ -43,7 +44,13 @@ public class CharacterAttributes extends Attributes {
     }
 
     public double getMovementSpeed() {
+        checkIfOverburden();
         return movementSpeed;
+    }
+
+    private void checkIfOverburden() {
+        if (checkIfCarryWeightExeedsMax())
+            movementSpeed = 0;
     }
 
     public void lowerMovementSpeed(double amount) {
