@@ -192,10 +192,14 @@ public class GameCharacter {
 
     public void equipEquipment(Equipment equipment){
         Enum type = equipment.getType();
-       if(equippedEquipment.get(type)== null){
+       if(equippedEquipment.get(type)== null)
+       {
            equippedEquipment.put(type,equipment);
            bag.removeFromBag(equipment);
-       }else{
+           System.out.println("hello");
+       }
+       else
+       {
            System.out.printf("%s already equipped",type);
        }
     }
@@ -208,9 +212,13 @@ public class GameCharacter {
         }
     }
 
+
+
     public HashMap<Enum,Equipment> getEquippedEquipment(){
         return equippedEquipment;
     }
+
+
 
 
     public void clearEquippedEquipments(){
