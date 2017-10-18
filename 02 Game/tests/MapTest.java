@@ -162,7 +162,6 @@ public class MapTest {
         g.makeCharacterInCombat();
         g.hpCounter(g.getCurrentHp());
         g.makeCharacterDead();
-        System.out.println(g.getIsAlive());
         assertTrue(theWoods.isWithinMap(g));
     }
 
