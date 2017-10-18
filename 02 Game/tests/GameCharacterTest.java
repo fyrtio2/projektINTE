@@ -376,6 +376,7 @@ public class GameCharacterTest {
         Equipment shoes = new Equipment(Equipment.Type.shoes, "shoes", 10, 10, 10);
         Equipment gloves = new Equipment(Equipment.Type.gloves, "gloves", 10, 10, 10);
         Equipment jewelry = new Equipment(Equipment.Type.jewelry, "jewelry", 10, 10, 10);
+        Equipment shield = new Equipment(Equipment.Type.shield, "shield", 10, 10, 10);
         //****************************************************************************// All equipment slots filled
         Equipment helmet2 = new Equipment(Equipment.Type.helmet, "helmet2", 10, 10, 10);
 
@@ -392,7 +393,7 @@ public class GameCharacterTest {
 
 
 
-        assertTrue(player.hasEquipped(helmet));
+        assertFalse(player.hasEquipped(helmet2));
 
 
 
@@ -415,7 +416,7 @@ public class GameCharacterTest {
 
 
 
-        assertFalse((player.hasEquipped(chestPlate2)));
+        assertTrue((player.hasEquipped(chestPlate)));
 
 
     }
