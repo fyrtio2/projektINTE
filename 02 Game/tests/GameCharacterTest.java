@@ -311,7 +311,7 @@ public class GameCharacterTest {
     @Test
     public void pickUpItemTest() {
         GameCharacter mainGameCharacter = new GameCharacter("kalle");
-        Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10, 10);
+        Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10);
         mainGameCharacter.pickUp(helmet);
         Bag bag = mainGameCharacter.getBag();
         assertEquals(helmet, bag.getHashMap().get(helmet.getName()));
