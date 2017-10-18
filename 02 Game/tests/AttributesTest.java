@@ -99,11 +99,11 @@ public class AttributesTest {
         assertEquals(1.001, c.getCriticalChance(), 0.0001);
     }
 
-    // 51 Strenght results in critDamage exceeding the max limit which is 2.0 (200%)
+    // 38 Strenght results in critDamage exceeding the max limit which is 2.75 (275%)
     @Test(expected = AssertionError.class)
     public void ExeedsMaxCritDamage() throws Exception {
-        Attributes c = new Attributes(51, 10, 10, 10);
-        assertEquals(2.01, c.getCriticalDamage(), 0.001);
+        Attributes c = new Attributes(38, 10, 10, 10);
+        assertEquals(2.751, c.getCriticalDamage(), 0.0001);
     }
 
     @Test(expected = AssertionError.class)

@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class GameCharacterTest {
-    //
     //HP Tests
     @Test
     public void testStartHpTest() throws Exception {
@@ -344,4 +343,10 @@ public class GameCharacterTest {
         g.moveRight();
         assertEquals(24.5, g.getXPos(), 0.1);
     }
+
+    @Test
+    public void equipEquipmentTest(){
+
+    }
+
 }
