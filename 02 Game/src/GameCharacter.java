@@ -12,7 +12,7 @@ public class GameCharacter {
     private CharacterAttributes charAttributes;
     private Bag bag;
 
-    private HashMap<String,Weapon> wieldedWeapons = new HashMap<>();//
+    private Weapon weapon;
     private HashMap<Enum,Equipment> equipedEquipment = new HashMap<>();
 
     public GameCharacter(String name) {
@@ -194,14 +194,15 @@ public class GameCharacter {
         Enum type = equipment.getType();
        if(equipedEquipment.get(type)== null){
            equipedEquipment.put(type,equipment);
+           bag.removeFromBag(equipment);
        }else{
            System.out.printf("%s already equipped",type);
        }
     }
 
     public void weildWeapon(Weapon weapon){
-        if(wieldedWeapons.get(weapon.getName())== null){
-            wieldedWeapons.put(weapon.getName(),weapon);
+        if(weapon == null){
+
         }else{
             System.out.println("cant wield two weapons");
         }

@@ -346,4 +346,10 @@ public class GameCharacterTest {
         g.moveRight();
         assertEquals(24.5, g.getXPos(), 0.1);
     }
+
+    @Test
+    public void equipEquipmentTest(){
+
+    }
+
 }
