@@ -286,15 +286,11 @@ public class GameCharacterTest {
     @Test
     public void testResetPositionX(){
         GameCharacter mainCharacter = new GameCharacter("kalle");
-        System.out.println(mainCharacter.getXPos());
         mainCharacter.moveRight();
-        System.out.println(mainCharacter.getXPos());
         mainCharacter.makeCharacterInCombat();
-        System.out.println(mainCharacter.getXPos());
+        mainCharacter.hpCounter(mainCharacter.getCurrentHp());
         mainCharacter.makeCharacterDead();
-        System.out.println(mainCharacter.getXPos());
         mainCharacter.resetPosition();
-        System.out.println(mainCharacter.getXPos());
         assertEquals(20.0, mainCharacter.getXPos(), 0.1);
 
     }
@@ -305,6 +301,7 @@ public class GameCharacterTest {
         mainCharacter.moveRight();
         mainCharacter.moveDown();
         mainCharacter.makeCharacterInCombat();
+        mainCharacter.hpCounter(mainCharacter.getCurrentHp());
         mainCharacter.makeCharacterDead();
         mainCharacter.resetPosition();
         assertEquals(10.0, mainCharacter.getYPos(), 0.1);
