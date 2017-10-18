@@ -43,7 +43,7 @@ public class GameCharacterTest {
         GameCharacter mainCharacter = new GameCharacter("Gubbe");
         assertEquals(0, mainCharacter.takeDamage(100));
     }
-    //
+
     //Name Test
     @Test
     public void NameTest() throws Exception {
@@ -306,7 +306,7 @@ public class GameCharacterTest {
         assertEquals(10.0, mainCharacter.getYPos(), 0.1);
     }
 
-    //
+
 
     @Test
     public void pickUpItemTest() {
@@ -344,9 +344,15 @@ public class GameCharacterTest {
         assertEquals(24.5, g.getXPos(), 0.1);
     }
 
+    //Equipment Tests
+    /*
     @Test
     public void equipEquipmentTest(){
+        GameCharacter mainGameCharacter = new GameCharacter("kalle");
+        Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10);
+        mainGameCharacter.equipEquipment(helmet);
 
-    }
+
+    }*/
 
 }
