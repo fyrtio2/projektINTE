@@ -1,5 +1,5 @@
 import java.util.HashMap;
-//
+
 public class GameCharacter {
 
     private int currentHp;
