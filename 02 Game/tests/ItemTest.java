@@ -52,11 +52,17 @@ public class ItemTest {
 
 
     @Test
-    public void getDurability() throws Exception {
+    public void testDurability() {
         Equipment shield = new Equipment(Equipment.Type.shield, "shield", 10, 10, 10);
         assertEquals(10, shield.getDurability());
     }
 
+    @Test
+    public void testWeight(){
+            Equipment shield = new Equipment(Equipment.Type.shield, "shield", 10, 10, 10);
+            assertEquals(10, shield.getWeight());
+
+    }
 
     @Test
     public void getNameTest() {
@@ -90,11 +96,51 @@ public class ItemTest {
     @Test
     public void testIFWeaponIsUsable() {
         GameCharacter player = new GameCharacter("Isaac"); // New player created level 1
-        WeaponAttributes wb = new WeaponAttributes(10,100,10,10,10,10,10);
+        WeaponAttributes wb = new WeaponAttributes(100,10,10,10,10);
+        Weapon sword = new Weapon("Sting", 20, 10, wb,1);
+
+        assertEquals(true, sword.isUsableBy(player));
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testIFWeaponIsNotUsable() {
+        GameCharacter player = new GameCharacter("Isaac"); // New player created level 1
+        WeaponAttributes wb = new WeaponAttributes(100,10,10,10,10);
         Weapon sword = new Weapon("Sting", 20, 10, wb,3);
 
-
-
+        assertEquals(true, sword.isUsableBy(player));
     }
+
+    @Test(expected = AssertionError.class)
+    public void testBrokenUsable() {
+        GameCharacter player = new GameCharacter("Isaac"); // New player created level 1
+        WeaponAttributes wb = new WeaponAttributes(100,10,10,10,10);
+        Weapon sword = new Weapon("Sting", 20, 10, wb,1);
+        sword.damageWeapon(10);
+
+        assertEquals(true, sword.isUsableBy(player));
+    }
+
+    @Test
+    public void testDamageWeapon() {
+        WeaponAttributes wb = new WeaponAttributes(100,10,10,10,10);
+        Weapon sword = new Weapon("Sting", 20, 10, wb,1);
+        sword.damageWeapon(9);
+
+        assertEquals(1, sword.getDurability());
+    }
+
+    @Test
+    public void testIfWeaponIsBroken() {
+        WeaponAttributes wb = new WeaponAttributes(100,10,10,10,10);
+        Weapon sword = new Weapon("Sting", 20, 10, wb,1);
+        sword.damageWeapon(10);
+
+        assertEquals(true, sword.isBroken());
+    }
+
+
+
+
 
 }
