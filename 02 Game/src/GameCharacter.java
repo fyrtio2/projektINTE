@@ -239,11 +239,14 @@ public class GameCharacter {
     }
 
     public boolean isWeilding(Weapon w){
-        if(weapon.equals(w)){
-            return  true;
+        if(weapon == null){
+            return  false;
 
+        }else if (weapon.equals(w)){
+            return true;
         }else{
-            return false;
+            
+          return  false;
         }
     }
 
