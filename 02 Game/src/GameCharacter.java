@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class GameCharacter {
     private int currentHp, maxHp, level, experience;
@@ -10,7 +11,8 @@ public class GameCharacter {
     private CharacterAttributes charAttributes;
     private Bag bag;
     private Weapon weapon;
-    private HashMap<Enum, Equipment> equippedEquipment = new HashMap<>();
+
+    private HashMap<Enum,Equipment> equippedEquipment = new HashMap<>();
 
     public GameCharacter(String name) {
         level = 1;
@@ -135,7 +137,8 @@ public class GameCharacter {
     public void hpCounter(int hp) {
         for (int i = 0; i < hp; i++)
             currentHp = currentHp - 1;
-    }
+        }
+    
 
     public boolean getIsAlive() {
         return isAlive;
@@ -191,28 +194,53 @@ public class GameCharacter {
         return bag;
     }
 
-    public void equipEquipment(Equipment equipment) {
-        Enum type = equipment.getType();
-        if (equippedEquipment.get(type) == null) {
-            equippedEquipment.put(type, equipment);
-            bag.removeFromBag(equipment);
-            System.out.println("hello");
-        } else
-            System.out.printf("%s already equipped", type);
-    }
 
-    public void weildWeapon(Weapon weapon) {
-        if (weapon == null) {
 
-        } else
+  public void equipEquipment(Equipment equipment){
+
+      if(equippedEquipment.containsKey(equipment.getType())) {
+          System.out.printf("%s already equipped",equipment.getType());
+
+      } else {
+
+          equippedEquipment.put(equipment.getType(),equipment);
+          bag.removeFromBag(equipment);
+          System.out.println("added");
+
+      }
+
+  }
+
+
+    public void weildWeapon(Weapon weapon){
+        if(weapon == null){
+
+        }else{
             System.out.println("cant wield two weapons");
+        }
     }
 
-    public HashMap<Enum, Equipment> getEquippedEquipment() {
-        return equippedEquipment;
+
+
+    public boolean hasEquipped(Equipment equipment){
+        boolean isEquipped;
+        if (equippedEquipment.containsKey(equipment.getType())){
+            if(equippedEquipment.get(equipment.getType()).equals(equipment)){
+                isEquipped = true;
+            }else {
+                isEquipped = false;
+            }
+
+        }else{
+            isEquipped = false;
+        }
+        return isEquipped;
     }
 
-    public void clearEquippedEquipments() {
+
+
+
+    public void clearEquippedEquipments(){
         equippedEquipment.clear();
     }
 }

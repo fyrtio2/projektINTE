@@ -312,6 +312,7 @@ public class GameCharacterTest {
     }
 
 
+
     @Test
     public void pickUpItemTest() {
         GameCharacter mainGameCharacter = new GameCharacter("kalle");
@@ -349,16 +350,25 @@ public class GameCharacterTest {
     }
 
     //Equipment Tests
+
+
+
     @Test
     public void equipEquipmentTest() {
         GameCharacter mainGameCharacter = new GameCharacter("kalle");
         Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10);
         mainGameCharacter.equipEquipment(helmet);
     }
-    /*
+
+
+
     @Test
-    public void addTooManyEquipmentsTest() {
+   public void addTooManyEquipmentsTest() {
+
+
+
         GameCharacter player = new GameCharacter("Oscar");
+
 
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 10);
         Equipment chestPlate = new Equipment(Equipment.Type.chestPlate, "chestplate", 10, 10, 10);
@@ -366,8 +376,7 @@ public class GameCharacterTest {
         Equipment shoes = new Equipment(Equipment.Type.shoes, "shoes", 10, 10, 10);
         Equipment gloves = new Equipment(Equipment.Type.gloves, "gloves", 10, 10, 10);
         Equipment jewelry = new Equipment(Equipment.Type.jewelry, "jewelry", 10, 10, 10);
-
-        //*************************All equipment slots filled*******************************
+        //****************************************************************************// All equipment slots filled
         Equipment helmet2 = new Equipment(Equipment.Type.helmet, "helmet2", 10, 10, 10);
 
         player.equipEquipment(helmet);
@@ -380,20 +389,34 @@ public class GameCharacterTest {
 
         player.equipEquipment(helmet2); //Should not be added
 
-        assertFalse(player.hasEquipmentEquipped(helmet));
+
+
+
+        assertTrue(player.hasEquipped(helmet));
+
+
+
+
     }
+
 
     @Test
     public void addEquipmentOfSameTypeTest() {
+
+
         GameCharacter player = new GameCharacter("Oscar");
         player.clearEquippedEquipments();
+
 
         Equipment chestPlate = new Equipment(Equipment.Type.chestPlate, "chestplate", 10, 10, 10);
         Equipment chestPlate2 = new Equipment(Equipment.Type.chestPlate, "chestplate2", 10, 10, 10);
         player.equipEquipment(chestPlate); // Should still exist in hashMap after we try to add chestplate2
-        player.equipEquipment(chestPlate2);
+        player.equipEquipment(chestPlate2); // Should not exits
 
-        assertTrue((player.hasEquipmentEquipped(chestPlate2)));
+
+
+        assertFalse((player.hasEquipped(chestPlate2)));
+
+
     }
-    */
 }
