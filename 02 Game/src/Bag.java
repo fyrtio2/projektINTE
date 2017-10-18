@@ -1,6 +1,6 @@
 import java.util.HashMap;
 import java.util.HashSet;
-
+// comment
 public class Bag {
     private int maxWeight = 100;
     private HashMap<String, Item> bag = new HashMap<>();
