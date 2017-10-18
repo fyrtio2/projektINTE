@@ -3,12 +3,12 @@ import java.util.HashSet;
 
 public class Bag {
 
-    private int maxWeight = 100;
+    private int weight;
     private HashMap<String, Item> bag = new HashMap<>();
 
 
-    public Bag(int size) {
-        this.maxWeight = size;
+    public Bag(int weight) {
+        this.weight = weight;
     }
 
     public void addToBag(Item item) {
@@ -19,10 +19,15 @@ public class Bag {
     }
 
     public void removeFromBag(Item item){
-
         bag.remove(item.getName(),item);
+    }
 
+    public int getWeight() {
+        return weight;
+    }
 
+    public void addWeight(Item item) {
+        weight += item.getWeight();
     }
 
 
