@@ -1,6 +1,5 @@
 import java.util.Random;
 
-// TODO: Återställ maxCarryWeight när en karaktär dör och respawnar (lvl 1).
 public class CharacterAttributes extends Attributes {
     private int maxCarryWeight;
     private double movementSpeed;
