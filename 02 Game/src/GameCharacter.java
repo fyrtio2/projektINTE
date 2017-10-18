@@ -12,7 +12,7 @@ public class GameCharacter {
     private Bag bag;
     private Weapon weapon;
 
-    private HashMap<Enum,Equipment> equippedEquipment = new HashMap<>();
+    private HashMap<Enum, Equipment> equippedEquipment = new HashMap<>();
 
     public GameCharacter(String name) {
         level = 1;
@@ -21,11 +21,6 @@ public class GameCharacter {
         bag = new Bag(0);
         maxHp = charAttributes.convertVitalityToHp();
         currentHp = maxHp;
-    }
-
-    public int meleeAttack() {
-        int attack = getCharAttributes().checkIfCrit();
-        return attack;
     }
 
     public String nameCheck(String name) {
@@ -52,31 +47,12 @@ public class GameCharacter {
         return currentHp;
     }
 
-    public int getCurrentHp() {
-        return currentHp;
+    public double test() {
+        charAttributes.checkIfOverburdened(bag.getWeight());
+        return charAttributes.getMovementSpeed();
     }
 
-    public int getMaxHp() {
-        return maxHp;
-    }
-
-    public int takeDamage(int damageTaken) {
-        currentHp -= damageTaken;
-        return checkForNegativeHp(currentHp);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public int getExperience() {
-        return experience;
-    }
-
+    // Level up Methods
     public void levelUp() {
         level++;
         charAttributes.increasePrimaryAttribute("Strength", 2);
@@ -90,27 +66,16 @@ public class GameCharacter {
     public void resetLevel() {
         level = 1;
         charAttributes.resetPrimaryAttributeValues();
+        charAttributes.resetCarryWeight();
         maxHp = charAttributes.convertVitalityToHp();
         currentHp = maxHp;
-    }
-
-    public void afterCombat(boolean isInCombat) {
-        if (isInCombat) {
-            makeCharacterInPeacefulStance();
-            experience += 10;
-            if (experience > 30) {
-                levelUp();
-                resetExperience();
-            }
-        } else
-            return;
     }
 
     public void resetExperience() {
         experience = 0;
     }
 
-    //GameCharacter Combat
+    // GameCharacter Combat
     public boolean makeCharacterInCombat() {
         isInCombat = true;
         return isInCombat;
@@ -125,7 +90,29 @@ public class GameCharacter {
         return isInCombat;
     }
 
-    //GameCharacter Alive or Dead
+    public void afterCombat(boolean isInCombat) {
+        if (isInCombat) {
+            makeCharacterInPeacefulStance();
+            experience += 10;
+            if (experience > 30) {
+                levelUp();
+                resetExperience();
+            }
+        } else
+            return;
+    }
+
+    public int meleeAttack() {
+        int attack = getCharAttributes().checkIfCrit();
+        return attack;
+    }
+
+    public int takeDamage(int damageTaken) {
+        currentHp -= damageTaken;
+        return checkForNegativeHp(currentHp);
+    }
+
+    // GameCharacter Alive or Dead
     public void makeCharacterDead() {
         if (isInCombat && currentHp == 0) {
             isAlive = false;
@@ -137,22 +124,9 @@ public class GameCharacter {
     public void hpCounter(int hp) {
         for (int i = 0; i < hp; i++)
             currentHp = currentHp - 1;
-        }
-    
-
-    public boolean getIsAlive() {
-        return isAlive;
     }
 
-    //GameCharacter Position
-    public double getXPos() {
-        return xPos;
-    }
-
-    public double getYPos() {
-        return yPos;
-    }
-
+    // Movement & Position methods
     public void moveRight() {
         xPos += charAttributes.getMovementSpeed();
     }
@@ -176,8 +150,70 @@ public class GameCharacter {
         }
     }
 
-    public CharacterAttributes getCharAttributes() {
-        return charAttributes;
+    // Equipment Methods
+    public void equipEquipment(Equipment equipment) {
+
+        if (equippedEquipment.containsKey(equipment.getType())) {
+            System.out.printf("%s already equipped", equipment.getType());
+        } else {
+            equippedEquipment.put(equipment.getType(), equipment);
+            bag.removeFromBag(equipment);
+            System.out.println("added");
+        }
+    }
+
+    public void weildWeapon(Weapon w) {
+        if (weapon == null) {
+            weapon = w;
+        } else {
+            System.out.println("cant wield two weapons");
+        }
+    }
+
+    public boolean hasEquipped(Equipment equipment) {
+        boolean isEquipped;
+        if (equippedEquipment.containsKey(equipment.getType())) {
+            if (equippedEquipment.get(equipment.getType()).equals(equipment)) {
+                isEquipped = true;
+            } else {
+                isEquipped = false;
+            }
+        } else {
+            isEquipped = false;
+        }
+        return isEquipped;
+    }
+
+    public boolean isWeilding(Weapon w) {
+        if (weapon == null) {
+            return false;
+
+        } else if (weapon.equals(w)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void unEquip(Item item) {
+        if (item instanceof Equipment) {
+            Equipment equipment = (Equipment) item;
+            if (hasEquipped(equipment)) {
+                equippedEquipment.remove(equipment.getType());
+                pickUp(equipment);
+            } else {
+                System.out.printf("that %s is not equipped\n", equipment.getType());
+            }
+        } else {
+            Weapon w = (Weapon) item;
+            if (isWeilding(w)) {
+                weapon = null;
+                pickUp(w);
+            } else {
+                System.out.printf("That %s is not wielded\n", w.getName());
+            }
+
+        }
     }
 
     public void pickUp(Item item) {
@@ -185,105 +221,45 @@ public class GameCharacter {
         charAttributes.checkIfOverburdened(bag.getWeight());
     }
 
-    public double test() {
-        charAttributes.checkIfOverburdened(bag.getWeight());
-        return charAttributes.getMovementSpeed();
+    // Get Methods
+    public CharacterAttributes getCharAttributes() {
+        return charAttributes;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCurrentHp() {
+        return currentHp;
+    }
+
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getExperience() {
+        return experience;
     }
 
     public Bag getBag() {
         return bag;
     }
 
-
-
-  public void equipEquipment(Equipment equipment){
-
-      if(equippedEquipment.containsKey(equipment.getType())) {
-          System.out.printf("%s already equipped",equipment.getType());
-
-      } else {
-
-          equippedEquipment.put(equipment.getType(),equipment);
-          bag.removeFromBag(equipment);
-          System.out.println("added");
-
-      }
-
-  }
-
-
-    public void weildWeapon(Weapon w){
-        if(weapon == null){
-            weapon = w;
-
-        }else{
-            System.out.println("cant wield two weapons");
-        }
+    public boolean getIsAlive() {
+        return isAlive;
     }
 
-
-
-    public boolean hasEquipped(Equipment equipment){
-        boolean isEquipped;
-        if (equippedEquipment.containsKey(equipment.getType())){
-            if(equippedEquipment.get(equipment.getType()).equals(equipment)){
-                isEquipped = true;
-            }else {
-                isEquipped = false;
-            }
-
-        }else{
-            isEquipped = false;
-        }
-        return isEquipped;
+    public double getXPos() {
+        return xPos;
     }
 
-    public boolean isWeilding(Weapon w){
-        if(weapon == null){
-            return  false;
-
-        }else if (weapon.equals(w)){
-            return true;
-        }else{
-            
-          return  false;
-        }
-    }
-
-    
-    
-    
-    
-
-
-
-
-
-
-    public void unEquip(Item item){
-        if(item instanceof Equipment){
-            Equipment equipment = (Equipment) item;
-            if (hasEquipped(equipment)){
-                equippedEquipment.remove(equipment.getType());
-                pickUp(equipment);
-            }else{
-                System.out.printf("that %s is not equipped\n",equipment.getType());
-            }
-
-        }else{
-            Weapon w = (Weapon) item;
-            if (isWeilding(w)){
-                weapon = null;
-                pickUp(w);
-            }else{
-                System.out.printf("That %s is not wielded\n",w.getName());
-            }
-
-
-
-        }
-
-
+    public double getYPos() {
+        return yPos;
     }
 }
 

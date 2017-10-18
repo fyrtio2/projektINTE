@@ -12,10 +12,6 @@ import org.junit.runners.Suite.SuiteClasses;
         GameCharacterTest.class,
         BagTest.class,
         ItemTest.class,
-
-
 })
 public class AllTests {
-
-
 }

@@ -7,8 +7,6 @@ public class Weapon extends Item {
     public Weapon(String name,int weight,int durability, WeaponAttributes weaponAttributes, int lvlReq){
         super(name, weight, durability);
         this.lvlReq = lvlReq;
-
-
     }
 
     public boolean isUsableBy(GameCharacter player) {
@@ -20,7 +18,6 @@ public class Weapon extends Item {
         } else {
             return false;
         }
-
     }
 
     public void damageWeapon(int damage) {

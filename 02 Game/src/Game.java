@@ -1,7 +1,5 @@
 import javax.swing.*;
 
-// TODO: Måste skapa/uppdatera testafallen för maxCarryWeight samt metoderna som kontroller om spelaren bär över max gränsen
-//
 public class Game extends JFrame {
 
     public Game() {
@@ -41,7 +39,5 @@ public class Game extends JFrame {
         System.out.println("Your Current Carry Weight is: " + dragon.getBag().getWeight());
         System.out.println("You have been Overburdened!");
         System.out.println("Movement Speed: " + dragon.getCharAttributes().getMovementSpeed());
-
-
     }
 }
