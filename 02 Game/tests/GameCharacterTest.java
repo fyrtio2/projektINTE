@@ -357,7 +357,7 @@ public class GameCharacterTest {
         Equipment helmet2 = new Equipment(Equipment.Type.helmet, "HELMET OF", 10, 10, 10);
         mainGameCharacter.equipEquipment(helmet);
         mainGameCharacter.equipEquipment(helmet2);
-        assertTrue(mainGameCharacter.getEquippedEquipment().containsKey(helmet.getType()));
+        assertTrue(mainGameCharacter.getEquippedEquipment().containsKey(helmet2.getType()));
     }
 
 
