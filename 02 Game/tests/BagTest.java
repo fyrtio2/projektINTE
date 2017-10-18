@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
 public class BagTest {
@@ -13,4 +14,6 @@ public class BagTest {
 
         assertEquals( ring ,bag.getHashMap().get(ring.getName()));
     }
+
+
 }
