@@ -1,6 +1,6 @@
 import java.util.HashMap;
 import java.util.HashSet;
-
+// comment
 public class Bag {
 
     private int weight;
