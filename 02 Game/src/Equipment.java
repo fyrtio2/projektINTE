@@ -9,8 +9,8 @@ public class Equipment extends Item {
     }
 
 
-    public Equipment(Enum type, String name, int lvlReq, int durability, int weight, int value) {
-        super(name, value, weight, durability);
+    public Equipment(Enum type, String name, int lvlReq, int durability, int weight) {
+        super(name, weight, durability);
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Something went wrong");
         }

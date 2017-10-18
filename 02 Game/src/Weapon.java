@@ -4,8 +4,8 @@ public class Weapon extends Item {
     private boolean isBroken;
     private int lvlReq;
 
-    public Weapon(String name,int value,int weight,int durability, WeaponAttributes weaponAttributes, int lvlReq){
-        super(name, value, weight, durability);
+    public Weapon(String name,int weight,int durability, WeaponAttributes weaponAttributes, int lvlReq){
+        super(name, weight, durability);
         this.lvlReq = lvlReq;
 
 
