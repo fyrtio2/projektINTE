@@ -1,6 +1,7 @@
 import javax.swing.*;
 
 // TODO: Måste skapa/uppdatera testafallen för maxCarryWeight samt metoderna som kontroller om spelaren bär över max gränsen
+//
 public class Game extends JFrame {
 
     public Game() {
