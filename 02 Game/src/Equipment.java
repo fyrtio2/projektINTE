@@ -8,48 +8,36 @@ public class Equipment extends Item {
         helmet, chestPlate, legPlate, shoes, shield, gloves, jewelry
     }
 
-
     public Equipment(Enum type, String name, int lvlReq, int durability, int weight) {
         super(name, weight, durability);
-        if (name == null || name.isEmpty()) {
+        if (name == null || name.isEmpty())
             throw new IllegalArgumentException("Something went wrong");
-        }
         this.type = type;
-
         this.lvlReq = lvlReq;
-
-
     }
 
     public boolean isWearableBy(GameCharacter player) {
-        if (isBroken) {
+        if (isBroken)
             return false;
-        }
-        if (player.getLevel() >= lvlReq) {
+        if (player.getLevel() >= lvlReq)
             return true;
-        } else {
+        else
             return false;
-        }
-
     }
 
     public void damageEquipment(int damage) {
         int durability = getDurability();
         durability -= damage;
         setDurability(durability);
-        if (durability <= 0) {
+        if (durability <= 0)
             isBroken = true;
-        }
     }
 
     public boolean isBroken() {
         return isBroken;
     }
 
-
     public Enum getType() {
         return type;
     }
-
-
 }

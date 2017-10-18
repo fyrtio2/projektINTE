@@ -1,6 +1,8 @@
 import java.util.Random;
 
+// TODO: Återställ maxCarryWeight när en karaktär dör och respawnar (lvl 1).
 public class CharacterAttributes extends Attributes {
+    private int maxCarryWeight;
     private double movementSpeed;
     private int characterDamage;
 
@@ -8,6 +10,7 @@ public class CharacterAttributes extends Attributes {
         super(strenght, dexterity, intellegence, vitality);
         movementSpeed = 1.0;
         calculateCharacterDamage();
+        calcMaxCarryWeight();
 
     }
 
@@ -43,16 +46,6 @@ public class CharacterAttributes extends Attributes {
             return movementSpeed;
     }
 
-    public double getMovementSpeed() {
-        checkIfOverburden();
-        return movementSpeed;
-    }
-
-    private void checkIfOverburden() {
-        if (checkIfCarryWeightExeedsMax())
-            movementSpeed = 0;
-    }
-
     public void lowerMovementSpeed(double amount) {
         movementSpeed = checkIfMovementSpeedIsNegative(movementSpeed - amount);
     }
@@ -65,4 +58,25 @@ public class CharacterAttributes extends Attributes {
         calculateCharacterDamage();
         return characterDamage;
     }
+
+/////////////////////////////////////////////////////////////
+
+    private void calcMaxCarryWeight() {
+        maxCarryWeight = 100 + getStrenght() * 5;
+    }
+
+    public void checkIfOverburdened(int bagCapacity) {
+        if (bagCapacity > maxCarryWeight)
+            movementSpeed = 0;
+    }
+
+    public int getMaxCarryWeight() {
+        calcMaxCarryWeight();
+        return maxCarryWeight;
+    }
+
+    public double getMovementSpeed() {
+        return movementSpeed;
+    }
+
 }

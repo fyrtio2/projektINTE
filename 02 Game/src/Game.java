@@ -1,5 +1,6 @@
 import javax.swing.*;
 
+// TODO: Måste skapa/uppdatera testafallen för maxCarryWeight samt metoderna som kontroller om spelaren bär över max gränsen
 public class Game extends JFrame {
 
     public Game() {
@@ -32,7 +33,12 @@ public class Game extends JFrame {
         System.out.println("\n******************************Overburdened Test******************************");
         System.out.println("Movement Speed: " + dragon.getCharAttributes().getMovementSpeed());
         System.out.println("Max Carry Weight: " + dragon.getCharAttributes().getMaxCarryWeight());
-        System.out.println("Current Carry Weight: " + dragon.getCharAttributes().getCarryWeight());
+        System.out.println("Current Carry Weight: " + dragon.getBag().getWeight());
+        Equipment helm = new Equipment(Equipment.Type.helmet, "Helm of Domination", 1, 100, 151);
+        dragon.pickUp(helm);
+        System.out.println("You have picked up: " + helm.getName());
+        System.out.println("Your Current Carry Weight is: " + dragon.getBag().getWeight());
+        System.out.println("You have been Overburdened!");
         System.out.println("Movement Speed: " + dragon.getCharAttributes().getMovementSpeed());
 
 

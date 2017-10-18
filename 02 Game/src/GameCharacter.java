@@ -10,26 +10,26 @@ public class GameCharacter {
     private CharacterAttributes charAttributes;
     private Bag bag;
     private Weapon weapon;
-    private HashMap<Enum,Equipment> equippedEquipment = new HashMap<>();
+    private HashMap<Enum, Equipment> equippedEquipment = new HashMap<>();
 
     public GameCharacter(String name) {
         level = 1;
         this.name = nameCheck(name);
         charAttributes = new CharacterAttributes(10, 10, 10, 10);
-        bag = new Bag(10);
+        bag = new Bag(0);
         maxHp = charAttributes.convertVitalityToHp();
         currentHp = maxHp;
     }
 
-    public int meleeAttack(){
+    public int meleeAttack() {
         int attack = getCharAttributes().checkIfCrit();
         return attack;
     }
 
-    public String nameCheck(String name){
-        if(name == null || name.isEmpty() || name.trim().equals("")){
+    public String nameCheck(String name) {
+        if (name == null || name.isEmpty() || name.trim().equals("")) {
             return "A.Nonym";
-        }else if (name.length() > 20)
+        } else if (name.length() > 20)
             throw new IllegalArgumentException("Namn får inte överskrida 20 tecken");
         return name;
     }
@@ -58,7 +58,7 @@ public class GameCharacter {
         return maxHp;
     }
 
-    public int takeDamage(int damageTaken){
+    public int takeDamage(int damageTaken) {
         currentHp -= damageTaken;
         return checkForNegativeHp(currentHp);
     }
@@ -100,9 +100,8 @@ public class GameCharacter {
                 levelUp();
                 resetExperience();
             }
-        } else {
+        } else
             return;
-        }
     }
 
     public void resetExperience() {
@@ -133,10 +132,9 @@ public class GameCharacter {
         }
     }
 
-    public void hpCounter(int hp){
-        for (int i = 0; i < hp; i++){
+    public void hpCounter(int hp) {
+        for (int i = 0; i < hp; i++)
             currentHp = currentHp - 1;
-        }
     }
 
     public boolean getIsAlive() {
@@ -181,44 +179,40 @@ public class GameCharacter {
 
     public void pickUp(Item item) {
         bag.addToBag(item);
+        charAttributes.checkIfOverburdened(bag.getWeight());
+    }
+
+    public double test() {
+        charAttributes.checkIfOverburdened(bag.getWeight());
+        return charAttributes.getMovementSpeed();
     }
 
     public Bag getBag() {
         return bag;
     }
 
-    public void equipEquipment(Equipment equipment){
+    public void equipEquipment(Equipment equipment) {
         Enum type = equipment.getType();
-       if(equippedEquipment.get(type)== null)
-       {
-           equippedEquipment.put(type,equipment);
-           bag.removeFromBag(equipment);
-           System.out.println("hello");
-       }
-       else
-       {
-           System.out.printf("%s already equipped",type);
-       }
+        if (equippedEquipment.get(type) == null) {
+            equippedEquipment.put(type, equipment);
+            bag.removeFromBag(equipment);
+            System.out.println("hello");
+        } else
+            System.out.printf("%s already equipped", type);
     }
 
-    public void weildWeapon(Weapon weapon){
-        if(weapon == null){
+    public void weildWeapon(Weapon weapon) {
+        if (weapon == null) {
 
-        }else{
+        } else
             System.out.println("cant wield two weapons");
-        }
     }
 
-
-
-    public HashMap<Enum,Equipment> getEquippedEquipment(){
+    public HashMap<Enum, Equipment> getEquippedEquipment() {
         return equippedEquipment;
     }
 
-
-
-
-    public void clearEquippedEquipments(){
+    public void clearEquippedEquipments() {
         equippedEquipment.clear();
     }
 }
