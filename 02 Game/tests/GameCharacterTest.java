@@ -406,7 +406,6 @@ public class GameCharacterTest {
 
 
         GameCharacter player = new GameCharacter("Oscar");
-        player.clearEquippedEquipments();
 
 
         Equipment chestPlate = new Equipment(Equipment.Type.chestPlate, "chestplate", 10, 10, 10);
@@ -420,4 +419,71 @@ public class GameCharacterTest {
 
 
     }
+
+    @Test
+    public void unequipTest(){
+        GameCharacter player = new GameCharacter("Oscar");
+
+
+        Equipment shield = new Equipment(Equipment.Type.shield, "shield", 10, 10, 10);
+        player.equipEquipment(shield);
+        player.unEquip(shield);
+
+        assertFalse(player.hasEquipped(shield));
+
+
+    }
+
+    @Test
+    public void unequipWrongItemTest(){
+        GameCharacter player = new GameCharacter("Oscar");
+
+
+        Equipment shield = new Equipment(Equipment.Type.shield, "shield", 10, 10, 10);
+        Equipment otherShield = new Equipment(Equipment.Type.shield, "shield", 10, 10, 10);
+        player.equipEquipment(shield);
+        player.unEquip(otherShield); // unequips the shield that has not been equipped
+
+        assertTrue(player.hasEquipped(shield));
+
+
+    }
+
+    @Test
+    public void wieldWeaponTest(){
+
+        GameCharacter player = new GameCharacter("Oscar");
+        WeaponAttributes weaponAttributes = new WeaponAttributes(10,10,10,10,10);
+
+        Weapon sword = new Weapon("Sword of doom",10,10,weaponAttributes,0);
+
+        player.weildWeapon(sword);
+
+        assertTrue(player.isWeilding(sword));
+
+
+    }
+
+
+    @Test
+    public void unWieldWeaponTest(){
+
+        GameCharacter player = new GameCharacter("Oscar");
+        WeaponAttributes weaponAttributes = new WeaponAttributes(10,10,10,10,10);
+
+        Weapon sword = new Weapon("Sword of doom",10,10,weaponAttributes,0);
+
+        player.weildWeapon(sword);
+        player.unEquip(sword);
+
+        assertFalse(player.isWeilding(sword));
+
+
+    }
+
+
+
+
+
+
 }

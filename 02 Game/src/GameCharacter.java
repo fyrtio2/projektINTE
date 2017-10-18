@@ -212,8 +212,9 @@ public class GameCharacter {
   }
 
 
-    public void weildWeapon(Weapon weapon){
+    public void weildWeapon(Weapon w){
         if(weapon == null){
+            weapon = w;
 
         }else{
             System.out.println("cant wield two weapons");
@@ -237,11 +238,49 @@ public class GameCharacter {
         return isEquipped;
     }
 
+    public boolean isWeilding(Weapon w){
+        if(weapon.equals(w)){
+            return  true;
+
+        }else{
+            return false;
+        }
+    }
+
+    
+    
+    
+    
 
 
 
-    public void clearEquippedEquipments(){
-        equippedEquipment.clear();
+
+
+
+    public void unEquip(Item item){
+        if(item instanceof Equipment){
+            Equipment equipment = (Equipment) item;
+            if (hasEquipped(equipment)){
+                equippedEquipment.remove(equipment.getType());
+                pickUp(equipment);
+            }else{
+                System.out.printf("that %s is not equipped\n",equipment.getType());
+            }
+
+        }else{
+            Weapon w = (Weapon) item;
+            if (isWeilding(w)){
+                weapon = null;
+                pickUp(w);
+            }else{
+                System.out.printf("That %s is not wielded\n",w.getName());
+            }
+
+
+
+        }
+
+
     }
 }
 
