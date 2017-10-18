@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+
 // comment
 public class BagTest {
 
@@ -21,7 +22,6 @@ public class BagTest {
         bag.addToBag(ring);
 
         assertEquals(20, bag.getWeight());
-
     }
 
     @Test(expected = AssertionError.class)
@@ -32,9 +32,5 @@ public class BagTest {
         bag.removeFromBag(ring);
 
         assertEquals(ring, bag.getHashMap().get(ring.getName()));
-
-
     }
-
-
 }

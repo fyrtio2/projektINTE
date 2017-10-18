@@ -17,16 +17,6 @@ public class GameCharacterAttributesTest {
         c.increaseMovementSpeed(1.01);
         assertEquals(2.01, c.getMovementSpeed(), 0.001);
     }
-
-    @Test
-    public void test() throws Exception {
-        CharacterAttributes c = new CharacterAttributes(10, 10, 10, 10);
-
-        assertEquals(c.getCharacterDamage(), c.checkIfCrit());
-    }
-
-
-
 }
 
 
