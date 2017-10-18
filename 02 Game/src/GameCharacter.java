@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class GameCharacter {
     private int currentHp, maxHp, level, experience;
@@ -9,8 +10,10 @@ public class GameCharacter {
     private boolean isAlive = true;
     private CharacterAttributes charAttributes;
     private Bag bag;
+
+
     private Weapon weapon;
-    private HashMap<Enum,Equipment> equippedEquipment = new HashMap<>();
+    private HashSet<Enum> equippedEquipment = new HashSet<>();
 
     public GameCharacter(String name) {
         level = 1;
@@ -187,19 +190,22 @@ public class GameCharacter {
         return bag;
     }
 
-    public void equipEquipment(Equipment equipment){
-        Enum type = equipment.getType();
-       if(equippedEquipment.get(type)== null)
-       {
-           equippedEquipment.put(type,equipment);
-           bag.removeFromBag(equipment);
-           System.out.println("hello");
-       }
-       else
-       {
-           System.out.printf("%s already equipped",type);
-       }
-    }
+
+
+  public void equipEquipment(Equipment equipment){
+      if(equippedEquipment.contains(equipment.getType()))
+      { System.out.printf("%s already equipped",equipment.getType());
+      }
+      else
+      {
+          equippedEquipment.add(equipment.getType());
+          bag.removeFromBag(equipment);
+          System.out.println("added");
+
+      }
+
+  }
+
 
     public void weildWeapon(Weapon weapon){
         if(weapon == null){
@@ -211,8 +217,12 @@ public class GameCharacter {
 
 
 
-    public HashMap<Enum,Equipment> getEquippedEquipment(){
-        return equippedEquipment;
+    public boolean hasEquipmentEquipped(Equipment equipment){
+        if (equippedEquipment.contains(equipment.getType())){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 
