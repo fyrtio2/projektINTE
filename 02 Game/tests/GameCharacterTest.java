@@ -47,10 +47,6 @@ public class GameCharacterTest {
         assertEquals(0, mainCharacter.takeDamage(100));
     }
 
-<<<<<<< HEAD
-=======
-    //
->>>>>>> 3dd2f3d34b75b78342e045e3d665d33fcc3b6a4f
     //Name Test
     @Test
     public void NameTest() throws Exception {
@@ -353,14 +349,26 @@ public class GameCharacterTest {
     }
 
     //Equipment Tests
-    /*
+
     @Test
-<<<<<<< HEAD
+    public void testGetEquippedEquipment(){
+        GameCharacter mainGameCharacter = new GameCharacter("kalle");
+        Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10);
+        mainGameCharacter.equipEquipment(helmet);
+        assertEquals(helmet, mainGameCharacter.getEquippedEquipment());
+    }
+
+
+    @Test
     public void equipEquipmentTest(){
         GameCharacter mainGameCharacter = new GameCharacter("kalle");
         Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10);
         mainGameCharacter.equipEquipment(helmet);
-=======
+    }
+
+
+
+    @Test
     public void addTooManyEquipmentsTest() {
 
 
@@ -394,10 +402,10 @@ public class GameCharacterTest {
 
         assertTrue(!(equippedEquipment.containsKey(helmet2.getType())));
 
->>>>>>> 3dd2f3d34b75b78342e045e3d665d33fcc3b6a4f
 
 
-    }*/
+
+    }
 
     @Test
     public void addEquipmentOfSameTypeTest() {
