@@ -45,7 +45,7 @@ public class GameCharacter {
         return health;
     }
 
-    public int checkIfHpExceedsMaxHp() {
+    public int checkIfCurrentHpExceedsMaxHp() {
         if (currentHp > maxHp) {
             currentHp = maxHp;
             return currentHp;
