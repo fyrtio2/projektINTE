@@ -1,6 +1,7 @@
 public class Weapon extends Item {
 
     WeaponAttributes weaponAttributes;
+    private boolean isWielded;
     private boolean isBroken;
     private int lvlReq;
 
@@ -31,5 +32,14 @@ public class Weapon extends Item {
 
     public boolean isBroken() {
         return isBroken;
+    }
+
+
+    public boolean isWielded(){
+        return isWielded;
+    }
+
+    public void setWielded(Boolean isWielded){
+        this.isWielded = isWielded;
     }
 }

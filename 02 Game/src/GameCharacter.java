@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class GameCharacter {
     private int currentHp, maxHp, level, experience;
@@ -162,9 +161,10 @@ public class GameCharacter {
         }
     }
 
-    public void weildWeapon(Weapon w) {
-        if (weapon == null) {
+    public void wieldWeapon(Weapon w) {
+        if (weapon == null || !(weapon.isWielded())) {
             weapon = w;
+            weapon.setWielded(true);
         } else {
             System.out.println("cant wield two weapons");
         }
@@ -184,12 +184,10 @@ public class GameCharacter {
         return isEquipped;
     }
 
-    public boolean isWeilding(Weapon w) {
-        if (weapon == null) {
-            return false;
-
-        } else if (weapon.equals(w)) {
+    public boolean isWielding(Weapon w) {
+        if (weapon.isWielded() && weapon.equals(w)) {
             return true;
+
         } else {
             return false;
         }
@@ -206,8 +204,8 @@ public class GameCharacter {
             }
         } else {
             Weapon w = (Weapon) item;
-            if (isWeilding(w)) {
-                weapon = null;
+            if (isWielding(w)) {
+                weapon.setWielded(false);
                 pickUp(w);
             } else {
                 System.out.printf("That %s is not wielded\n", w.getName());

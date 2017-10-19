@@ -1,7 +1,5 @@
 import org.junit.Test;
 
-import java.util.HashMap;
-
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -387,10 +385,7 @@ public class GameCharacterTest {
         player.equipEquipment(gloves);
         player.equipEquipment(jewelry);
 
-
         player.equipEquipment(helmet2); //Should not be added
-
-
 
 
         assertFalse(player.hasEquipped(helmet2));
@@ -407,13 +402,10 @@ public class GameCharacterTest {
 
         GameCharacter player = new GameCharacter("Oscar");
 
-
         Equipment chestPlate = new Equipment(Equipment.Type.chestPlate, "chestplate", 10, 10, 10);
         Equipment chestPlate2 = new Equipment(Equipment.Type.chestPlate, "chestplate2", 10, 10, 10);
         player.equipEquipment(chestPlate); // Should still exist in hashMap after we try to add chestplate2
         player.equipEquipment(chestPlate2); // Should not exits
-
-
 
         assertTrue((player.hasEquipped(chestPlate)));
 
@@ -423,7 +415,6 @@ public class GameCharacterTest {
     @Test
     public void unequipTest(){
         GameCharacter player = new GameCharacter("Oscar");
-
 
         Equipment shield = new Equipment(Equipment.Type.shield, "shield", 10, 10, 10);
         player.equipEquipment(shield);
@@ -457,9 +448,9 @@ public class GameCharacterTest {
 
         Weapon sword = new Weapon("Sword of doom",10,10,weaponAttributes,0);
 
-        player.weildWeapon(sword);
+        player.wieldWeapon(sword);
 
-        assertTrue(player.isWeilding(sword));
+        assertTrue(player.isWielding(sword));
 
 
     }
@@ -473,10 +464,10 @@ public class GameCharacterTest {
 
         Weapon sword = new Weapon("Sword of doom",10,10,weaponAttributes,0);
 
-        player.weildWeapon(sword);
+        player.wieldWeapon(sword);
         player.unEquip(sword);
 
-        assertFalse(player.isWeilding(sword));
+        assertFalse(player.isWielding(sword));
 
 
     }
