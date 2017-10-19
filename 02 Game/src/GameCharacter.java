@@ -154,8 +154,18 @@ public class GameCharacter {
             bag.removeFromBag(equipment);
             System.out.println("added");
             charAttributes.addEquipmentAttributesToCharacter(equipment.getAttributes());
+            charAttributes.increaseDefense(equipment.getAttributes().getDefense());
             charAttributes.calculateCharacterDamage();
             charAttributes.calcMaxCarryWeight();
+
+            if (equippedEquipment.size() >= 4){
+                charAttributes.giveHalfArmorBonus();
+            }
+
+            if (equippedEquipment.size() ==  8){
+                charAttributes.giveFullArmorBonus();
+
+            }
         }
     }
 
@@ -212,11 +222,22 @@ public class GameCharacter {
             System.out.printf("that %s is not equipped\n", equipment.getType());
         }
     }
+
     private void unWield(Item item){
         Weapon w = (Weapon) item;
         if (isWielding(w)) {
             weapon.setWielded(false);
             pickUp(w);
+
+            if (equippedEquipment.size() < 4){
+                charAttributes.removeHalfArmorBonus();
+            }
+
+            if (equippedEquipment.size() < 8){
+                charAttributes.removeFullArmorBonus();
+
+            }
+
 
 
         } else {
@@ -225,7 +246,6 @@ public class GameCharacter {
         }
 
     }
-
 
 
     public void pickUp(Item item) {

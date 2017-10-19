@@ -4,12 +4,14 @@ public class CharacterAttributes extends Attributes {
     private int maxCarryWeight;
     private double movementSpeed;
     private int characterDamage;
+    private int defense;
 
     public CharacterAttributes(int strenght, int dexterity, int intellegence, int vitality) {
         super(strenght, dexterity, intellegence, vitality);
         movementSpeed = 1.0;
         calculateCharacterDamage();
         calcMaxCarryWeight();
+        defense = 5;
     }
 
     // Carry Weight Methods
@@ -84,4 +86,28 @@ public class CharacterAttributes extends Attributes {
     }
 
 
+    public void giveHalfArmorBonus(){
+        defense += 10;
+    }
+
+    public void giveFullArmorBonus(){
+        defense += 25;
+    }
+
+
+    public void removeHalfArmorBonus(){
+        defense -= 10;
+    }
+
+    public void removeFullArmorBonus(){
+        defense -= 25;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void increaseDefense(int amount){
+        defense += amount;
+    }
 }
