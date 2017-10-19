@@ -392,7 +392,12 @@ public class GameCharacterTest {
 
         player.equipEquipment(helmet2); //Should not be added
 
+
         assertFalse(player.hasEquipped(helmet2));
+
+
+
+
     }
 
 
@@ -466,6 +471,25 @@ public class GameCharacterTest {
         player.unEquip(sword);
 
         assertFalse(player.isWielding(sword));
+
+
+    }
+
+    @Test
+    public void weaponAlreadyWieldedTest(){
+
+        GameCharacter player = new GameCharacter("Oscar");
+        WeaponAttributes weaponAttributes = new WeaponAttributes(10,10,10,10,10);
+        WeaponAttributes weaponAttributes2 = new WeaponAttributes(10,10,10,10,10);
+
+        Weapon swordOfDoom = new Weapon("Sword of doom",10,10,weaponAttributes,0);
+        Weapon swordOfFury = new Weapon("Sword of fury",10,10,weaponAttributes2,0);
+
+
+        player.wieldWeapon(swordOfDoom);
+        player.unEquip(swordOfFury);// sword 2 should not be wielded
+
+        assertTrue(player.isWielding(swordOfDoom));
 
 
     }

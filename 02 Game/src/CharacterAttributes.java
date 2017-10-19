@@ -82,4 +82,6 @@ public class CharacterAttributes extends Attributes {
     public double getMovementSpeed() {
         return movementSpeed;
     }
+
+
 }

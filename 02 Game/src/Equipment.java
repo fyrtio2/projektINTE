@@ -1,4 +1,5 @@
 public class Equipment extends Item {
+
     private int lvlReq;
     private boolean isBroken;
     private Enum type;

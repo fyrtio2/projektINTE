@@ -148,7 +148,7 @@ public class GameCharacter {
     public void equipEquipment(Equipment equipment) {
 
         if (equippedEquipment.containsKey(equipment.getType())) {
-            System.out.printf("%s already equipped", equipment.getType());
+            System.out.printf("%s already equipped\n", equipment.getType());
         } else {
             equippedEquipment.put(equipment.getType(), equipment);
             bag.removeFromBag(equipment);
@@ -164,7 +164,7 @@ public class GameCharacter {
             weapon = w;
             weapon.setWielded(true);
         } else {
-            System.out.println("cant wield two weapons");
+            System.out.println("cant wield two weapons\n");
         }
     }
 
@@ -183,7 +183,8 @@ public class GameCharacter {
     }
 
     public boolean isWielding(Weapon w) {
-        if (weapon.isWielded() && weapon.equals(w)) {
+        if (w.isWielded() && weapon.equals(w)) {
+            System.out.println();
             return true;
 
         } else {
@@ -193,24 +194,39 @@ public class GameCharacter {
 
     public void unEquip(Item item) {
         if (item instanceof Equipment) {
-            Equipment equipment = (Equipment) item;
-            if (hasEquipped(equipment)) {
-                equippedEquipment.remove(equipment.getType());
-                pickUp(equipment);
-            } else {
-                System.out.printf("that %s is not equipped\n", equipment.getType());
-            }
+           unEquipEquipment(item);
+
         } else {
-            Weapon w = (Weapon) item;
-            if (isWielding(w)) {
-                weapon.setWielded(false);
-                pickUp(w);
-            } else {
-                System.out.printf("That %s is not wielded\n", w.getName());
-            }
+            unWield(item);
 
         }
+
     }
+
+    private void unEquipEquipment(Item item){
+        Equipment equipment = (Equipment) item;
+        if (hasEquipped(equipment)) {
+            equippedEquipment.remove(equipment.getType());
+            pickUp(equipment);
+        } else {
+            System.out.printf("that %s is not equipped\n", equipment.getType());
+        }
+    }
+    private void unWield(Item item){
+        Weapon w = (Weapon) item;
+        if (isWielding(w)) {
+            weapon.setWielded(false);
+            pickUp(w);
+
+
+        } else {
+            System.out.printf("%s is not wielded\n", w.getName());
+
+        }
+
+    }
+
+
 
     public void pickUp(Item item) {
         bag.addToBag(item);

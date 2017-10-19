@@ -75,6 +75,7 @@ public class ItemTest {
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
         Equipment sword = new Equipment(Equipment.Type.shield, "big shield", 10, 10, 10, attributes);
         assertEquals("big shield", sword.getName());
+
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -82,6 +83,7 @@ public class ItemTest {
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
         Equipment gloves = new Equipment(Equipment.Type.gloves, "", 10, 10, 10, attributes);
         assertEquals("gloves", gloves.getName());
+
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -89,6 +91,7 @@ public class ItemTest {
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
         Equipment legPlate = new Equipment(Equipment.Type.legPlate, null, 10, 10, 10, attributes);
         assertEquals("legPlate", legPlate.getName());
+
     }
 
     @Test
