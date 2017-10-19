@@ -4,12 +4,12 @@
     </description>
 
     <!-- Kompilerar .java filer i mappen "src"-->
-    <target name="Compile">
+    <target name="CompileSrc">
         <javac srcdir="src" destdir="bin/main"/>
     </target>
 
     <!-- Kompilerar .java filer i mappen "tests"-->
-    <target name="CompileTests" depends="Compile">
+    <target name="CompileTests" depends="CompileSrc">
         <javac srcdir="tests" destdir="bin/test">
             <classpath>
                 <pathelement location="lib/junit-4.12.jar"/>
@@ -18,7 +18,7 @@
             </classpath>
         </javac>
     </target>
-B
+
     <!-- Does amazing stuff, trust me on this! -->
     <target name="TestSuite" depends="CompileTests">
         <junit printsummary="on" haltonfailure="no" fork="yes" showoutput="true">
