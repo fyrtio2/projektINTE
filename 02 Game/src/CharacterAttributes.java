@@ -22,6 +22,9 @@ public class CharacterAttributes extends Attributes {
     public void checkIfOverburdened(int bagCapacity) {
         if (bagCapacity > maxCarryWeight)
             movementSpeed = 0;
+        else{
+            movementSpeed = 1.0;
+        }
     }
 
     public void resetCarryWeight() {

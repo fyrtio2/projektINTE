@@ -149,6 +149,8 @@ public class GameCharacter {
             charAttributes.increaseDefense(equipment.getAttributes().getDefense());
             charAttributes.calculateCharacterDamage();
             charAttributes.calcMaxCarryWeight();
+            maxHp = charAttributes.convertVitalityToHp();
+
 
             if (equippedEquipment.size() >= 4){
                 charAttributes.giveHalfArmorBonus();
@@ -197,7 +199,8 @@ public class GameCharacter {
     public void unEquip(Item item) {
         if (item instanceof Equipment) {
            unEquipEquipment(item);
-
+            charAttributes.removeEquipmentAttributesFromCharacter(((Equipment) item).getAttributes());
+            maxHp = charAttributes.convertVitalityToHp();
         } else {
             unWield(item);
 
@@ -245,6 +248,11 @@ public class GameCharacter {
         charAttributes.checkIfOverburdened(bag.getWeight());
     }
 
+    public void dropItem(Item item){
+        bag.removeFromBag(item);
+        charAttributes.checkIfOverburdened(bag.getWeight());
+    }
+
     // Get Methods
     public CharacterAttributes getCharAttributes() {
         return charAttributes;
@@ -259,6 +267,7 @@ public class GameCharacter {
     }
 
     public int getMaxHp() {
+        charAttributes.convertVitalityToHp();
         return maxHp;
     }
 

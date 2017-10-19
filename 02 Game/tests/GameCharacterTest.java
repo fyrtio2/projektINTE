@@ -123,7 +123,6 @@ public class GameCharacterTest {
         assertEquals(0, mainCharacter.getExperience());
     }
 
-
     @Test
     public void testResetAfterTwoLevelUp() {
         GameCharacter character = new GameCharacter("kalle");
@@ -133,6 +132,7 @@ public class GameCharacterTest {
         character.resetLevel();
         assertEquals(1, character.getLevel());
     }
+
     //GameCharacter Combat Tests
 
     @Test
@@ -232,6 +232,7 @@ public class GameCharacterTest {
         assertEquals(false, character.getIsInCombat());
     }
 
+
     //GameCharacter Alive Tests
 
     @Test
@@ -240,7 +241,6 @@ public class GameCharacterTest {
         assertEquals(true, mainCharacter.getIsAlive());
     }
 
-    //
     @Test
     public void testMakeAliveFalse() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
@@ -259,7 +259,6 @@ public class GameCharacterTest {
         assertEquals(0, mainCharacter.getCurrentHp());
     }
 
-    //
     @Test
     public void testCheckExperienceAfterCharacterIsDead() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
@@ -309,18 +308,6 @@ public class GameCharacterTest {
         assertEquals(10.0, mainCharacter.getYPos(), 0.1);
     }
 
-
-
-    @Test
-    public void pickUpItemTest() {
-        GameCharacter mainGameCharacter = new GameCharacter("kalle");
-        EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
-        Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10, attributes);
-        mainGameCharacter.pickUp(helmet);
-        Bag bag = mainGameCharacter.getBag();
-        assertEquals(helmet, bag.getHashMap().get(helmet.getName()));
-    }
-
     @Test
     public void moveRightTest() { // Testar flytta 1.0 till höger
         GameCharacter g = new GameCharacter("Oscar");
@@ -350,7 +337,15 @@ public class GameCharacterTest {
 
     //Equipment Tests
 
-
+    @Test
+    public void pickUpItemTest() {
+        GameCharacter mainGameCharacter = new GameCharacter("kalle");
+        EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
+        Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10, attributes);
+        mainGameCharacter.pickUp(helmet);
+        Bag bag = mainGameCharacter.getBag();
+        assertEquals(helmet, bag.getHashMap().get(helmet.getName()));
+    }
 
     @Test
     public void equipEquipmentTest() {
@@ -360,8 +355,6 @@ public class GameCharacterTest {
         Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10, attributes);
         mainGameCharacter.equipEquipment(helmet);
     }
-
-
 
     @Test
    public void addTooManyEquipmentsTest() {
@@ -399,7 +392,6 @@ public class GameCharacterTest {
 
 
     }
-
 
     @Test
     public void addEquipmentOfSameTypeTest() {
@@ -458,7 +450,6 @@ public class GameCharacterTest {
 
     }
 
-
     @Test
     public void unWieldWeaponTest(){
 
@@ -493,10 +484,5 @@ public class GameCharacterTest {
 
 
     }
-
-
-
-
-
 
 }

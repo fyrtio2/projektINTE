@@ -18,6 +18,7 @@ public class Bag {
     }
 
     public void removeFromBag(Item item) {
+        weight -= item.getWeight();
         bag.remove(item.getName(), item);
     }
 

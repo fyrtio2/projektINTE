@@ -65,7 +65,23 @@ public class Attributes {
         increasePrimaryAttribute("Vitality", vitality);
         calcCriticalChance();
         calcCriticalDamage();
+
     }
+    public void removeEquipmentAttributesFromCharacter(EquipmentAttributes attributes){
+        int strength = attributes.getStrenght();
+        int dexterity = attributes.getDexterity();
+        int intellegence = attributes.getIntellegence();
+        int vitality = attributes.getVitality();
+
+        decreasePrimaryAttribute("Strength", strength);
+        decreasePrimaryAttribute("Dexterity", dexterity);
+        decreasePrimaryAttribute("Intellegence", intellegence);
+        decreasePrimaryAttribute("Vitality", vitality);
+        calcCriticalChance();
+        calcCriticalDamage();
+
+    }
+
 
     public void resetPrimaryAttributeValues() {
         primaryAttributeHashMap.put("Strength", 10);
