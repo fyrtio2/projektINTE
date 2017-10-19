@@ -186,7 +186,6 @@ public class GameCharacter {
         if (w.isWielded() && weapon.equals(w)) {
             System.out.println();
             return true;
-
         } else {
             return false;
         }
@@ -194,16 +193,13 @@ public class GameCharacter {
 
     public void unEquip(Item item) {
         if (item instanceof Equipment) {
-           unEquipEquipment(item);
-
+            unEquipEquipment(item);
         } else {
             unWield(item);
-
         }
-
     }
 
-    private void unEquipEquipment(Item item){
+    private void unEquipEquipment(Item item) {
         Equipment equipment = (Equipment) item;
         if (hasEquipped(equipment)) {
             equippedEquipment.remove(equipment.getType());
@@ -212,21 +208,16 @@ public class GameCharacter {
             System.out.printf("that %s is not equipped\n", equipment.getType());
         }
     }
-    private void unWield(Item item){
+
+    private void unWield(Item item) {
         Weapon w = (Weapon) item;
         if (isWielding(w)) {
             weapon.setWielded(false);
             pickUp(w);
-
-
         } else {
             System.out.printf("%s is not wielded\n", w.getName());
-
         }
-
     }
-
-
 
     public void pickUp(Item item) {
         bag.addToBag(item);
