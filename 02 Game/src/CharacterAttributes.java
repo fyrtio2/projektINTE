@@ -85,7 +85,6 @@ public class CharacterAttributes extends Attributes {
         return movementSpeed;
     }
 
-
     public void giveHalfArmorBonus(){
         defense += 10;
     }

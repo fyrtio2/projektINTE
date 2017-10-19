@@ -21,6 +21,7 @@
 
     <!-- Does amazing stuff, trust me on this! -->
     <target name="TestSuite" depends="CompileTests">
+        <record name="logfile.txt" action="start" append="false"/>
         <junit printsummary="on" haltonfailure="no" fork="yes" showoutput="true">
             <classpath>
                 <path id="classpath.test"/>
@@ -31,10 +32,11 @@
             </classpath>
             <batchtest>
                 <fileset dir="tests">
-                    <include name="AllTests"/>
+                    <include name="AllTests.java"/>
                 </fileset>
             </batchtest>
             <formatter type="brief" usefile="false"/>
         </junit>
+        <record name="logfile.txt" action="stop"/>
     </target>
 </project>

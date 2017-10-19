@@ -38,14 +38,6 @@ public class GameCharacter {
         return health;
     }
 
-    public int checkIfCurrentHpExceedsMaxHp() {
-        if (currentHp > maxHp) {
-            currentHp = maxHp;
-            return currentHp;
-        }
-        return currentHp;
-    }
-
     // Level up Methods
     public void levelUp() {
         level++;
