@@ -53,6 +53,20 @@ public class Attributes {
         }
     }
 
+    public void addEquipmentAttributesToCharacter(EquipmentAttributes attributes){
+        int strength = attributes.getStrenght();
+        int dexterity = attributes.getDexterity();
+        int intellegence = attributes.getIntellegence();
+        int vitality = attributes.getVitality();
+
+        increasePrimaryAttribute("Strength", strength);
+        increasePrimaryAttribute("Dexterity", dexterity);
+        increasePrimaryAttribute("Intellegence", intellegence);
+        increasePrimaryAttribute("Vitality", vitality);
+        calcCriticalChance();
+        calcCriticalDamage();
+    }
+
     public void resetPrimaryAttributeValues() {
         primaryAttributeHashMap.put("Strength", 10);
         primaryAttributeHashMap.put("Dexterity", 10);

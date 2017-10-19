@@ -7,7 +7,7 @@ import org.junit.runners.Suite.SuiteClasses;
         MapTest.class,
         AttributesTest.class,
         GameCharacterAttributesTest.class,
-        ArmourAttributesTest.class,
+        EquipmentAttributesTest.class,
         WeaponAttributesTest.class,
         GameCharacterTest.class,
         BagTest.class,

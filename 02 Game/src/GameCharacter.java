@@ -46,11 +46,6 @@ public class GameCharacter {
         return currentHp;
     }
 
-    public double test() {
-        charAttributes.checkIfOverburdened(bag.getWeight());
-        return charAttributes.getMovementSpeed();
-    }
-
     // Level up Methods
     public void levelUp() {
         level++;
@@ -158,6 +153,9 @@ public class GameCharacter {
             equippedEquipment.put(equipment.getType(), equipment);
             bag.removeFromBag(equipment);
             System.out.println("added");
+            charAttributes.addEquipmentAttributesToCharacter(equipment.getAttributes());
+            charAttributes.calculateCharacterDamage();
+            charAttributes.calcMaxCarryWeight();
         }
     }
 
@@ -260,4 +258,3 @@ public class GameCharacter {
         return yPos;
     }
 }
-

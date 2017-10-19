@@ -13,7 +13,7 @@ public class CharacterAttributes extends Attributes {
     }
 
     // Carry Weight Methods
-    private void calcMaxCarryWeight() {
+    public void calcMaxCarryWeight() {
         maxCarryWeight = 100 + getStrenght() * 5;
     }
 
@@ -22,7 +22,7 @@ public class CharacterAttributes extends Attributes {
             movementSpeed = 0;
     }
 
-    public void resetCarryWeight(){
+    public void resetCarryWeight() {
         calcMaxCarryWeight();
     }
 
