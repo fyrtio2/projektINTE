@@ -1,9 +1,8 @@
 import org.junit.Test;
 
-import java.util.HashMap;
-
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 public class GameCharacterTest {
@@ -350,19 +349,10 @@ public class GameCharacterTest {
 
     //Equipment Tests
 
-    @Test
-    public void testGetEquippedEquipment(){
-        GameCharacter mainGameCharacter = new GameCharacter("kalle");
-        Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10);
-        Equipment helmet2 = new Equipment(Equipment.Type.helmet, "HELMET OF", 10, 10, 10);
-        mainGameCharacter.equipEquipment(helmet);
-        mainGameCharacter.equipEquipment(helmet2);
-        assertTrue(mainGameCharacter.getEquippedEquipment().containsKey(helmet.getType()));
-    }
 
 
     @Test
-    public void equipEquipmentTest(){
+    public void equipEquipmentTest() {
         GameCharacter mainGameCharacter = new GameCharacter("kalle");
         Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10);
         mainGameCharacter.equipEquipment(helmet);
@@ -371,13 +361,11 @@ public class GameCharacterTest {
 
 
     @Test
-    public void addTooManyEquipmentsTest() {
+   public void addTooManyEquipmentsTest() {
 
 
 
         GameCharacter player = new GameCharacter("Oscar");
-        HashMap equippedEquipment = player.getEquippedEquipment();
-        equippedEquipment.clear();
 
 
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 10);
@@ -386,6 +374,7 @@ public class GameCharacterTest {
         Equipment shoes = new Equipment(Equipment.Type.shoes, "shoes", 10, 10, 10);
         Equipment gloves = new Equipment(Equipment.Type.gloves, "gloves", 10, 10, 10);
         Equipment jewelry = new Equipment(Equipment.Type.jewelry, "jewelry", 10, 10, 10);
+        Equipment shield = new Equipment(Equipment.Type.shield, "shield", 10, 10, 10);
         //****************************************************************************// All equipment slots filled
         Equipment helmet2 = new Equipment(Equipment.Type.helmet, "helmet2", 10, 10, 10);
 
@@ -396,34 +385,96 @@ public class GameCharacterTest {
         player.equipEquipment(gloves);
         player.equipEquipment(jewelry);
 
-
         player.equipEquipment(helmet2); //Should not be added
 
 
+        assertFalse(player.hasEquipped(helmet2));
 
 
-        assertTrue(!(equippedEquipment.containsKey(helmet2.getType())));
 
 
+    }
+
+
+    @Test
+    public void addEquipmentOfSameTypeTest() {
+
+
+        GameCharacter player = new GameCharacter("Oscar");
+
+        Equipment chestPlate = new Equipment(Equipment.Type.chestPlate, "chestplate", 10, 10, 10);
+        Equipment chestPlate2 = new Equipment(Equipment.Type.chestPlate, "chestplate2", 10, 10, 10);
+        player.equipEquipment(chestPlate); // Should still exist in hashMap after we try to add chestplate2
+        player.equipEquipment(chestPlate2); // Should not exits
+
+        assertTrue((player.hasEquipped(chestPlate)));
 
 
     }
 
     @Test
-    public void addEquipmentOfSameTypeTest() {
-
+    public void unequipTest(){
         GameCharacter player = new GameCharacter("Oscar");
 
+        Equipment shield = new Equipment(Equipment.Type.shield, "shield", 10, 10, 10);
+        player.equipEquipment(shield);
+        player.unEquip(shield);
 
-        Equipment chestPlate = new Equipment(Equipment.Type.chestPlate, "chestplate", 10, 10, 10);
-        Equipment chestPlate2 = new Equipment(Equipment.Type.chestPlate, "chestplate2", 10, 10, 10);
-        player.equipEquipment(chestPlate); // Should still exist in hashMap after we try to add chestplate2
-        player.equipEquipment(chestPlate2);
-
-        Bag bag = player.getBag();
-
-        assertTrue((bag.getHashMap().containsKey(chestPlate.getName())) && bag.getHashMap().get(chestPlate.getName()) != null);
+        assertFalse(player.hasEquipped(shield));
 
 
     }
+
+    @Test
+    public void unequipWrongItemTest(){
+        GameCharacter player = new GameCharacter("Oscar");
+
+
+        Equipment shield = new Equipment(Equipment.Type.shield, "shield", 10, 10, 10);
+        Equipment otherShield = new Equipment(Equipment.Type.shield, "shield", 10, 10, 10);
+        player.equipEquipment(shield);
+        player.unEquip(otherShield); // unequips the shield that has not been equipped
+
+        assertTrue(player.hasEquipped(shield));
+
+
+    }
+
+    @Test
+    public void wieldWeaponTest(){
+
+        GameCharacter player = new GameCharacter("Oscar");
+        WeaponAttributes weaponAttributes = new WeaponAttributes(10,10,10,10,10);
+
+        Weapon sword = new Weapon("Sword of doom",10,10,weaponAttributes,0);
+
+        player.wieldWeapon(sword);
+
+        assertTrue(player.isWielding(sword));
+
+
+    }
+
+
+    @Test
+    public void unWieldWeaponTest(){
+
+        GameCharacter player = new GameCharacter("Oscar");
+        WeaponAttributes weaponAttributes = new WeaponAttributes(10,10,10,10,10);
+
+        Weapon sword = new Weapon("Sword of doom",10,10,weaponAttributes,0);
+
+        player.wieldWeapon(sword);
+        player.unEquip(sword);
+
+        assertFalse(player.isWielding(sword));
+
+
+    }
+
+
+
+
+
+
 }

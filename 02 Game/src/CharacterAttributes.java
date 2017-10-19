@@ -1,6 +1,7 @@
 import java.util.Random;
 
 public class CharacterAttributes extends Attributes {
+    private int maxCarryWeight;
     private double movementSpeed;
     private int characterDamage;
 
@@ -8,6 +9,26 @@ public class CharacterAttributes extends Attributes {
         super(strenght, dexterity, intellegence, vitality);
         movementSpeed = 1.0;
         calculateCharacterDamage();
+        calcMaxCarryWeight();
+    }
+
+    // Carry Weight Methods
+    private void calcMaxCarryWeight() {
+        maxCarryWeight = 100 + getStrenght() * 5;
+    }
+
+    public void checkIfOverburdened(int bagCapacity) {
+        if (bagCapacity > maxCarryWeight)
+            movementSpeed = 0;
+    }
+
+    public void resetCarryWeight(){
+        calcMaxCarryWeight();
+    }
+
+    // Damage & Crit Methods
+    public void calculateCharacterDamage() {
+        characterDamage = 100 + 1 * getStrenght() + 1 * getDexterity() + 1 * getIntellegence();
     }
 
     public int checkIfCrit() {
@@ -24,10 +45,7 @@ public class CharacterAttributes extends Attributes {
         return crit;
     }
 
-    public void calculateCharacterDamage() {
-        characterDamage = 100 + 1 * getStrenght() + 1 * getDexterity() + 1 * getIntellegence();
-    }
-
+    // Movement Speed Methods
     private double checkIfMovementSpeedExeedsMax(double movementSpeed) {
         if (movementSpeed > 2)
             return 2;
@@ -42,10 +60,6 @@ public class CharacterAttributes extends Attributes {
             return movementSpeed;
     }
 
-    public double getMovementSpeed() {
-        return movementSpeed;
-    }
-
     public void lowerMovementSpeed(double amount) {
         movementSpeed = checkIfMovementSpeedIsNegative(movementSpeed - amount);
     }
@@ -54,8 +68,18 @@ public class CharacterAttributes extends Attributes {
         movementSpeed = checkIfMovementSpeedExeedsMax(movementSpeed + amount);
     }
 
+    // Get methods
     public int getCharacterDamage() {
         calculateCharacterDamage();
         return characterDamage;
+    }
+
+    public int getMaxCarryWeight() {
+        calcMaxCarryWeight();
+        return maxCarryWeight;
+    }
+
+    public double getMovementSpeed() {
+        return movementSpeed;
     }
 }

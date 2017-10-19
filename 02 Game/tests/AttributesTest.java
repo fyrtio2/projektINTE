@@ -1,6 +1,4 @@
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
 
 import static org.junit.Assert.*;
 
@@ -104,17 +102,5 @@ public class AttributesTest {
     public void ExeedsMaxCritDamage() throws Exception {
         Attributes c = new Attributes(38, 10, 10, 10);
         assertEquals(2.751, c.getCriticalDamage(), 0.0001);
-    }
-
-    @Test(expected = AssertionError.class)
-    public void ExeedsCarryWeight() throws Exception {
-        Attributes c = new Attributes(10, 10, 10, 10);
-        assertEquals(160, c.getCarryWeight());
-    }
-
-    @Test(expected = AssertionError.class)
-    public void ExeedsMaxCarryWeight() throws Exception {
-        Attributes c = new Attributes(40, 10, 10, 10);
-        assertEquals(301, c.getCarryWeight());
     }
 }

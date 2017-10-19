@@ -11,9 +11,7 @@ import org.junit.runners.Suite.SuiteClasses;
         WeaponAttributesTest.class,
         GameCharacterTest.class,
         BagTest.class,
-        ItemTest.class
+        ItemTest.class,
 })
 public class AllTests {
-
-
 }

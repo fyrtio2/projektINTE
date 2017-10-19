@@ -1,14 +1,13 @@
 public class Weapon extends Item {
 
     WeaponAttributes weaponAttributes;
+    private boolean isWielded;
     private boolean isBroken;
     private int lvlReq;
 
     public Weapon(String name,int weight,int durability, WeaponAttributes weaponAttributes, int lvlReq){
         super(name, weight, durability);
         this.lvlReq = lvlReq;
-
-
     }
 
     public boolean isUsableBy(GameCharacter player) {
@@ -20,7 +19,6 @@ public class Weapon extends Item {
         } else {
             return false;
         }
-
     }
 
     public void damageWeapon(int damage) {
@@ -34,5 +32,14 @@ public class Weapon extends Item {
 
     public boolean isBroken() {
         return isBroken;
+    }
+
+
+    public boolean isWielded(){
+        return isWielded;
+    }
+
+    public void setWielded(Boolean isWielded){
+        this.isWielded = isWielded;
     }
 }
