@@ -88,7 +88,7 @@ public class Attributes {
         }
     }
 
-    // Methods that check if attributes exeed max values.
+    // Methods that check if attributes exceed max values.
     public void checkIfAttributeExceedsMaxValue(HashMap<String, Integer> hashMap) {
         for (HashMap.Entry<String, Integer> map : hashMap.entrySet()) {
             if (map.getValue() > 40)

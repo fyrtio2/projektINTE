@@ -10,7 +10,6 @@ public class GameCharacter {
     private CharacterAttributes charAttributes;
     private Bag bag;
     private Weapon weapon;
-
     private HashMap<Enum, Equipment> equippedEquipment = new HashMap<>();
 
     public GameCharacter(String name) {
