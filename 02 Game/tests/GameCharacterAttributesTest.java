@@ -2,7 +2,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-//TODO: Skapa testfall för critchans/dmg när man tar på sig och tar av sig equpment ca 4 testfall.
 public class GameCharacterAttributesTest {
 
     @Test(expected = AssertionError.class)
