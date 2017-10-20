@@ -436,14 +436,16 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void wieldWeaponTest(){
+    public void wieldTwoWeaponTest(){
 
         GameCharacter player = new GameCharacter("Oscar");
         WeaponAttributes weaponAttributes = new WeaponAttributes(10,10,10,10,10);
 
-        Weapon sword = new Weapon("Sword of doom",10,10,weaponAttributes,0);
 
+        Weapon sword = new Weapon("Sword of doom",10,10,weaponAttributes,0);
+        Weapon sword2 = new Weapon("Sword of light",10,10,weaponAttributes,0);
         player.wieldWeapon(sword);
+        player.wieldWeapon(sword2);
 
         assertTrue(player.isWielding(sword));
 

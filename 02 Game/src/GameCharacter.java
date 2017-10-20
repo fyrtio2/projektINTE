@@ -84,8 +84,7 @@ public class GameCharacter {
                 levelUp();
                 resetExperience();
             }
-        } else
-            return;
+        }
     }
 
     public int meleeAttack() {
