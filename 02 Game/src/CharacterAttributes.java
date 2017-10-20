@@ -45,7 +45,7 @@ public class CharacterAttributes extends Attributes {
 
     protected double getRandomDouble(){
         Random rand = new Random();
-        Double randomDouble = rand.nextDouble();
+        double randomDouble = rand.nextDouble();
         return randomDouble;
     }
 

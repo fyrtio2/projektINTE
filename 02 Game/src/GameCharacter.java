@@ -88,8 +88,7 @@ public class GameCharacter {
     }
 
     public int meleeAttack() {
-        int attack = getCharAttributes().checkIfCrit();
-        return attack;
+        return getCharAttributes().checkIfCrit();
     }
 
     public int takeDamage(int damageTaken) {

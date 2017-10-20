@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class GameCharacterAttributesTest {
 
@@ -39,7 +40,7 @@ public class GameCharacterAttributesTest {
     }
 
     @Test
-    public void testIncreasedCarryWeightByItem(){
+    public void testIncreasedCarryWeightByItem() {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
@@ -51,7 +52,7 @@ public class GameCharacterAttributesTest {
     }
 
     @Test
-    public void testIncreasedMaxHpByItem(){
+    public void testIncreasedMaxHpByItem() {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
@@ -62,7 +63,7 @@ public class GameCharacterAttributesTest {
     }
 
     @Test
-    public void testDecreasedMaxHpByItem(){
+    public void testDecreasedMaxHpByItem() {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
@@ -80,7 +81,7 @@ public class GameCharacterAttributesTest {
     }
 
     @Test
-    public void testInrcreasedCritChanceByItem(){
+    public void testInrcreasedCritChanceByItem() {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
@@ -91,7 +92,7 @@ public class GameCharacterAttributesTest {
     }
 
     @Test
-    public void testDereasedCritChanceByRemovingItem(){
+    public void testDereasedCritChanceByRemovingItem() {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
@@ -103,7 +104,7 @@ public class GameCharacterAttributesTest {
     }
 
     @Test
-    public void testIncreasedCritDamageByItem(){
+    public void testIncreasedCritDamageByItem() {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
@@ -115,7 +116,7 @@ public class GameCharacterAttributesTest {
     }
 
     @Test
-    public void testDecreasedCritDamageByItem(){
+    public void testDecreasedCritDamageByItem() {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
@@ -127,15 +128,24 @@ public class GameCharacterAttributesTest {
     }
 
     @Test
-    public void randomDoubleTest() throws Exception {
-        NotRandomCharacterAttributes nonRand = new NotRandomCharacterAttributes(5, 5, 5, 5);
-        assertEquals(0.5, nonRand.getRandomDouble(), 0.001);
+    public void checkCharacterDamageCritTest() throws Exception {
+        CharacterAttributes nonRand = new NotRandomCharacterAttributes(0.1, 10, 10, 5, 5);
+        assertEquals(275, nonRand.checkIfCrit());
     }
 
-    @Test(expected = AssertionError.class)
-    public void randomDodubleTest() throws Exception {
-        NotRandomCharacterAttributes nonRand = new NotRandomCharacterAttributes(5, 5, 5, 5);
-        assertEquals(0.4, nonRand.getRandomDouble(), 0.001);
+    @Test
+    public void checkCharacterDamageWhenNoCritTest() throws Exception {
+        CharacterAttributes nonRand = new NotRandomCharacterAttributes(0.9, 10, 10, 5, 5);
+        assertEquals(125, nonRand.checkIfCrit());
+    }
+
+    @Test
+    public void randomGeneratorTest() throws Exception {
+        CharacterAttributes nonRand = new CharacterAttributes(10, 10, 5, 5);
+        for (int i = 0; i < 100; i++) {
+            double d = nonRand.getRandomDouble();
+            assertTrue(d >= 0 && d < 1);
+        }
     }
 
     @Test

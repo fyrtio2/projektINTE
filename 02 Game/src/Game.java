@@ -50,6 +50,5 @@ public class Game extends JFrame {
         System.out.println("Dragon Strength: " + dragon.getCharAttributes().getStrenght());
         System.out.println("Max Carry Weight: " + dragon.getCharAttributes().getMaxCarryWeight());
         System.out.println("Dragon has " + dragon.getCharAttributes().getDefense() + " defense");
-
     }
 }
