@@ -291,7 +291,6 @@ public class GameCharacterTest {
         mainCharacter.makeCharacterInCombat();
         mainCharacter.hpCounter(mainCharacter.getCurrentHp());
         mainCharacter.makeCharacterDead();
-        mainCharacter.resetPosition();
         assertEquals(20.0, mainCharacter.getXPos(), 0.1);
 
     }
@@ -304,7 +303,6 @@ public class GameCharacterTest {
         mainCharacter.makeCharacterInCombat();
         mainCharacter.hpCounter(mainCharacter.getCurrentHp());
         mainCharacter.makeCharacterDead();
-        mainCharacter.resetPosition();
         assertEquals(10.0, mainCharacter.getYPos(), 0.1);
     }
 
