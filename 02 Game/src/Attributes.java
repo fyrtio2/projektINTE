@@ -67,6 +67,7 @@ public class Attributes {
         calcCriticalDamage();
 
     }
+
     public void removeEquipmentAttributesFromCharacter(EquipmentAttributes attributes){
         int strength = attributes.getStrenght();
         int dexterity = attributes.getDexterity();
@@ -81,7 +82,6 @@ public class Attributes {
         calcCriticalDamage();
 
     }
-
 
     public void resetPrimaryAttributeValues() {
         primaryAttributeHashMap.put("Strength", 10);
@@ -127,7 +127,6 @@ public class Attributes {
         } else
             return critDamage;
     }
-
 
     // Methods that calculate attribute values
     private void calcCriticalChance() {
