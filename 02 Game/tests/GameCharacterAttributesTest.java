@@ -2,7 +2,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-//TODO: Skapa testfall för critchans/dmg när man tar på sig och tar av sig equpment ca 4 testfall.
 public class GameCharacterAttributesTest {
 
     @Test(expected = AssertionError.class)
@@ -40,7 +39,7 @@ public class GameCharacterAttributesTest {
     }
 
     @Test
-    public void testIncreasedCarryWeightByItem(){
+    public void testIncreasedCarryWeightByItem() {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
@@ -52,7 +51,7 @@ public class GameCharacterAttributesTest {
     }
 
     @Test
-    public void testIncreasedMaxHpByItem(){
+    public void testIncreasedMaxHpByItem() {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
@@ -63,7 +62,7 @@ public class GameCharacterAttributesTest {
     }
 
     @Test
-    public void testDecreasedMaxHpByItem(){
+    public void testDecreasedMaxHpByItem() {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
@@ -80,6 +79,29 @@ public class GameCharacterAttributesTest {
         assertEquals(301, c.getMaxCarryWeight());
     }
 
+    @Test
+    public void randomDoubleTest() throws Exception {
+        NotRandomCharacterAttributes nonRand = new NotRandomCharacterAttributes(5, 5, 5, 5);
+        assertEquals(0.5, nonRand.getRandomDouble(), 0.001);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void randomDodubleTest() throws Exception {
+        NotRandomCharacterAttributes nonRand = new NotRandomCharacterAttributes(5, 5, 5, 5);
+        assertEquals(0.4, nonRand.getRandomDouble(), 0.001);
+    }
+
+    @Test
+    public void getCharacterDamageTest() throws Exception {
+        CharacterAttributes c = new CharacterAttributes(10, 10, 10, 10);
+        assertEquals(130, c.getCharacterDamage());
+    }
+
+    @Test
+    public void getCharacterDefenseTest() throws Exception {
+        CharacterAttributes c = new CharacterAttributes(10, 10, 10, 10);
+        assertEquals(5, c.getDefense());
+    }
 }
 
 

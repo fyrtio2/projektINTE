@@ -37,12 +37,16 @@ public class CharacterAttributes extends Attributes {
     }
 
     public int checkIfCrit() {
-        Random rand = new Random();
-        Double randomDouble = rand.nextDouble();
-        if (getCriticalChance() >= randomDouble) {
+        if (getCriticalChance() >= getRandomDouble()) {
             return critSuccessful();
         } else
             return getCharacterDamage();
+    }
+
+    protected double getRandomDouble(){
+        Random rand = new Random();
+        Double randomDouble = rand.nextDouble();
+        return randomDouble;
     }
 
     private int critSuccessful() {
@@ -95,7 +99,6 @@ public class CharacterAttributes extends Attributes {
     public void giveFullArmorBonus(){
         defense += 25;
     }
-
 
     public void removeHalfArmorBonus(){
         defense -= 10;
