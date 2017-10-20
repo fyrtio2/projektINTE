@@ -50,9 +50,6 @@ public class Game extends JFrame {
         System.out.println("Dragon Strength: " + dragon.getCharAttributes().getStrenght());
         System.out.println("Max Carry Weight: " + dragon.getCharAttributes().getMaxCarryWeight());
         System.out.println("Dragon has " + dragon.getCharAttributes().getDefense() + " defense");
-        EquipmentAttributes attributes2 = new EquipmentAttributes(5, 10, 5, 5, 5);
-        Equipment helm2 = new Equipment(Equipment.Type.helmet, "Helm of Domination2", 1, 100, 151, attributes2);
-        dragon.unEquip(helm2);
-        System.out.println("Dragon Strength: " + dragon.getCharAttributes().getStrenght());
+
     }
 }
