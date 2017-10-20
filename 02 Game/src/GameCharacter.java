@@ -84,8 +84,7 @@ public class GameCharacter {
                 levelUp();
                 resetExperience();
             }
-        } else
-            return;
+        }
     }
 
     public int meleeAttack() {
@@ -152,11 +151,11 @@ public class GameCharacter {
             maxHp = charAttributes.convertVitalityToHp();
 
 
-            if (equippedEquipment.size() >= 4){
+            if (equippedEquipment.size() >= 4) {
                 charAttributes.giveHalfArmorBonus();
             }
 
-            if (equippedEquipment.size() ==  8){
+            if (equippedEquipment.size() == 7) {
                 charAttributes.giveFullArmorBonus();
 
             }
@@ -228,7 +227,7 @@ public class GameCharacter {
                 charAttributes.removeHalfArmorBonus();
             }
 
-            if (equippedEquipment.size() < 8){
+            if (equippedEquipment.size() < 7) {
                 charAttributes.removeFullArmorBonus();
 
             }
