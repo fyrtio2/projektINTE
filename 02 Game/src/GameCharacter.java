@@ -156,7 +156,7 @@ public class GameCharacter {
                 charAttributes.giveHalfArmorBonus();
             }
 
-            if (equippedEquipment.size() == 8) {
+            if (equippedEquipment.size() == 7) {
                 charAttributes.giveFullArmorBonus();
 
             }
@@ -198,7 +198,7 @@ public class GameCharacter {
 
     public void unEquip(Item item) {
         if (item instanceof Equipment) {
-            unEquipEquipment(item);
+           unEquipEquipment(item);
             charAttributes.removeEquipmentAttributesFromCharacter(((Equipment) item).getAttributes());
             maxHp = charAttributes.convertVitalityToHp();
         } else {
@@ -208,7 +208,7 @@ public class GameCharacter {
 
     }
 
-    private void unEquipEquipment(Item item) {
+    private void unEquipEquipment(Item item){
         Equipment equipment = (Equipment) item;
         if (hasEquipped(equipment)) {
             equippedEquipment.remove(equipment.getType());
@@ -218,20 +218,21 @@ public class GameCharacter {
         }
     }
 
-    private void unWield(Item item) {
+    private void unWield(Item item){
         Weapon w = (Weapon) item;
         if (isWielding(w)) {
             weapon.setWielded(false);
             pickUp(w);
 
-            if (equippedEquipment.size() < 4) {
+            if (equippedEquipment.size() < 4){
                 charAttributes.removeHalfArmorBonus();
             }
 
-            if (equippedEquipment.size() < 8) {
+            if (equippedEquipment.size() < 7) {
                 charAttributes.removeFullArmorBonus();
 
             }
+
 
 
         } else {
@@ -247,7 +248,7 @@ public class GameCharacter {
         charAttributes.checkIfOverburdened(bag.getWeight());
     }
 
-    public void dropItem(Item item) {
+    public void dropItem(Item item){
         bag.removeFromBag(item);
         charAttributes.checkIfOverburdened(bag.getWeight());
     }
