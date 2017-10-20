@@ -1,6 +1,6 @@
 <project name="Projekt Build Script" default="TestSuite">
     <description>
-        En enkel byggfil som ni kan utgå från om ni vill använda Ant. Just nu gör den inget förutom att kompilera koden.
+        Ett Ant script som kompilerar src & test koden samt kör testsviten
     </description>
 
     <!-- Kompilerar .java filer i mappen "src"-->
@@ -19,7 +19,7 @@
         </javac>
     </target>
 
-    <!-- Does amazing stuff, trust me on this! -->
+    <!-- Kör testsviten och skriver ut outputen till en loggfil and does amazing stuff to! -->
     <target name="TestSuite" depends="CompileTests">
         <record name="logfile.txt" action="start" append="false"/>
         <junit printsummary="on" haltonfailure="no" fork="yes" showoutput="true">
