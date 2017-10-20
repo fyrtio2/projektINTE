@@ -7,9 +7,9 @@ public class Map {
 
     public Map(String mapName, int mapHeight, int mapWidth) {
         this.mapName = mapName;
-        if (mapName == null || mapHeight < 0 || mapWidth < 0 ||  mapName.isEmpty()) {
+        if (mapName == null || mapHeight < 0 || mapWidth < 0 || mapName.isEmpty()) {
             throw new IllegalArgumentException("Something went wrong");
-        } else if (mapWidth > mapMaxWidth || mapHeight > mapMaxHeight ) {
+        } else if (mapWidth > mapMaxWidth || mapHeight > mapMaxHeight) {
             throw new IllegalArgumentException("Something went wrong");
         } else {
             this.mapWidth = mapWidth;
