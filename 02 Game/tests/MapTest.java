@@ -159,9 +159,9 @@ public class MapTest {
             g.moveUp();
             g.moveRight();
         }
-        g.makeCharacterInCombat();
+        g.enterCombat();
         g.hpCounter(g.getCurrentHp());
-        g.makeCharacterDead();
+        g.killCharacter();
         assertTrue(theWoods.isWithinMap(g));
     }
 

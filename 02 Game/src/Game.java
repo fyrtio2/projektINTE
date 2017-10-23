@@ -35,7 +35,7 @@ public class Game extends JFrame {
         System.out.println("Current Carry Weight: " + dragon.getBag().getWeight());
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
         Equipment helm = new Equipment(Equipment.Type.helmet, "Helm of Domination", 1, 100, 151, attributes);
-        dragon.pickUp(helm);
+        dragon.pickUpItem(helm);
         System.out.println("You have picked up: " + helm.getName());
         System.out.println("Your Current Carry Weight is: " + dragon.getBag().getWeight());
         System.out.println("You have been Overburdened!");
@@ -46,7 +46,7 @@ public class Game extends JFrame {
         System.out.println("Dragon Strength: " + dragon.getCharAttributes().getStrenght());
         System.out.println("Max Carry Weight: " + dragon.getCharAttributes().getMaxCarryWeight());
         System.out.println("Dragon has " + dragon.getCharAttributes().getDefense() + " defense");
-        dragon.equipEquipment(helm);
+        dragon.useEquipment(helm);
         System.out.println("Dragon Strength: " + dragon.getCharAttributes().getStrenght());
         System.out.println("Max Carry Weight: " + dragon.getCharAttributes().getMaxCarryWeight());
         System.out.println("Dragon has " + dragon.getCharAttributes().getDefense() + " defense");
