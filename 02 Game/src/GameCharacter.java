@@ -1,5 +1,6 @@
 import java.util.HashMap;
 
+
 public class GameCharacter {
     private int currentHp, maxHp, level, experience;
     private String name;

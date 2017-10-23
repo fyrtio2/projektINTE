@@ -445,7 +445,7 @@ public class GameCharacterTest {
         player.wieldWeapon(sword);
         player.wieldWeapon(sword2);
 
-        assertTrue(player.isWielding(sword));
+        assertFalse(player.isWielding(sword2));
 
 
     }
