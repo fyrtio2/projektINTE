@@ -252,6 +252,10 @@ public class GameCharacter {
         return charAttributes;
     }
 
+    public Bag getBag() {
+        return bag;
+    }
+
     public String getName() {
         return name;
     }
@@ -271,10 +275,6 @@ public class GameCharacter {
 
     public int getExperience() {
         return experience;
-    }
-
-    public Bag getBag() {
-        return bag;
     }
 
     public boolean getIsAlive() {
