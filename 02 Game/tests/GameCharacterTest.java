@@ -1,9 +1,9 @@
 import org.junit.Test;
 
+import java.util.stream.IntStream;
+
 import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class GameCharacterTest {
     //HP Tests
@@ -23,8 +23,10 @@ public class GameCharacterTest {
 
     @Test
     public void takeDamageBelowZeroHpTest() throws Exception {
-        GameCharacter mainCharacter = new GameCharacter("Gubbe");
-        assertEquals(0, mainCharacter.takeDamage(1000));
+        GameCharacter dragonSlayer = new GameCharacter("Dragon Slayer");
+        GameCharacter Dragon = new GameCharacter("Dragon");
+        dragonSlayer.levelUp(30);
+        assertEquals(0, Dragon.takeDamage(dragonSlayer.meleeAttack()));
     }
 
     @Test(expected = AssertionError.class)
@@ -48,7 +50,7 @@ public class GameCharacterTest {
 
     //Name Test
     @Test
-    public void nameTest() throws Exception {
+    public void NameTest() throws Exception {
         GameCharacter mainCharacter = new GameCharacter("kalle");
         assertEquals("kalle", mainCharacter.getName());
     }
@@ -83,21 +85,21 @@ public class GameCharacterTest {
     @Test
     public void levelUpTest() {
         GameCharacter character = new GameCharacter("kalle");
-        character.levelUp();
+        character.levelUp(1);
         assertEquals(2, character.getLevel());
     }
 
     @Test
     public void levelUpMaxHpTest() {
         GameCharacter character = new GameCharacter("kalle");
-        character.levelUp();
+        character.levelUp(1);
         assertEquals(110, character.getMaxHp());
     }
 
     @Test
     public void resetLevelTest() {
         GameCharacter character = new GameCharacter("kalle");
-        character.levelUp();
+        character.levelUp(1);
         character.resetLevel();
         assertEquals(1, character.getLevel());
     }
@@ -105,7 +107,7 @@ public class GameCharacterTest {
     @Test
     public void resetMaxHpTest() {
         GameCharacter character = new GameCharacter("kalle");
-        character.levelUp();
+        character.levelUp(1);
         character.resetLevel();
         assertEquals(100, character.getMaxHp());
     }
@@ -127,18 +129,17 @@ public class GameCharacterTest {
     public void testResetAfterTwoLevelUp() {
         GameCharacter character = new GameCharacter("kalle");
         for (int i = 0; i < 3; i++) {
-            character.levelUp();
+            character.levelUp(1);
         }
         character.resetLevel();
         assertEquals(1, character.getLevel());
     }
 
     //GameCharacter Combat Tests
-
     @Test
     public void testMakeCharacterInCombat() throws Exception {
         GameCharacter mainCharacter = new GameCharacter("kalle");
-        assertEquals(true, mainCharacter.enterCombat());
+        assertEquals(true, mainCharacter.makeCharacterInCombat());
 
     }
 
@@ -146,15 +147,15 @@ public class GameCharacterTest {
     public void testCharacterInPeacefulStance() throws Exception {
 
         GameCharacter mainCharacter = new GameCharacter("kalle");
-        mainCharacter.outOfCombat();
-        assertEquals(false, mainCharacter.isCharacterInCombat());
+        mainCharacter.makeCharacterInPeacefulStance();
+        assertEquals(false, mainCharacter.getIsInCombat());
     }
 
     @Test
     public void testIsInCombatAfterFight() throws Exception {
         GameCharacter character = new GameCharacter("Gubbe");
         character.afterCombat(true);
-        assertEquals(false, character.isCharacterInCombat());
+        assertEquals(false, character.getIsInCombat());
     }
 
     @Test
@@ -177,7 +178,7 @@ public class GameCharacterTest {
         for (int i = 0; i < 4; i++) {
             character.afterCombat(true);
         }
-        assertEquals(false, character.isCharacterInCombat());
+        assertEquals(false, character.getIsInCombat());
     }
 
     @Test
@@ -222,19 +223,17 @@ public class GameCharacterTest {
         for (int i = 0; i < 8; i++) {
             character.afterCombat(true);
         }
-        assertEquals(false, character.isCharacterInCombat());
+        assertEquals(false, character.getIsInCombat());
     }
 
     @Test
     public void testAfterFightIfBooleanTrue() {
         GameCharacter character = new GameCharacter("Gubbe");
         character.afterCombat(false);
-        assertEquals(false, character.isCharacterInCombat());
+        assertEquals(false, character.getIsInCombat());
     }
 
-
     //GameCharacter Alive Tests
-
     @Test
     public void testVariableIsAlive() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
@@ -244,10 +243,10 @@ public class GameCharacterTest {
     @Test
     public void testMakeAliveFalse() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
-        mainCharacter.enterCombat();
+        mainCharacter.makeCharacterInCombat();
         int currentHp = mainCharacter.getCurrentHp();
         mainCharacter.hpCounter(currentHp);
-        mainCharacter.killCharacter();
+        mainCharacter.makeCharacterDead();
         assertEquals(false, mainCharacter.getIsAlive());
     }
 
@@ -262,15 +261,14 @@ public class GameCharacterTest {
     @Test
     public void testCheckExperienceAfterCharacterIsDead() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
-        mainCharacter.enterCombat();
+        mainCharacter.makeCharacterInCombat();
         int currentHp = mainCharacter.getCurrentHp();
         mainCharacter.hpCounter(currentHp);
-        mainCharacter.killCharacter();
+        mainCharacter.makeCharacterDead();
         assertEquals(0, mainCharacter.getExperience());
     }
 
     //GameCharacter Position Tests
-
     @Test
     public void testStartingPositionX() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
@@ -288,11 +286,10 @@ public class GameCharacterTest {
     public void testResetPositionX() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
         mainCharacter.moveRight();
-        mainCharacter.enterCombat();
+        mainCharacter.makeCharacterInCombat();
         mainCharacter.hpCounter(mainCharacter.getCurrentHp());
-        mainCharacter.killCharacter();
+        mainCharacter.makeCharacterDead();
         assertEquals(20.0, mainCharacter.getXPos(), 0.1);
-
     }
 
     @Test
@@ -300,9 +297,9 @@ public class GameCharacterTest {
         GameCharacter mainCharacter = new GameCharacter("kalle");
         mainCharacter.moveRight();
         mainCharacter.moveDown();
-        mainCharacter.enterCombat();
+        mainCharacter.makeCharacterInCombat();
         mainCharacter.hpCounter(mainCharacter.getCurrentHp());
-        mainCharacter.killCharacter();
+        mainCharacter.makeCharacterDead();
         assertEquals(10.0, mainCharacter.getYPos(), 0.1);
     }
 
@@ -334,13 +331,12 @@ public class GameCharacterTest {
     }
 
     //Equipment Tests
-
     @Test
     public void pickUpItemTest() {
         GameCharacter mainGameCharacter = new GameCharacter("kalle");
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10, attributes);
-        mainGameCharacter.pickUpItem(helmet);
+        mainGameCharacter.pickUp(helmet);
         Bag bag = mainGameCharacter.getBag();
         assertEquals(helmet, bag.getHashMap().get(helmet.getName()));
     }
@@ -351,14 +347,11 @@ public class GameCharacterTest {
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
 
         Equipment helmet = new Equipment(Equipment.Type.helmet, "HELMET OF FURY!", 10, 10, 10, attributes);
-        mainGameCharacter.useEquipment(helmet);
+        mainGameCharacter.equipEquipment(helmet);
     }
 
     @Test
-   public void addTooManyEquipmentsTest() {
-
-
-
+    public void addTooManyEquipmentsTest() {
         GameCharacter player = new GameCharacter("Oscar");
 
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
@@ -373,22 +366,17 @@ public class GameCharacterTest {
         //****************************************************************************// All equipment slots filled
         Equipment helmet2 = new Equipment(Equipment.Type.helmet, "helmet2", 10, 10, 10, attributes);
 
-        player.useEquipment(helmet);
-        player.useEquipment(chestPlate);
-        player.useEquipment(legPlate);
-        player.useEquipment(shoes);
-        player.useEquipment(gloves);
-        player.useEquipment(jewelry);
-        player.useEquipment(shield);
+        player.equipEquipment(helmet);
+        player.equipEquipment(chestPlate);
+        player.equipEquipment(legPlate);
+        player.equipEquipment(shoes);
+        player.equipEquipment(gloves);
+        player.equipEquipment(jewelry);
+        player.equipEquipment(shield);
 
-        player.useEquipment(helmet2); //Should not be added
+        player.equipEquipment(helmet2); //Should not be added
 
-
-        assertFalse(player.isEquipmentInUse(helmet2));
-
-
-
-
+        assertFalse(player.hasEquipped(helmet2));
     }
 
     @Test
@@ -398,91 +386,75 @@ public class GameCharacterTest {
 
         Equipment chestPlate = new Equipment(Equipment.Type.chestPlate, "chestplate", 10, 10, 10, attributes);
         Equipment chestPlate2 = new Equipment(Equipment.Type.chestPlate, "chestplate2", 10, 10, 10, attributes);
-        player.useEquipment(chestPlate); // Should still exist in hashMap after we try to add chestplate2
-        player.useEquipment(chestPlate2); // Should not exits
+        player.equipEquipment(chestPlate); // Should still exist in hashMap after we try to add chestplate2
+        player.equipEquipment(chestPlate2); // Should not exits
 
-        assertTrue((player.isEquipmentInUse(chestPlate)));
+        assertTrue((player.hasEquipped(chestPlate)));
     }
 
     @Test
-    public void unequipTest(){
+    public void unequipTest() {
         GameCharacter player = new GameCharacter("Oscar");
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
 
         Equipment shield = new Equipment(Equipment.Type.shield, "shield", 10, 10, 10, attributes);
-        player.useEquipment(shield);
+        player.equipEquipment(shield);
         player.unEquip(shield);
 
-        assertFalse(player.isEquipmentInUse(shield));
-
-
+        assertFalse(player.hasEquipped(shield));
     }
 
     @Test
-    public void unequipWrongItemTest(){
+    public void unequipWrongItemTest() {
         GameCharacter player = new GameCharacter("Oscar");
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
 
         Equipment shield = new Equipment(Equipment.Type.shield, "shield", 10, 10, 10, attributes);
         Equipment otherShield = new Equipment(Equipment.Type.shield, "shield", 10, 10, 10, attributes);
-        player.useEquipment(shield);
+        player.equipEquipment(shield);
         player.unEquip(otherShield); // unequips the shield that has not been equipped
 
-        assertTrue(player.isEquipmentInUse(shield));
-
-
+        assertTrue(player.hasEquipped(shield));
     }
 
     @Test
-    public void wieldTwoWeaponTest(){
-
+    public void wieldTwoWeaponTest() {
         GameCharacter player = new GameCharacter("Oscar");
-        WeaponAttributes weaponAttributes = new WeaponAttributes(10,10,10,10,10);
+        WeaponAttributes weaponAttributes = new WeaponAttributes(10, 10, 10, 10, 10);
 
-
-        Weapon sword = new Weapon("Sword of doom",10,10,weaponAttributes,0);
-        Weapon sword2 = new Weapon("Sword of light",10,10,weaponAttributes,0);
+        Weapon sword = new Weapon("Sword of doom", 10, 10, weaponAttributes, 0);
+        Weapon sword2 = new Weapon("Sword of light", 10, 10, weaponAttributes, 0);
         player.wieldWeapon(sword);
         player.wieldWeapon(sword2);
 
-        assertFalse(player.isCharacterWieldingWeapon(sword2));
-
-
+        assertFalse(player.isWielding(sword2));
     }
 
     @Test
-    public void unWieldWeaponTest(){
-
+    public void unWieldWeaponTest() {
         GameCharacter player = new GameCharacter("Oscar");
-        WeaponAttributes weaponAttributes = new WeaponAttributes(10,10,10,10,10);
+        WeaponAttributes weaponAttributes = new WeaponAttributes(10, 10, 10, 10, 10);
 
-        Weapon sword = new Weapon("Sword of doom",10,10,weaponAttributes,0);
+        Weapon sword = new Weapon("Sword of doom", 10, 10, weaponAttributes, 0);
 
         player.wieldWeapon(sword);
         player.unEquip(sword);
 
-        assertFalse(player.isCharacterWieldingWeapon(sword));
-
-
+        assertFalse(player.isWielding(sword));
     }
 
     @Test
-    public void weaponAlreadyWieldedTest(){
-
+    public void weaponAlreadyWieldedTest() {
         GameCharacter player = new GameCharacter("Oscar");
-        WeaponAttributes weaponAttributes = new WeaponAttributes(10,10,10,10,10);
-        WeaponAttributes weaponAttributes2 = new WeaponAttributes(10,10,10,10,10);
+        WeaponAttributes weaponAttributes = new WeaponAttributes(10, 10, 10, 10, 10);
+        WeaponAttributes weaponAttributes2 = new WeaponAttributes(10, 10, 10, 10, 10);
 
-        Weapon swordOfDoom = new Weapon("Sword of doom",10,10,weaponAttributes,0);
-        Weapon swordOfFury = new Weapon("Sword of fury",10,10,weaponAttributes2,0);
-
+        Weapon swordOfDoom = new Weapon("Sword of doom", 10, 10, weaponAttributes, 0);
+        Weapon swordOfFury = new Weapon("Sword of fury", 10, 10, weaponAttributes2, 0);
 
         player.wieldWeapon(swordOfDoom);
         player.unEquip(swordOfFury);// sword 2 should not be wielded
 
-        assertTrue(player.isCharacterWieldingWeapon(swordOfDoom));
-
-
+        assertTrue(player.isWielding(swordOfDoom));
     }
-
 }

@@ -84,21 +84,21 @@ public class AttributesTest {
 
     // Values exceed max limit
     @Test(expected = AssertionError.class)
-    public void attributeExeedsMaxValue() throws Exception {
+    public void AttributeExeedsMaxValue() throws Exception {
         Attributes c = new Attributes(41, 41, 41, 41);
         assertEquals(41, c.getIntellegence());
     }
 
     // 101 Dexterity results in critChance exceeding the max limit which is 1.0 (100%)
     @Test(expected = AssertionError.class)
-    public void exeedsMaxCritChance() throws Exception {
+    public void ExeedsMaxCritChance() throws Exception {
         Attributes c = new Attributes(10, 101, 10, 10);
         assertEquals(1.001, c.getCriticalChance(), 0.0001);
     }
 
     // 38 Strenght results in critDamage exceeding the max limit which is 2.75 (275%)
     @Test(expected = AssertionError.class)
-    public void exeedsMaxCritDamage() throws Exception {
+    public void ExeedsMaxCritDamage() throws Exception {
         Attributes c = new Attributes(38, 10, 10, 10);
         assertEquals(2.751, c.getCriticalDamage(), 0.0001);
     }

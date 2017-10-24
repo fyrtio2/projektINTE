@@ -1,5 +1,6 @@
 import java.util.HashMap;
 
+
 public class GameCharacter {
     private int currentHp, maxHp, level, experience;
     private String name;
@@ -39,14 +40,16 @@ public class GameCharacter {
     }
 
     // Level up Methods
-    public void levelUp() {
-        level++;
-        charAttributes.increasePrimaryAttribute("Strength", 2);
-        charAttributes.increasePrimaryAttribute("Dexterity", 2);
-        charAttributes.increasePrimaryAttribute("Intellegence", 2);
-        charAttributes.increasePrimaryAttribute("Vitality", 1);
-        maxHp = charAttributes.convertVitalityToHp();
-        currentHp = maxHp;
+    public void levelUp(int amount) {
+        level += amount;
+        for(int i = 0; i < amount; i++){
+            charAttributes.increasePrimaryAttribute("Strength", 2);
+            charAttributes.increasePrimaryAttribute("Dexterity", 2);
+            charAttributes.increasePrimaryAttribute("Intellegence", 2);
+            charAttributes.increasePrimaryAttribute("Vitality", 1);
+            maxHp = charAttributes.convertVitalityToHp();
+            currentHp = maxHp;
+        }
     }
 
     public void resetLevel() {
@@ -62,33 +65,33 @@ public class GameCharacter {
     }
 
     // GameCharacter Combat
-    public boolean enterCombat() {
+    public boolean makeCharacterInCombat() {
         isInCombat = true;
         return isInCombat;
     }
 
-    public boolean outOfCombat() {
+    public boolean makeCharacterInPeacefulStance() {
         isInCombat = false;
         return isInCombat;
     }
 
-    public boolean isCharacterInCombat() {
+    public boolean getIsInCombat() {
         return isInCombat;
     }
 
     public void afterCombat(boolean isInCombat) {
         if (isInCombat) {
-            outOfCombat();
+            makeCharacterInPeacefulStance();
             experience += 10;
             if (experience > 30) {
-                levelUp();
+                levelUp(1);
                 resetExperience();
             }
         }
     }
 
     public int meleeAttack() {
-        return charAttributes.determineIfCritIsSuccessfulAndReturnDamage();
+        return getCharAttributes().determineIfCritIsSuccessfulAndReturnDamage();
     }
 
     public int takeDamage(int damageTaken) {
@@ -97,7 +100,7 @@ public class GameCharacter {
     }
 
     // GameCharacter Alive or Dead
-    public void killCharacter() {
+    public void makeCharacterDead() {
         if (isInCombat && currentHp == 0) {
             isAlive = false;
             resetExperience();
@@ -135,10 +138,10 @@ public class GameCharacter {
     }
 
     // Equipment Methods
-    public void useEquipment(Equipment equipment) {
+    public void equipEquipment(Equipment equipment) {
 
         if (equippedEquipment.containsKey(equipment.getType())) {
-            System.out.printf("%s already equipped%n", equipment.getType());
+            System.out.printf("%s already equipped\n", equipment.getType());
         } else {
             equippedEquipment.put(equipment.getType(), equipment);
             bag.removeFromBag(equipment);
@@ -149,14 +152,12 @@ public class GameCharacter {
             charAttributes.calcMaxCarryWeight();
             maxHp = charAttributes.convertVitalityToHp();
 
-
             if (equippedEquipment.size() >= 4) {
                 charAttributes.giveHalfArmorBonus();
             }
 
             if (equippedEquipment.size() == 7) {
                 charAttributes.giveFullArmorBonus();
-
             }
         }
     }
@@ -170,21 +171,24 @@ public class GameCharacter {
         }
     }
 
-    public boolean isEquipmentInUse(Equipment equipment) {
+    public boolean hasEquipped(Equipment equipment) {
         boolean isEquipped;
         if (equippedEquipment.containsKey(equipment.getType())) {
-            isEquipped = equippedEquipment.get(equipment.getType()).equals(equipment);
+            if (equippedEquipment.get(equipment.getType()).equals(equipment)) {
+                isEquipped = true;
+            } else {
+                isEquipped = false;
+            }
         } else {
             isEquipped = false;
         }
         return isEquipped;
     }
 
-    public boolean isCharacterWieldingWeapon(Weapon w) {
+    public boolean isWielding(Weapon w) {
         if (w.isWielded() && weapon.equals(w)) {
             System.out.println();
             return true;
-
         } else {
             return false;
         }
@@ -192,57 +196,44 @@ public class GameCharacter {
 
     public void unEquip(Item item) {
         if (item instanceof Equipment) {
-           unEquipEquipment(item);
+            unEquipEquipment(item);
             charAttributes.removeEquipmentAttributesFromCharacter(((Equipment) item).getAttributes());
             maxHp = charAttributes.convertVitalityToHp();
         } else {
             unWield(item);
-
         }
-
     }
 
-    private void unEquipEquipment(Item item){
+    private void unEquipEquipment(Item item) {
         Equipment equipment = (Equipment) item;
-        if (isEquipmentInUse(equipment)) {
+        if (hasEquipped(equipment)) {
             equippedEquipment.remove(equipment.getType());
-            pickUpItem(equipment);
+            pickUp(equipment);
         } else {
-            System.out.printf("that %s is not equipped%n", equipment.getType());
+            System.out.printf("that %s is not equipped\n", equipment.getType());
         }
     }
 
-    private void unWield(Item item){
+    private void unWield(Item item) {
         Weapon w = (Weapon) item;
-        if (isCharacterWieldingWeapon(w)) {
+        if (isWielding(w)) {
             weapon.setWielded(false);
-            pickUpItem(w);
-
-            if (equippedEquipment.size() < 4){
+            pickUp(w);
+            if (equippedEquipment.size() < 4)
                 charAttributes.removeHalfArmorBonus();
-            }
-
-            if (equippedEquipment.size() < 7) {
+            else if (equippedEquipment.size() < 7)
                 charAttributes.removeFullArmorBonus();
-
-            }
-
-
-
         } else {
-            System.out.printf("%s is not wielded%n", w.getName());
-
+            System.out.printf("%s is not wielded\n", w.getName());
         }
-
     }
 
-
-    public void pickUpItem(Item item) {
+    public void pickUp(Item item) {
         bag.addToBag(item);
         charAttributes.checkIfOverburdened(bag.getWeight());
     }
 
-    public void dropItem(Item item){
+    public void dropItem(Item item) {
         bag.removeFromBag(item);
         charAttributes.checkIfOverburdened(bag.getWeight());
     }
