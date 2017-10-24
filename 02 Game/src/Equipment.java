@@ -1,8 +1,13 @@
 public class Equipment extends Item {
+
     private int lvlReq;
     private boolean isBroken;
     private Enum type;
     private EquipmentAttributes attributes;
+
+    public enum Type {
+        helmet, chestPlate, legPlate, shoes, shield, gloves, jewelry
+    }
 
     public Equipment(Enum type, String name, int lvlReq, int durability, int weight, EquipmentAttributes attributes) {
         super(name, weight, durability);
@@ -16,7 +21,10 @@ public class Equipment extends Item {
     public boolean isWearableBy(GameCharacter player) {
         if (isBroken)
             return false;
-        return player.getLevel() >= lvlReq;
+        if (player.getLevel() >= lvlReq)
+            return true;
+        else
+            return false;
     }
 
     public void damageEquipment(int damage) {
@@ -37,9 +45,5 @@ public class Equipment extends Item {
 
     public EquipmentAttributes getAttributes(){
         return attributes;
-    }
-
-    public enum Type {
-        helmet, chestPlate, legPlate, shoes, shield, gloves, jewelry
     }
 }

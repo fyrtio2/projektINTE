@@ -165,7 +165,6 @@ public class GameCharacterAttributesTest {
         CharacterAttributes c = new CharacterAttributes(10, 10, 10, 10);
         assertEquals(5, c.getDefense());
     }
-
 }
 
 

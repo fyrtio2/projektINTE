@@ -1,4 +1,5 @@
 public class Map {
+
     private String mapName;
     private int mapHeight, mapWidth;
     private int mapMaxHeight = 1000;

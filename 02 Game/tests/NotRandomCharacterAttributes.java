@@ -10,5 +10,4 @@ public class NotRandomCharacterAttributes extends CharacterAttributes {
     public double getRandomDouble() {
         return rnd;
     }
-
 }

@@ -29,5 +29,4 @@ public class Bag {
     public void addWeight(Item item) {
         weight += item.getWeight();
     }
-
 }
