@@ -4,6 +4,7 @@ import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
 public class GameCharacterTest {
+
     //HP Tests
     @Test
     public void testStartHpTest() throws Exception {

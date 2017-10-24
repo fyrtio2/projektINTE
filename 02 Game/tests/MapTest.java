@@ -160,4 +160,5 @@ public class MapTest {
         g.makeCharacterDead();
         assertTrue(theWoods.isWithinMap(g));
     }
+
 }
