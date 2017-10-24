@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class AttributesTest {
     // Increase primary attribute tests
@@ -102,5 +102,4 @@ public class AttributesTest {
         Attributes c = new Attributes(38, 10, 10, 10);
         assertEquals(2.751, c.getCriticalDamage(), 0.0001);
     }
-
 }

@@ -1,4 +1,5 @@
 public class Weapon extends Item {
+
     WeaponAttributes weaponAttributes;
     private boolean isWielded, isBroken;
     private int lvlReq;
@@ -12,7 +13,11 @@ public class Weapon extends Item {
         if (isBroken) {
             return false;
         }
-        return player.getLevel() >= lvlReq;
+        if (player.getLevel() >= lvlReq) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void damageWeapon(int damage) {

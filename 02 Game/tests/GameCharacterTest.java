@@ -6,7 +6,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 public class GameCharacterTest {
-
     //HP Tests
     @Test
     public void testStartHpTest() throws Exception {

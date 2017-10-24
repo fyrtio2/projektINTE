@@ -15,5 +15,4 @@ public class EquipmentAttributes extends Attributes {
     public int getDefense() {
         return defense;
     }
-
 }
