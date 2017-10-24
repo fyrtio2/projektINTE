@@ -164,5 +164,4 @@ public class Attributes {
         calcCriticalDamage();
         return criticalDamage;
     }
-
 }

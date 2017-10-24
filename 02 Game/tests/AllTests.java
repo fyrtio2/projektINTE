@@ -14,5 +14,4 @@ import org.junit.runners.Suite.SuiteClasses;
         ItemTest.class,
 })
 public class AllTests {
-
 }

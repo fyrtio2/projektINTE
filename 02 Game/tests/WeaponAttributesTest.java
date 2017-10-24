@@ -9,5 +9,4 @@ public class WeaponAttributesTest {
         WeaponAttributes sword = new WeaponAttributes(-10, 5, 5, 5, 5);
         assertEquals(-10, sword.getWeaponDamage());
     }
-
 }

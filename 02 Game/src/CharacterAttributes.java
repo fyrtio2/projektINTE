@@ -106,5 +106,4 @@ public class CharacterAttributes extends Attributes {
     public void increaseDefense(int amount) {
         defense += amount;
     }
-
 }

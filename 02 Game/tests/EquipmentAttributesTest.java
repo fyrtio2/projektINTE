@@ -8,5 +8,4 @@ public class EquipmentAttributesTest {
         EquipmentAttributes breastplate = new EquipmentAttributes(-10, 5, 5, 5, 5);
         assertEquals(-10, breastplate.getDefense());
     }
-
 }
