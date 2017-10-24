@@ -1,6 +1,5 @@
 import java.util.HashMap;
 
-
 public class GameCharacter {
     private int currentHp, maxHp, level, experience;
     private String name;
@@ -65,12 +64,12 @@ public class GameCharacter {
     }
 
     // GameCharacter Combat
-    public boolean makeCharacterInCombat() {
+    public boolean enterCombat() {
         isInCombat = true;
         return isInCombat;
     }
 
-    public boolean makeCharacterInPeacefulStance() {
+    public boolean outOfCombat() {
         isInCombat = false;
         return isInCombat;
     }
@@ -81,7 +80,7 @@ public class GameCharacter {
 
     public void afterCombat(boolean isInCombat) {
         if (isInCombat) {
-            makeCharacterInPeacefulStance();
+            outOfCombat();
             experience += 10;
             if (experience > 30) {
                 levelUp(1);
@@ -100,7 +99,7 @@ public class GameCharacter {
     }
 
     // GameCharacter Alive or Dead
-    public void makeCharacterDead() {
+    public void killCharacter() {
         if (isInCombat && currentHp == 0) {
             isAlive = false;
             resetExperience();
@@ -138,7 +137,7 @@ public class GameCharacter {
     }
 
     // Equipment Methods
-    public void equipEquipment(Equipment equipment) {
+    public void useEquipment(Equipment equipment) {
 
         if (equippedEquipment.containsKey(equipment.getType())) {
             System.out.printf("%s already equipped\n", equipment.getType());
@@ -171,21 +170,17 @@ public class GameCharacter {
         }
     }
 
-    public boolean hasEquipped(Equipment equipment) {
+    public boolean checkIfEquipmentIsUsed(Equipment equipment) {
         boolean isEquipped;
         if (equippedEquipment.containsKey(equipment.getType())) {
-            if (equippedEquipment.get(equipment.getType()).equals(equipment)) {
-                isEquipped = true;
-            } else {
-                isEquipped = false;
-            }
+            isEquipped = equippedEquipment.get(equipment.getType()).equals(equipment);
         } else {
             isEquipped = false;
         }
         return isEquipped;
     }
 
-    public boolean isWielding(Weapon w) {
+    public boolean isCharacterWieldingWeapon(Weapon w) {
         if (w.isWielded() && weapon.equals(w)) {
             System.out.println();
             return true;
@@ -206,9 +201,9 @@ public class GameCharacter {
 
     private void unEquipEquipment(Item item) {
         Equipment equipment = (Equipment) item;
-        if (hasEquipped(equipment)) {
+        if (checkIfEquipmentIsUsed(equipment)) {
             equippedEquipment.remove(equipment.getType());
-            pickUp(equipment);
+            pickUpItem(equipment);
         } else {
             System.out.printf("that %s is not equipped\n", equipment.getType());
         }
@@ -216,9 +211,9 @@ public class GameCharacter {
 
     private void unWield(Item item) {
         Weapon w = (Weapon) item;
-        if (isWielding(w)) {
+        if (isCharacterWieldingWeapon(w)) {
             weapon.setWielded(false);
-            pickUp(w);
+            pickUpItem(w);
             if (equippedEquipment.size() < 4)
                 charAttributes.removeHalfArmorBonus();
             else if (equippedEquipment.size() < 7)
@@ -228,7 +223,7 @@ public class GameCharacter {
         }
     }
 
-    public void pickUp(Item item) {
+    public void pickUpItem(Item item) {
         bag.addToBag(item);
         charAttributes.checkIfOverburdened(bag.getWeight());
     }
