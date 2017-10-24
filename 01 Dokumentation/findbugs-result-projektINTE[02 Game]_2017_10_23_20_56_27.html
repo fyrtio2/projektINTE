@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FindBugs Report</title>
+<style type="text/css">
+		.tablerow0 {
+			background: #EEEEEE;
+		}
+
+		.tablerow1 {
+			background: white;
+		}
+
+		.detailrow0 {
+			background: #EEEEEE;
+		}
+
+		.detailrow1 {
+			background: white;
+		}
+
+		.tableheader {
+			background: #b9b9fe;
+			font-size: larger;
+		}
+		</style>
+</head>
+<body>
+<h1>FindBugs Report</h1>
+<p>Produced using <a href="http://findbugs.sourceforge.net">FindBugs</a>3.0.1.</p>
+<p>Project: 
+			projektINTE[02 Game]</p>
+<h2>Metrics</h2>
+<p>1360 lines of code analyzed,
+	in 22 classes, 
+	in 1 packages.</p>
+<table width="500" cellpadding="5" cellspacing="2">
+<tr class="tableheader">
+<th align="left">Metric</th>
+<th align="right">Total</th>
+<th align="right">Density*</th>
+</tr>
+<tr class="tablerow0">
+<td>High Priority Warnings</td>
+<td align="right">1</td>
+<td align="right">0.74</td>
+</tr>
+<tr class="tablerow1">
+<td>Medium Priority Warnings</td>
+<td align="right">12</td>
+<td align="right">8.82</td>
+</tr>
+<tr class="$totalClass">
+<td>
+<b>Total Warnings</b>
+</td>
+<td align="right">
+<b>13</b>
+</td>
+<td align="right">
+<b>9.56</b>
+</td>
+</tr>
+</table>
+<p>
+<i>(* Defects per Thousand lines of non-commenting source statements)</i>
+</p>
+<p>
+<br/>
+<br/>
+</p>
+<h2>Summary</h2>
+<table width="500" cellpadding="5" cellspacing="2">
+<tr class="tableheader">
+<th align="left">Warning Type</th>
+<th align="right">Number</th>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</td>
+<td align="right">8</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+</td>
+<td align="right">1</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_STYLE">Dodgy code Warnings</a>
+</td>
+<td align="right">4</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<b>Total</b>
+</td>
+<td align="right">
+<b>13</b>
+</td>
+</tr>
+</table>
+<p>
+<br/>
+<br/>
+</p>
+<h1>Warnings</h1>
+<p>Click on each warning link to see a full description of the issue, and
+	    details of how to resolve it.</p>
+<h2>
+<a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="2" cellpadding="5">
+<tr class="tableheader">
+<th align="left">Warning</th>
+<th align="left">Priority</th>
+<th align="left">Details</th>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#VA_FORMAT_STRING_USES_NEWLINE">Format string should use %n rather than \n</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Format string should use %n rather than \n in GameCharacter.equipEquipment(Equipment)<br/>
+<br/>
+<br/>In file GameCharacter.java,
+					
+						line 142<br/>In class GameCharacter<br/>In method GameCharacter.equipEquipment(Equipment)<br/>Called method java.io.PrintStream.printf(String, Object[])<br/>Format string "%s already equipped\n"<br/>At GameCharacter.java:[line 142]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#VA_FORMAT_STRING_USES_NEWLINE">Format string should use %n rather than \n</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Format string should use %n rather than \n in GameCharacter.unEquipEquipment(Item)<br/>
+<br/>
+<br/>In file GameCharacter.java,
+					
+						line 216<br/>In class GameCharacter<br/>In method GameCharacter.unEquipEquipment(Item)<br/>Called method java.io.PrintStream.printf(String, Object[])<br/>Format string "that %s is not equipped\n"<br/>At GameCharacter.java:[line 216]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#VA_FORMAT_STRING_USES_NEWLINE">Format string should use %n rather than \n</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Format string should use %n rather than \n in GameCharacter.unWield(Item)<br/>
+<br/>
+<br/>In file GameCharacter.java,
+					
+						line 238<br/>In class GameCharacter<br/>In method GameCharacter.unWield(Item)<br/>Called method java.io.PrintStream.printf(String, Object[])<br/>Format string "%s is not wielded\n"<br/>At GameCharacter.java:[line 238]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#NM_METHOD_NAMING_CONVENTION">Method names should start with a lower case letter</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>The method name AttributesTest.AttributeExeedsMaxValue() doesn't start with a lower case letter<br/>
+<br/>
+<br/>In file AttributesTest.java,
+					
+						lines 89
+						    to 91<br/>In class AttributesTest<br/>In method AttributesTest.AttributeExeedsMaxValue()<br/>At AttributesTest.java:[lines 89-91]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#NM_METHOD_NAMING_CONVENTION">Method names should start with a lower case letter</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>The method name AttributesTest.ExeedsMaxCritChance() doesn't start with a lower case letter<br/>
+<br/>
+<br/>In file AttributesTest.java,
+					
+						lines 96
+						    to 98<br/>In class AttributesTest<br/>In method AttributesTest.ExeedsMaxCritChance()<br/>At AttributesTest.java:[lines 96-98]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#NM_METHOD_NAMING_CONVENTION">Method names should start with a lower case letter</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>The method name AttributesTest.ExeedsMaxCritDamage() doesn't start with a lower case letter<br/>
+<br/>
+<br/>In file AttributesTest.java,
+					
+						lines 103
+						    to 105<br/>In class AttributesTest<br/>In method AttributesTest.ExeedsMaxCritDamage()<br/>At AttributesTest.java:[lines 103-105]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#NM_METHOD_NAMING_CONVENTION">Method names should start with a lower case letter</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>The method name GameCharacterAttributesTest.ExeedsMaxCarryWeight() doesn't start with a lower case letter<br/>
+<br/>
+<br/>In file GameCharacterAttributesTest.java,
+					
+						lines 79
+						    to 81<br/>In class GameCharacterAttributesTest<br/>In method GameCharacterAttributesTest.ExeedsMaxCarryWeight()<br/>At GameCharacterAttributesTest.java:[lines 79-81]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#NM_METHOD_NAMING_CONVENTION">Method names should start with a lower case letter</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>The method name GameCharacterTest.NameTest() doesn't start with a lower case letter<br/>
+<br/>
+<br/>In file GameCharacterTest.java,
+					
+						lines 52
+						    to 54<br/>In class GameCharacterTest<br/>In method GameCharacterTest.NameTest()<br/>At GameCharacterTest.java:[lines 52-54]</p>
+</td>
+</tr>
+</table>
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="Warnings_PERFORMANCE">Performance Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="2" cellpadding="5">
+<tr class="tableheader">
+<th align="left">Warning</th>
+<th align="left">Priority</th>
+<th align="left">Details</th>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#UUF_UNUSED_FIELD">Unused field</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Unused field: Weapon.weaponAttributes<br/>
+<br/>
+<br/>In file Weapon.java,
+					
+						lines 
+						    to <br/>In class Weapon<br/>Field Weapon.weaponAttributes<br/>In Weapon.java</p>
+</td>
+</tr>
+</table>
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="Warnings_STYLE">Dodgy code Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="2" cellpadding="5">
+<tr class="tableheader">
+<th align="left">Warning</th>
+<th align="left">Priority</th>
+<th align="left">Details</th>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT">Return value of method without side effect is ignored</a>
+</td>
+<td width="10%" valign="top">High</td>
+<td width="70%">
+<p>Return value of Attributes.convertVitalityToHp() ignored, but method has no side effect<br/>
+<br/>
+<br/>In file GameCharacter.java,
+					
+						line 269<br/>In class GameCharacter<br/>In method GameCharacter.getMaxHp()<br/>Called method Attributes.convertVitalityToHp()<br/>At GameCharacter.java:[line 269]<br/>At GameCharacter.java:[line 269]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#CD_CIRCULAR_DEPENDENCY">Test for circular dependencies among classes</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Class Attributes has a circular dependency with other classes<br/>
+<br/>
+<br/>In file Attributes.java,
+					
+						lines 5
+						    to 167<br/>In class Attributes<br/>In class EquipmentAttributes<br/>At Attributes.java:[lines 5-167]</p>
+</td>
+</tr>
+<tr class="tablerow1">
+<td width="20%" valign="top">
+<a href="#CD_CIRCULAR_DEPENDENCY">Test for circular dependencies among classes</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Class Equipment has a circular dependency with other classes<br/>
+<br/>
+<br/>In file Equipment.java,
+					
+						lines 13
+						    to 47<br/>In class Equipment<br/>In class GameCharacter<br/>At Equipment.java:[lines 13-47]</p>
+</td>
+</tr>
+<tr class="tablerow0">
+<td width="20%" valign="top">
+<a href="#CD_CIRCULAR_DEPENDENCY">Test for circular dependencies among classes</a>
+</td>
+<td width="10%" valign="top">Medium</td>
+<td width="70%">
+<p>Class Weapon has a circular dependency with other classes<br/>
+<br/>
+<br/>In file Weapon.java,
+					
+						lines 9
+						    to 44<br/>In class Weapon<br/>In class GameCharacter<br/>At Weapon.java:[lines 9-44]</p>
+</td>
+</tr>
+</table>
+<p>
+<br/>
+<br/>
+</p>
+<p>
+<br/>
+<br/>
+</p>
+<h1>
+<a name="Details">Warning Types</a>
+</h1>
+<h2>
+<a name="CD_CIRCULAR_DEPENDENCY">Test for circular dependencies among classes</a>
+</h2>
+   
+    <p>
+    This class has a circular dependency with other classes. This makes building these classes
+    difficult, as each is dependent on the other to build correctly. Consider using interfaces
+    to break the hard dependency.
+    </p>
+    
+     
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="VA_FORMAT_STRING_USES_NEWLINE">Format string should use %n rather than \n</a>
+</h2>
+
+<p>
+This format string include a newline character (\n). In format strings, it is generally
+ preferable better to use %n, which will produce the platform-specific line separator.
+</p>
+
+     
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="NM_METHOD_NAMING_CONVENTION">Method names should start with a lower case letter</a>
+</h2>
+
+  <p>
+Methods should be verbs, in mixed case with the first letter lowercase, with the first letter of each internal word capitalized.
+</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT">Return value of method without side effect is ignored</a>
+</h2>
+
+<p>This code calls a method and ignores the return value. However our analysis shows that
+the method (including its implementations in subclasses if any) does not produce any effect 
+other than return value. Thus this call can be removed.
+</p>
+<p>We are trying to reduce the false positives as much as possible, but in some cases this warning might be wrong.
+Common false-positive cases include:</p>
+<p>- The method is designed to be overridden and produce a side effect in other projects which are out of the scope of the analysis.</p>
+<p>- The method is called to trigger the class loading which may have a side effect.</p>
+<p>- The method is called just to get some exception.</p>
+<p>If you feel that our assumption is incorrect, you can use a @CheckReturnValue annotation
+to instruct FindBugs that ignoring the return value of this method is acceptable.
+</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+<h2>
+<a name="UUF_UNUSED_FIELD">Unused field</a>
+</h2>
+
+  <p> This field is never used.&nbsp; Consider removing it from the class.</p>
+
+    
+<p>
+<br/>
+<br/>
+</p>
+</body>
+</html>
