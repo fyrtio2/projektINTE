@@ -135,19 +135,19 @@ public class GameCharacterAttributesTest {
 
     @Test
     public void checkCharacterDamageCritTest() throws Exception {
-        CharacterAttributes nonRand = new NotRandomCharacterAttributes(0.1, 10, 10, 5, 5);
-        assertEquals(275, nonRand.determineIfCrit());
+        CharacterAttributes nonRand = new NotRandomCharacterAttributes(0.1, 10, 10, 10, 0);
+        assertEquals(286, nonRand.determineIfCritIsSuccessfulAndReturnDamage());
     }
 
     @Test
     public void checkCharacterDamageWhenNoCritTest() throws Exception {
-        CharacterAttributes nonRand = new NotRandomCharacterAttributes(0.9, 10, 10, 5, 5);
-        assertEquals(125, nonRand.determineIfCrit());
+        CharacterAttributes nonRand = new NotRandomCharacterAttributes(0.9, 10, 10, 10, 10);
+        assertEquals(130, nonRand.determineIfCritIsSuccessfulAndReturnDamage());
     }
 
     @Test
     public void randomGeneratorTest() throws Exception {
-        CharacterAttributes nonRand = new CharacterAttributes(10, 10, 5, 5);
+        CharacterAttributes nonRand = new CharacterAttributes(10, 10, 10, 10);
         for (int i = 0; i < 100; i++) {
             double d = nonRand.getRandomDouble();
             assertTrue(d >= 0 && d < 1);

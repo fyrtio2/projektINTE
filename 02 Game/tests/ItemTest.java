@@ -86,12 +86,6 @@ public class ItemTest {
         assertEquals("legPlate", legPlate.getName());
     }
 
-    @Test
-    public void getTypeTest() {
-
-
-    }
-
     // TEST WEAPON
     @Test
     public void testIFWeaponIsUsable() {

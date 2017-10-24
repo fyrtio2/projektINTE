@@ -23,8 +23,10 @@ public class GameCharacterTest {
 
     @Test
     public void takeDamageBelowZeroHpTest() throws Exception {
-        GameCharacter mainCharacter = new GameCharacter("Gubbe");
-        assertEquals(0, mainCharacter.takeDamage(1000));
+        GameCharacter dragonSlayer = new GameCharacter("Dragon Slayer");
+        GameCharacter Dragon = new GameCharacter("Dragon");
+        dragonSlayer.levelUp(30);
+        assertEquals(0, Dragon.takeDamage(dragonSlayer.meleeAttack()));
     }
 
     @Test(expected = AssertionError.class)
@@ -229,18 +231,6 @@ public class GameCharacterTest {
         GameCharacter character = new GameCharacter("Gubbe");
         character.afterCombat(false);
         assertEquals(false, character.getIsInCombat());
-    }
-
-    @Test
-    public void meleeAttackTest() throws Exception {
-        GameCharacter player = new GameCharacter("Player");
-        int crit = player.getCharAttributes().returnDamage(true);
-        int noCrit = player.getCharAttributes().returnDamage(false);
-        int[] damageArray = {noCrit, crit};
-        int damage = player.meleeAttack();
-        boolean contains = IntStream.of(damageArray).anyMatch(x -> x == damage);
-
-        assertTrue(contains);
     }
 
     //GameCharacter Alive Tests
