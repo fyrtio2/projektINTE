@@ -15,4 +15,5 @@ public class WeaponAttributes extends Attributes {
     public int getWeaponDamage() {
         return weaponDamage;
     }
+
 }
