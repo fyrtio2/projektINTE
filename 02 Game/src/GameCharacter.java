@@ -1,6 +1,5 @@
 import java.util.HashMap;
 
-
 public class GameCharacter {
     private int currentHp, maxHp, level, experience;
     private String name;
@@ -174,11 +173,7 @@ public class GameCharacter {
     public boolean hasEquipped(Equipment equipment) {
         boolean isEquipped;
         if (equippedEquipment.containsKey(equipment.getType())) {
-            if (equippedEquipment.get(equipment.getType()).equals(equipment)) {
-                isEquipped = true;
-            } else {
-                isEquipped = false;
-            }
+            isEquipped = equippedEquipment.get(equipment.getType()).equals(equipment);
         } else {
             isEquipped = false;
         }

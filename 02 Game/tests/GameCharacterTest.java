@@ -1,7 +1,5 @@
 import org.junit.Test;
 
-import java.util.stream.IntStream;
-
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
