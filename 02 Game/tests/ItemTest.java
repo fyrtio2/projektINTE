@@ -34,7 +34,6 @@ public class ItemTest {
         assertEquals(false, ring.isWearableBy(player)); // tests if player can wear the ring
     }
 
-
     @Test
     public void damageEquipmentTest() {
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
@@ -50,7 +49,6 @@ public class ItemTest {
         armor.damageEquipment(10); // Damages the equipments durability with 10 hit points
         assertEquals(true, armor.isBroken());
     }
-
 
     @Test
     public void testDurability() {
