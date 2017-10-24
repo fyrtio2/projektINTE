@@ -1,5 +1,7 @@
 import org.junit.Test;
+
 import java.util.stream.IntStream;
+
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
@@ -230,9 +232,11 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void attackTest() throws Exception {
+    public void meleeAttackTest() throws Exception {
         GameCharacter player = new GameCharacter("Player");
-        int[] damageArray = {130, 286};
+        int crit = player.getCharAttributes().returnDamage(true);
+        int noCrit = player.getCharAttributes().returnDamage(false);
+        int[] damageArray = {noCrit, crit};
         int damage = player.meleeAttack();
         boolean contains = IntStream.of(damageArray).anyMatch(x -> x == damage);
 

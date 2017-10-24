@@ -1,10 +1,8 @@
 import java.util.Random;
 
 public class CharacterAttributes extends Attributes {
-    private int maxCarryWeight;
+    private int maxCarryWeight, characterDamage, defense;
     private double movementSpeed;
-    private int characterDamage;
-    private int defense;
 
     public CharacterAttributes(int strenght, int dexterity, int intellegence, int vitality) {
         super(strenght, dexterity, intellegence, vitality);
@@ -35,21 +33,23 @@ public class CharacterAttributes extends Attributes {
         characterDamage = 100 + 1 * getStrenght() + 1 * getDexterity() + 1 * getIntellegence();
     }
 
-    public int checkIfCrit() {
+    public int determineIfCrit() {
         if (getCriticalChance() >= getRandomDouble()) {
-            return critSuccessful();
+            return returnDamage(true);
         } else
-            return getCharacterDamage();
+            return returnDamage(false);
     }
 
-    protected double getRandomDouble(){
+    protected double getRandomDouble() {
         Random rand = new Random();
         return rand.nextDouble();
     }
 
-    private int critSuccessful() {
-        int crit = (int) (getCharacterDamage() * getCriticalDamage());
-        return crit;
+    protected int returnDamage(boolean critSuccessful) {
+        if (critSuccessful)
+            return (int) (getCharacterDamage() * getCriticalDamage());
+        else
+            return getCharacterDamage();
     }
 
     // Movement Speed Methods
@@ -90,19 +90,19 @@ public class CharacterAttributes extends Attributes {
         return movementSpeed;
     }
 
-    public void giveHalfArmorBonus(){
+    public void giveHalfArmorBonus() {
         defense += 10;
     }
 
-    public void giveFullArmorBonus(){
+    public void giveFullArmorBonus() {
         defense += 25;
     }
 
-    public void removeHalfArmorBonus(){
+    public void removeHalfArmorBonus() {
         defense -= 10;
     }
 
-    public void removeFullArmorBonus(){
+    public void removeFullArmorBonus() {
         defense -= 25;
     }
 
@@ -110,7 +110,7 @@ public class CharacterAttributes extends Attributes {
         return defense;
     }
 
-    public void increaseDefense(int amount){
+    public void increaseDefense(int amount) {
         defense += amount;
     }
 }

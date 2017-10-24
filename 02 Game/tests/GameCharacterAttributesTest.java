@@ -136,13 +136,13 @@ public class GameCharacterAttributesTest {
     @Test
     public void checkCharacterDamageCritTest() throws Exception {
         CharacterAttributes nonRand = new NotRandomCharacterAttributes(0.1, 10, 10, 5, 5);
-        assertEquals(275, nonRand.checkIfCrit());
+        assertEquals(275, nonRand.determineIfCrit());
     }
 
     @Test
     public void checkCharacterDamageWhenNoCritTest() throws Exception {
         CharacterAttributes nonRand = new NotRandomCharacterAttributes(0.9, 10, 10, 5, 5);
-        assertEquals(125, nonRand.checkIfCrit());
+        assertEquals(125, nonRand.determineIfCrit());
     }
 
     @Test
