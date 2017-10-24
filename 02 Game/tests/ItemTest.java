@@ -11,7 +11,7 @@ public class ItemTest {
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
         Equipment ring = new Equipment(Equipment.Type.jewelry, "Ring", 2, 10, 10, attributes); // Creates equipment with level 2 requirement
 
-        player.levelUp(1); // levels upp player to lvl 2
+        player.levelUp(); // levels upp player to lvl 2
 
         assertEquals(true, ring.isWearableBy(player)); // tests if player can wear the ring
     }
