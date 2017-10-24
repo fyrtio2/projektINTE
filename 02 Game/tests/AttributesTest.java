@@ -69,7 +69,6 @@ public class AttributesTest {
         c.decreasePrimaryAttribute("Test", 5);
     }
 
-
     // Negative Attributes
     @Test(expected = AssertionError.class)
     public void negativeAttributesTest() throws Exception {

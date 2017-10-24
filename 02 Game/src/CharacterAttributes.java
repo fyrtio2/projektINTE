@@ -22,9 +22,8 @@ public class CharacterAttributes extends Attributes {
     public void checkIfOverburdened(int bagCapacity) {
         if (bagCapacity > maxCarryWeight)
             movementSpeed = 0;
-        else{
+        else
             movementSpeed = 1.0;
-        }
     }
 
     public void resetCarryWeight() {
@@ -45,8 +44,7 @@ public class CharacterAttributes extends Attributes {
 
     protected double getRandomDouble(){
         Random rand = new Random();
-        double randomDouble = rand.nextDouble();
-        return randomDouble;
+        return rand.nextDouble();
     }
 
     private int critSuccessful() {

@@ -15,7 +15,6 @@ public class MapTest {
         assertEquals("Mordor", map.getMapName());
     }
 
-
     @Test(expected = IllegalArgumentException.class)
     public void testNullMapName() {
         Map map = new Map(null, 500, 500);
@@ -65,7 +64,6 @@ public class MapTest {
     public void testNegativeWidth() {
         Map map = new Map("The forbidden forest", 500, -10);
         assertEquals(500, map.getMapWidth());
-
     }
 
     @Test
@@ -112,7 +110,6 @@ public class MapTest {
         for (int i = 1; i < 1000; i++) {
             g.moveRight();
         }
-
         assertFalse(theWoods.isWithinMap(g));
     }
 
@@ -125,7 +122,6 @@ public class MapTest {
         for (int i = 1; i < 1000; i++) {
             g.moveUp();
         }
-
         assertFalse(theWoods.isWithinMap(g));
     }
 
@@ -164,5 +160,4 @@ public class MapTest {
         g.makeCharacterDead();
         assertTrue(theWoods.isWithinMap(g));
     }
-
 }

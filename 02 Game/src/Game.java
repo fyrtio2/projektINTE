@@ -1,15 +1,8 @@
 import javax.swing.*;
 
+// TODO: Tomt Testfall i itemTest.java Rad: 92
+// TODO: Ta bort onödig kod i Game.java
 public class Game extends JFrame {
-
-    public Game() {
-        /*JFrame map = new JFrame();
-
-        setSize(500, 500);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setVisible(true);*/
-    }
 
     public static void main(String[] args) {
         new Game();

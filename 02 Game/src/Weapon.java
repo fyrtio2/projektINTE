@@ -34,7 +34,6 @@ public class Weapon extends Item {
         return isBroken;
     }
 
-
     public boolean isWielded(){
         return isWielded;
     }

@@ -25,7 +25,6 @@ public class BagTest {
         assertEquals(20, bag.getWeight());
     }
 
-
     @Test(expected = AssertionError.class)
     public void testRemoveFromBag() {
         Bag bag = new Bag(10);

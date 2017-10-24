@@ -12,6 +12,13 @@ public class GameCharacterAttributesTest {
         assertEquals(-1.5, c.getMovementSpeed(), 0.001);
     }
 
+    @Test
+    public void lowerMovementSpeedTest() throws Exception {
+        CharacterAttributes c = new CharacterAttributes(10, 10, 10, 10);
+        c.lowerMovementSpeed(0.5);
+        assertEquals(0.5, c.getMovementSpeed(), 0.001);
+    }
+
     @Test(expected = AssertionError.class)
     public void exeedsMaxMovementSpeedTest() throws Exception {
         CharacterAttributes c = new CharacterAttributes(10, 10, 10, 10);
@@ -72,7 +79,6 @@ public class GameCharacterAttributesTest {
         g.unEquip(helmet);
         assertEquals(100, g.getMaxHp());
     }
-
 
     @Test(expected = AssertionError.class)
     public void ExeedsMaxCarryWeight() throws Exception {
@@ -159,7 +165,6 @@ public class GameCharacterAttributesTest {
         CharacterAttributes c = new CharacterAttributes(10, 10, 10, 10);
         assertEquals(5, c.getDefense());
     }
-
 }
 
 

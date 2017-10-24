@@ -1,9 +1,7 @@
 import org.junit.Test;
-
+import java.util.stream.IntStream;
 import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class GameCharacterTest {
     //HP Tests
@@ -83,21 +81,21 @@ public class GameCharacterTest {
     @Test
     public void levelUpTest() {
         GameCharacter character = new GameCharacter("kalle");
-        character.levelUp();
+        character.levelUp(1);
         assertEquals(2, character.getLevel());
     }
 
     @Test
     public void levelUpMaxHpTest() {
         GameCharacter character = new GameCharacter("kalle");
-        character.levelUp();
+        character.levelUp(1);
         assertEquals(110, character.getMaxHp());
     }
 
     @Test
     public void resetLevelTest() {
         GameCharacter character = new GameCharacter("kalle");
-        character.levelUp();
+        character.levelUp(1);
         character.resetLevel();
         assertEquals(1, character.getLevel());
     }
@@ -105,7 +103,7 @@ public class GameCharacterTest {
     @Test
     public void resetMaxHpTest() {
         GameCharacter character = new GameCharacter("kalle");
-        character.levelUp();
+        character.levelUp(1);
         character.resetLevel();
         assertEquals(100, character.getMaxHp());
     }
@@ -127,14 +125,13 @@ public class GameCharacterTest {
     public void testResetAfterTwoLevelUp() {
         GameCharacter character = new GameCharacter("kalle");
         for (int i = 0; i < 3; i++) {
-            character.levelUp();
+            character.levelUp(1);
         }
         character.resetLevel();
         assertEquals(1, character.getLevel());
     }
 
     //GameCharacter Combat Tests
-
     @Test
     public void testMakeCharacterInCombat() throws Exception {
         GameCharacter mainCharacter = new GameCharacter("kalle");
@@ -232,9 +229,17 @@ public class GameCharacterTest {
         assertEquals(false, character.getIsInCombat());
     }
 
+    @Test
+    public void attackTest() throws Exception {
+        GameCharacter player = new GameCharacter("Player");
+        int[] damageArray = {130, 286};
+        int damage = player.meleeAttack();
+        boolean contains = IntStream.of(damageArray).anyMatch(x -> x == damage);
+
+        assertTrue(contains);
+    }
 
     //GameCharacter Alive Tests
-
     @Test
     public void testVariableIsAlive() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
@@ -270,7 +275,6 @@ public class GameCharacterTest {
     }
 
     //GameCharacter Position Tests
-
     @Test
     public void testStartingPositionX() {
         GameCharacter mainCharacter = new GameCharacter("kalle");
@@ -292,7 +296,6 @@ public class GameCharacterTest {
         mainCharacter.hpCounter(mainCharacter.getCurrentHp());
         mainCharacter.makeCharacterDead();
         assertEquals(20.0, mainCharacter.getXPos(), 0.1);
-
     }
 
     @Test
@@ -334,7 +337,6 @@ public class GameCharacterTest {
     }
 
     //Equipment Tests
-
     @Test
     public void pickUpItemTest() {
         GameCharacter mainGameCharacter = new GameCharacter("kalle");
@@ -355,10 +357,7 @@ public class GameCharacterTest {
     }
 
     @Test
-   public void addTooManyEquipmentsTest() {
-
-
-
+    public void addTooManyEquipmentsTest() {
         GameCharacter player = new GameCharacter("Oscar");
 
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
@@ -383,12 +382,7 @@ public class GameCharacterTest {
 
         player.equipEquipment(helmet2); //Should not be added
 
-
         assertFalse(player.hasEquipped(helmet2));
-
-
-
-
     }
 
     @Test
@@ -405,7 +399,7 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void unequipTest(){
+    public void unequipTest() {
         GameCharacter player = new GameCharacter("Oscar");
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
 
@@ -414,12 +408,10 @@ public class GameCharacterTest {
         player.unEquip(shield);
 
         assertFalse(player.hasEquipped(shield));
-
-
     }
 
     @Test
-    public void unequipWrongItemTest(){
+    public void unequipWrongItemTest() {
         GameCharacter player = new GameCharacter("Oscar");
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
 
@@ -429,60 +421,46 @@ public class GameCharacterTest {
         player.unEquip(otherShield); // unequips the shield that has not been equipped
 
         assertTrue(player.hasEquipped(shield));
-
-
     }
 
     @Test
-    public void wieldTwoWeaponTest(){
-
+    public void wieldTwoWeaponTest() {
         GameCharacter player = new GameCharacter("Oscar");
-        WeaponAttributes weaponAttributes = new WeaponAttributes(10,10,10,10,10);
+        WeaponAttributes weaponAttributes = new WeaponAttributes(10, 10, 10, 10, 10);
 
-
-        Weapon sword = new Weapon("Sword of doom",10,10,weaponAttributes,0);
-        Weapon sword2 = new Weapon("Sword of light",10,10,weaponAttributes,0);
+        Weapon sword = new Weapon("Sword of doom", 10, 10, weaponAttributes, 0);
+        Weapon sword2 = new Weapon("Sword of light", 10, 10, weaponAttributes, 0);
         player.wieldWeapon(sword);
         player.wieldWeapon(sword2);
 
         assertFalse(player.isWielding(sword2));
-
-
     }
 
     @Test
-    public void unWieldWeaponTest(){
-
+    public void unWieldWeaponTest() {
         GameCharacter player = new GameCharacter("Oscar");
-        WeaponAttributes weaponAttributes = new WeaponAttributes(10,10,10,10,10);
+        WeaponAttributes weaponAttributes = new WeaponAttributes(10, 10, 10, 10, 10);
 
-        Weapon sword = new Weapon("Sword of doom",10,10,weaponAttributes,0);
+        Weapon sword = new Weapon("Sword of doom", 10, 10, weaponAttributes, 0);
 
         player.wieldWeapon(sword);
         player.unEquip(sword);
 
         assertFalse(player.isWielding(sword));
-
-
     }
 
     @Test
-    public void weaponAlreadyWieldedTest(){
-
+    public void weaponAlreadyWieldedTest() {
         GameCharacter player = new GameCharacter("Oscar");
-        WeaponAttributes weaponAttributes = new WeaponAttributes(10,10,10,10,10);
-        WeaponAttributes weaponAttributes2 = new WeaponAttributes(10,10,10,10,10);
+        WeaponAttributes weaponAttributes = new WeaponAttributes(10, 10, 10, 10, 10);
+        WeaponAttributes weaponAttributes2 = new WeaponAttributes(10, 10, 10, 10, 10);
 
-        Weapon swordOfDoom = new Weapon("Sword of doom",10,10,weaponAttributes,0);
-        Weapon swordOfFury = new Weapon("Sword of fury",10,10,weaponAttributes2,0);
-
+        Weapon swordOfDoom = new Weapon("Sword of doom", 10, 10, weaponAttributes, 0);
+        Weapon swordOfFury = new Weapon("Sword of fury", 10, 10, weaponAttributes2, 0);
 
         player.wieldWeapon(swordOfDoom);
         player.unEquip(swordOfFury);// sword 2 should not be wielded
 
         assertTrue(player.isWielding(swordOfDoom));
-
-
     }
-
 }
