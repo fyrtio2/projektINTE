@@ -232,18 +232,6 @@ public class GameCharacterTest {
         assertEquals(false, character.getIsInCombat());
     }
 
-    @Test
-    public void meleeAttackTest() throws Exception {
-        GameCharacter player = new GameCharacter("Player");
-        int crit = player.getCharAttributes().returnDamage(true);
-        int noCrit = player.getCharAttributes().returnDamage(false);
-        int[] damageArray = {noCrit, crit};
-        int damage = player.meleeAttack();
-        boolean contains = IntStream.of(damageArray).anyMatch(x -> x == damage);
-
-        assertTrue(contains);
-    }
-
     //GameCharacter Alive Tests
     @Test
     public void testVariableIsAlive() {
