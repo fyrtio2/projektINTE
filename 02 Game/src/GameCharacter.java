@@ -240,7 +240,6 @@ public class GameCharacter {
 
     }
 
-
     public void pickUp(Item item) {
         bag.addToBag(item);
         charAttributes.checkIfOverburdened(bag.getWeight());
