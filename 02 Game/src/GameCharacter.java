@@ -140,7 +140,7 @@ public class GameCharacter {
     public void useEquipment(Equipment equipment) {
 
         if (equippedEquipment.containsKey(equipment.getType())) {
-            System.out.printf("%s already equipped\n", equipment.getType());
+            System.out.printf("%s already equipped%n", equipment.getType());
         } else {
             equippedEquipment.put(equipment.getType(), equipment);
             bag.removeFromBag(equipment);
@@ -205,7 +205,7 @@ public class GameCharacter {
             equippedEquipment.remove(equipment.getType());
             pickUpItem(equipment);
         } else {
-            System.out.printf("that %s is not equipped\n", equipment.getType());
+            System.out.printf("that %s is not equipped%n", equipment.getType());
         }
     }
 
@@ -219,7 +219,7 @@ public class GameCharacter {
             else if (equippedEquipment.size() < 7)
                 charAttributes.removeFullArmorBonus();
         } else {
-            System.out.printf("%s is not wielded\n", w.getName());
+            System.out.printf("%s is not wielded%n", w.getName());
         }
     }
 
