@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class AttributesTest {
     // Increase primary attribute tests
@@ -69,7 +69,6 @@ public class AttributesTest {
         c.decreasePrimaryAttribute("Test", 5);
     }
 
-
     // Negative Attributes
     @Test(expected = AssertionError.class)
     public void negativeAttributesTest() throws Exception {
@@ -85,21 +84,21 @@ public class AttributesTest {
 
     // Values exceed max limit
     @Test(expected = AssertionError.class)
-    public void AttributeExeedsMaxValue() throws Exception {
+    public void attributeExeedsMaxValue() throws Exception {
         Attributes c = new Attributes(41, 41, 41, 41);
         assertEquals(41, c.getIntellegence());
     }
 
     // 101 Dexterity results in critChance exceeding the max limit which is 1.0 (100%)
     @Test(expected = AssertionError.class)
-    public void ExeedsMaxCritChance() throws Exception {
+    public void exeedsMaxCritChance() throws Exception {
         Attributes c = new Attributes(10, 101, 10, 10);
         assertEquals(1.001, c.getCriticalChance(), 0.0001);
     }
 
     // 38 Strenght results in critDamage exceeding the max limit which is 2.75 (275%)
     @Test(expected = AssertionError.class)
-    public void ExeedsMaxCritDamage() throws Exception {
+    public void exeedsMaxCritDamage() throws Exception {
         Attributes c = new Attributes(38, 10, 10, 10);
         assertEquals(2.751, c.getCriticalDamage(), 0.0001);
     }

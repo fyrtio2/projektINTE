@@ -11,10 +11,9 @@ public class ItemTest {
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
         Equipment ring = new Equipment(Equipment.Type.jewelry, "Ring", 2, 10, 10, attributes); // Creates equipment with level 2 requirement
 
-        player.levelUp(); // levels upp player to lvl 2
+        player.levelUp(1); // levels upp player to lvl 2
 
         assertEquals(true, ring.isWearableBy(player)); // tests if player can wear the ring
-
     }
 
     @Test
@@ -33,9 +32,7 @@ public class ItemTest {
         Equipment ring = new Equipment(Equipment.Type.jewelry, "Ring", 2, 10, 10, attributes); // Creates equipment with level 2 requirement
         ring.damageEquipment(10);
         assertEquals(false, ring.isWearableBy(player)); // tests if player can wear the ring
-
     }
-
 
     @Test
     public void damageEquipmentTest() {
@@ -43,7 +40,6 @@ public class ItemTest {
         Equipment helmet = new Equipment(Equipment.Type.helmet, "Helmet", 10, 10, 10, attributes); // Helmet created with 10 durability
         helmet.damageEquipment(9); // Damages the equipments durability with 9 hit points
         assertEquals(1, helmet.getDurability());  // tests if helmets durability has gone down to 1
-
     }
 
     @Test
@@ -52,9 +48,7 @@ public class ItemTest {
         Equipment armor = new Equipment(Equipment.Type.chestPlate, "Armor", 10, 10, 10, attributes); // Armor created with 10 durability
         armor.damageEquipment(10); // Damages the equipments durability with 10 hit points
         assertEquals(true, armor.isBroken());
-
     }
-
 
     @Test
     public void testDurability() {
@@ -83,7 +77,6 @@ public class ItemTest {
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
         Equipment gloves = new Equipment(Equipment.Type.gloves, "", 10, 10, 10, attributes);
         assertEquals("gloves", gloves.getName());
-
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -91,17 +84,9 @@ public class ItemTest {
         EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
         Equipment legPlate = new Equipment(Equipment.Type.legPlate, null, 10, 10, 10, attributes);
         assertEquals("legPlate", legPlate.getName());
-
     }
 
-    @Test
-    public void getTypeTest() {
-
-
-    }
-
-/// TEST WEAPON
-
+    // TEST WEAPON
     @Test
     public void testIFWeaponIsUsable() {
         GameCharacter player = new GameCharacter("Isaac"); // New player created level 1
@@ -147,6 +132,4 @@ public class ItemTest {
 
         assertEquals(true, sword.isBroken());
     }
-
-
 }

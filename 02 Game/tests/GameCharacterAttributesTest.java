@@ -12,6 +12,13 @@ public class GameCharacterAttributesTest {
         assertEquals(-1.5, c.getMovementSpeed(), 0.001);
     }
 
+    @Test
+    public void lowerMovementSpeedTest() throws Exception {
+        CharacterAttributes c = new CharacterAttributes(10, 10, 10, 10);
+        c.lowerMovementSpeed(0.5);
+        assertEquals(0.5, c.getMovementSpeed(), 0.001);
+    }
+
     @Test(expected = AssertionError.class)
     public void exeedsMaxMovementSpeedTest() throws Exception {
         CharacterAttributes c = new CharacterAttributes(10, 10, 10, 10);
@@ -24,7 +31,7 @@ public class GameCharacterAttributesTest {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
-        g.pickUp(helmet);
+        g.pickUpItem(helmet);
 
         assertEquals(0.0, g.getCharAttributes().getMovementSpeed(), 0.1);
     }
@@ -34,7 +41,7 @@ public class GameCharacterAttributesTest {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
-        g.pickUp(helmet);
+        g.pickUpItem(helmet);
         g.dropItem(helmet);
         assertEquals(1.0, g.getCharAttributes().getMovementSpeed(), 0.1);
     }
@@ -45,9 +52,9 @@ public class GameCharacterAttributesTest {
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
         Equipment helmetTwo = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
-        g.pickUp(helmet);
-        g.equipEquipment(helmet);
-        g.pickUp(helmetTwo);
+        g.pickUpItem(helmet);
+        g.useEquipment(helmet);
+        g.pickUpItem(helmetTwo);
         assertEquals(175, g.getCharAttributes().getMaxCarryWeight());
     }
 
@@ -56,8 +63,8 @@ public class GameCharacterAttributesTest {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
-        g.pickUp(helmet);
-        g.equipEquipment(helmet);
+        g.pickUpItem(helmet);
+        g.useEquipment(helmet);
         assertEquals(200, g.getMaxHp());
 
     }
@@ -67,15 +74,14 @@ public class GameCharacterAttributesTest {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
-        g.pickUp(helmet);
-        g.equipEquipment(helmet);
+        g.pickUpItem(helmet);
+        g.useEquipment(helmet);
         g.unEquip(helmet);
         assertEquals(100, g.getMaxHp());
     }
 
-
     @Test(expected = AssertionError.class)
-    public void ExeedsMaxCarryWeight() throws Exception {
+    public void exeedsMaxCarryWeight() throws Exception {
         CharacterAttributes c = new CharacterAttributes(40, 10, 10, 10);
         assertEquals(301, c.getMaxCarryWeight());
     }
@@ -85,8 +91,8 @@ public class GameCharacterAttributesTest {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
-        g.pickUp(helmet);
-        g.equipEquipment(helmet);
+        g.pickUpItem(helmet);
+        g.useEquipment(helmet);
         assertEquals(0.3, g.getCharAttributes().getCriticalChance(), 0.1);
 
     }
@@ -96,8 +102,8 @@ public class GameCharacterAttributesTest {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
-        g.pickUp(helmet);
-        g.equipEquipment(helmet);
+        g.pickUpItem(helmet);
+        g.useEquipment(helmet);
         g.unEquip(helmet);
         assertEquals(0.2, g.getCharAttributes().getCriticalChance(), 0.1);
 
@@ -108,8 +114,8 @@ public class GameCharacterAttributesTest {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
-        g.pickUp(helmet);
-        g.equipEquipment(helmet);
+        g.pickUpItem(helmet);
+        g.useEquipment(helmet);
         System.out.println(g.getCharAttributes().getStrenght());
         System.out.println(g.getCharAttributes().getCriticalDamage());
         assertEquals(2.3, g.getCharAttributes().getCriticalDamage(), 0.01);
@@ -120,8 +126,8 @@ public class GameCharacterAttributesTest {
         GameCharacter g = new GameCharacter("Kalle");
         EquipmentAttributes e = new EquipmentAttributes(10, 5, 10, 10, 10);
         Equipment helmet = new Equipment(Equipment.Type.helmet, "helmet", 10, 10, 151, e);
-        g.pickUp(helmet);
-        g.equipEquipment(helmet);
+        g.pickUpItem(helmet);
+        g.useEquipment(helmet);
         g.unEquip(helmet);
         System.out.println(g.getCharAttributes().getCriticalDamage());
         assertEquals(2.2, g.getCharAttributes().getCriticalDamage(), 0.01);
@@ -129,19 +135,19 @@ public class GameCharacterAttributesTest {
 
     @Test
     public void checkCharacterDamageCritTest() throws Exception {
-        CharacterAttributes nonRand = new NotRandomCharacterAttributes(0.1, 10, 10, 5, 5);
-        assertEquals(275, nonRand.checkIfCrit());
+        CharacterAttributes nonRand = new NotRandomCharacterAttributes(0.1, 10, 10, 10, 0);
+        assertEquals(286, nonRand.determineIfCritIsSuccessfulAndReturnDamage());
     }
 
     @Test
     public void checkCharacterDamageWhenNoCritTest() throws Exception {
-        CharacterAttributes nonRand = new NotRandomCharacterAttributes(0.9, 10, 10, 5, 5);
-        assertEquals(125, nonRand.checkIfCrit());
+        CharacterAttributes nonRand = new NotRandomCharacterAttributes(0.9, 10, 10, 10, 10);
+        assertEquals(130, nonRand.determineIfCritIsSuccessfulAndReturnDamage());
     }
 
     @Test
     public void randomGeneratorTest() throws Exception {
-        CharacterAttributes nonRand = new CharacterAttributes(10, 10, 5, 5);
+        CharacterAttributes nonRand = new CharacterAttributes(10, 10, 10, 10);
         for (int i = 0; i < 100; i++) {
             double d = nonRand.getRandomDouble();
             assertTrue(d >= 0 && d < 1);
@@ -159,7 +165,6 @@ public class GameCharacterAttributesTest {
         CharacterAttributes c = new CharacterAttributes(10, 10, 10, 10);
         assertEquals(5, c.getDefense());
     }
-
 }
 
 

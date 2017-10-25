@@ -15,7 +15,6 @@ public class Map {
             this.mapWidth = mapWidth;
             this.mapHeight = mapHeight;
         }
-
     }
 
     public String getMapName() {
@@ -33,13 +32,10 @@ public class Map {
     public boolean isWithinMap(GameCharacter character) {
         double xPos = character.getXPos();
         double yPos = character.getYPos();
-        if (xPos < 0 || yPos < 0) {
+        if (xPos < 0 || yPos < 0)
             return false;
-        } else if (xPos > mapWidth || yPos > mapHeight) {
+        else if (xPos > mapWidth || yPos > mapHeight)
             return false;
-        }
         return true;
-
     }
-
 }

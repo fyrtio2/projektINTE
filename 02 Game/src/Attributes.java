@@ -65,7 +65,6 @@ public class Attributes {
         increasePrimaryAttribute("Vitality", vitality);
         calcCriticalChance();
         calcCriticalDamage();
-
     }
 
     public void removeEquipmentAttributesFromCharacter(EquipmentAttributes attributes){
@@ -80,7 +79,6 @@ public class Attributes {
         decreasePrimaryAttribute("Vitality", vitality);
         calcCriticalChance();
         calcCriticalDamage();
-
     }
 
     public void resetPrimaryAttributeValues() {

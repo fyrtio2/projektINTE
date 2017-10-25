@@ -46,5 +46,4 @@ public class Equipment extends Item {
     public EquipmentAttributes getAttributes(){
         return attributes;
     }
-
 }
