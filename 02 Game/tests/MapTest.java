@@ -53,7 +53,6 @@ public class MapTest {
         assertEquals(1000, map.getMapHeight());
     }
 
-
     @Test
     public void testMapWidth() {
         Map map = new Map("The forbidden forest", 500, 500);

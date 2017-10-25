@@ -44,11 +44,11 @@ public class AttributesTest {
         assertEquals(5, c.getStrenght());
     }
 
-    @Test(expected = AssertionError.class)
+    @Test
     public void decreasePrimaryAttributeMinTest() throws Exception {
         Attributes c = new Attributes(10, 10, 10, 10);
         c.decreasePrimaryAttribute("Vitality", 11);
-        assertEquals(-1, c.getVitality());
+        assertEquals(0, c.getVitality());
     }
 
     @Test(expected = IllegalArgumentException.class)

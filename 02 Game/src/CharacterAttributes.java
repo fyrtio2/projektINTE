@@ -83,7 +83,6 @@ public class CharacterAttributes extends Attributes {
         return movementSpeed;
     }
 
-
     public int getDefense() {
         return defense;
     }

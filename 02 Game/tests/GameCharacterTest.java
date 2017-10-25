@@ -455,9 +455,4 @@ public class GameCharacterTest {
 
         assertTrue(player.isCharacterWieldingWeapon(swordOfDoom));
     }
-
-
-
-
-
 }
