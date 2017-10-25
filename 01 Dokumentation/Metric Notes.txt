@@ -1,32 +1,26 @@
 Project Metrics 
 (ta bort all kommentarer & sout från Game.java för att få fram de korrekta värdena)
 	COM_RAT	(Comment to product code ratio)
-		- 3,73%
+		- 3,69%
 		Ungefär 3.7% av vår kod är kommentarer
 
 	TEST_RAT (Test code to product code ratio)
-		- 57,17%
-		Ungefär 57,2% av koden är test kod. 
-
-	JTA (Junit test assertions)
-		- 116
-
-	JTC (Junit test cases (Test klasser))
-		- 8
-
-	JTM (Junit test methods)
-		- 124
+		- 56,62%
+		Ungefär 56.7% av koden är test kod. 
 
 	LOC (Lines of Code)
-		- 1660
+		- 1678
+		
+	L(J) (Lines of Java)
+		- 1596
 
 	LOCp (Lines of product code)
-		- 672
+		- 646
 
 	LOCt (Lines of test code)
-		- 949
-		I vårat projekt så är förhållandet mellan LOCp & LOCt 1:1.41220....
-		Vi har alltså ungefär 41.2% mer test kod än produkt kod.
+		- 950
+		I vårat projekt så är förhållandet mellan LOCp & LOCt 1:1.4705....
+		Vi har alltså ungefär 47.1% mer test kod än produkt kod.
 		Detta är intressant mått då det visar en av anledningarna till varför testning är så resurs krävande.
 		Code coverage visar bara hur många metoder/rader som dina test täcker men det visar inte om du har testat alla vägar som programmet kan ta,
 		Dessa mått är då intressanta som en kompletering för code coverage för att ta reda på hur mycket test kod vi har jämför med produkt kod.
