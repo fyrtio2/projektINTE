@@ -4,7 +4,7 @@ Project Metrics
 		- 3,69%
 		Ungefär 3.7% av vår kod är kommentarer
 		
-		Detta mått är ganska låg vilket kan indikera på bristf?llig dokumentation i koden.
+		Detta mått är ganska låg vilket kan indikera på bristfällig dokumentation i koden.
 		Ju mer dokumentation man har ju mer blir din kod lättläst för andra aktörer som kan förstå vad koden exakt gör även för dem som inte kan programmera. 
 		
 		Detta mått blir då väldigt viktigt då utvecklarna kan spåra hur mycket av programmet man dokumenterar och om siffran blir för låg och man märker av det i de tidigaste stadierna av utvecklingsprocessen så
@@ -14,10 +14,8 @@ Project Metrics
 	TEST_RAT (Test code to product code ratio)
 		- 56,62%
 		Ungefär 56.7% av koden är test kod. 
-		Det här måttet är extremt viktigt för att se om man har skrivit tillräckligt med testfall i produkten och se att produkten är vältestad. 
+		Det här måttet är anser vi vara extremt viktigt för att se om man har skrivit tillräckligt med testfall i produkten och ger en indikation till om den är vältestad. 
 		Detta mått kompletteras bäst med coverage.
-		Ju mer testkod det finns ju bättre vet man att produkten har varit vältestad.
-		
 
 	LOC (Lines of Code)
 		- 1678
