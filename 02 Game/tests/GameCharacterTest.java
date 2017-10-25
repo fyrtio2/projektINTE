@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.util.HashMap;
+
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
@@ -454,5 +456,18 @@ public class GameCharacterTest {
         player.unEquip(swordOfFury);// sword 2 should not be wielded
 
         assertTrue(player.isCharacterWieldingWeapon(swordOfDoom));
+    }
+
+    @Test
+    public void denyPickUpIfInCombatTest(){
+        GameCharacter player = new GameCharacter("Oscar");
+        WeaponAttributes weaponAttributes = new WeaponAttributes(10, 10, 10, 10, 10);
+        Weapon swordOfDoom = new Weapon("Sword of doom", 10, 10, weaponAttributes, 0);
+        player.enterCombat();
+        player.pickUpItem(swordOfDoom);
+
+        Bag bag = player.getBag();
+
+        assertFalse(bag.getHashMap().containsKey(swordOfDoom.getName()));
     }
 }
