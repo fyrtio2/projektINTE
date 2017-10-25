@@ -1,42 +1,25 @@
+import java.util.Random;
+
 public class Game {
     public static void main(String[] args) {
-        new Game();
-
         GameCharacter dragonSlayer = new GameCharacter("DragonSlayer");
-        GameCharacter dragon = new GameCharacter("Dragon");
 
-        Map world = new Map("Emils world", 3, 4);
+        char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
 
-        System.out.println(dragonSlayer.getName());
-        System.out.println(world.getMapName());
+        for (int i = 0; i < 2000; i++) {
+            char c = chars[random.nextInt(chars.length)];
+            sb.append(c);
+        }
+        String output = sb.toString();
 
-        System.out.println("\n******************************Attack Test******************************");
-        System.out.println("Dragons current hp: " + dragon.getCurrentHp() + " Max hp: " + dragon.getMaxHp());
-        int damage = dragonSlayer.meleeAttack();
-        System.out.println(dragonSlayer.getName() + " does " + damage + " Damage");
-        dragon.takeDamage(damage);
-        System.out.println(dragon.getName() + " takes: " + damage + " Damage, dragon has " + dragon.takeDamage(dragonSlayer.meleeAttack()) + " hp left");
+        for(int i=0; i<10000000; i++){
+            EquipmentAttributes equipmentAttributes = new EquipmentAttributes(10, 10, 10, 10, 10);
+            Equipment equipment = new Equipment(Equipment.Type.shoes,output, 10, 10, 10,equipmentAttributes);
+            dragonSlayer.pickUpItem(equipment);
 
-        System.out.println("\n******************************Overburdened Test******************************");
-        System.out.println("Movement Speed: " + dragon.getCharAttributes().getMovementSpeed());
-        System.out.println("Max Carry Weight: " + dragon.getCharAttributes().getMaxCarryWeight());
-        System.out.println("Current Carry Weight: " + dragon.getBag().getWeight());
-        EquipmentAttributes attributes = new EquipmentAttributes(5, 5, 5, 5, 5);
-        Equipment helm = new Equipment(Equipment.Type.helmet, "Helm of Domination", 1, 100, 151, attributes);
-        dragon.pickUpItem(helm);
-        System.out.println("You have picked up: " + helm.getName());
-        System.out.println("Your Current Carry Weight is: " + dragon.getBag().getWeight());
-        System.out.println("You have been Overburdened!");
-        System.out.println("Movement Speed: " + dragon.getCharAttributes().getMovementSpeed());
+        }
 
-        System.out.println("\n******************************Equipment affecting Stats******************************");
-        dragon.unEquip(helm);
-        System.out.println("Dragon Strength: " + dragon.getCharAttributes().getStrenght());
-        System.out.println("Max Carry Weight: " + dragon.getCharAttributes().getMaxCarryWeight());
-        System.out.println("Dragon has " + dragon.getCharAttributes().getDefense() + " defense");
-        dragon.useEquipment(helm);
-        System.out.println("Dragon Strength: " + dragon.getCharAttributes().getStrenght());
-        System.out.println("Max Carry Weight: " + dragon.getCharAttributes().getMaxCarryWeight());
-        System.out.println("Dragon has " + dragon.getCharAttributes().getDefense() + " defense");
     }
 }
