@@ -14,6 +14,10 @@ Project Metrics
 	TEST_RAT (Test code to product code ratio)
 		- 56,62%
 		Ungefär 56.7% av koden är test kod. 
+		Det här måttet är extremt viktigt för att se om man har skrivit tillräckligt med testfall i produkten och se att produkten är vältestad. 
+		Detta mått kompletteras bäst med coverage.
+		Ju mer testkod det finns ju bättre vet man att produkten har varit vältestad.
+		
 
 	LOC (Lines of Code)
 		- 1678
@@ -38,6 +42,8 @@ Project Metrics
 		
 	CF (Coupling Factor)
 		- 29,52%
+		Att veta hur mycket klasserna är beroende av varandra är viktigt för att kunna veta om det är värt att kunna göra en helt ny produkt eller om det är bättre att bygga en ny produkt från grunden.
+		Detta mått borde fungera bäst när man mäter klass för klass då kan man veta vilka klasser som är sårbara och då kan man rikta mer resurser till för att fixa till när man väl börjar göra några ändringar. 
 	
 	CLOC (Comment lines of code)
 		- 62
