@@ -90,7 +90,7 @@ public class GameCharacter {
     }
 
     public int meleeAttack() {
-        return getCharAttributes().determineIfCritIsSuccessfulAndReturnDamage();
+        return getCharAttributes().determineIfCrit();
     }
 
     public int takeDamage(int damageTaken) {

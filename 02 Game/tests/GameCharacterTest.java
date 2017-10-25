@@ -23,10 +23,8 @@ public class GameCharacterTest {
 
     @Test
     public void takeDamageBelowZeroHpTest() throws Exception {
-        GameCharacter dragonSlayer = new GameCharacter("Dragon Slayer");
-        GameCharacter Dragon = new GameCharacter("Dragon");
-        dragonSlayer.levelUp(30);
-        assertEquals(0, Dragon.takeDamage(dragonSlayer.meleeAttack()));
+        GameCharacter mainCharacter = new GameCharacter("Gubbe");
+        assertEquals(0, mainCharacter.takeDamage(1000));
     }
 
     @Test(expected = AssertionError.class)

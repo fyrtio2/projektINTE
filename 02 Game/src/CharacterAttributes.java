@@ -33,16 +33,23 @@ public class CharacterAttributes extends Attributes {
         characterDamage = 100 + 1 * getStrenght() + 1 * getDexterity() + 1 * getIntellegence();
     }
 
-    public int determineIfCritIsSuccessfulAndReturnDamage() {
+    public int determineIfCrit() {
         if (getCriticalChance() >= getRandomDouble()) {
-            return (int) (getCharacterDamage() * getCriticalDamage());
+            return returnDamage(true);
         } else
-            return getCharacterDamage();
+            return returnDamage(false);
     }
 
     protected double getRandomDouble() {
         Random rand = new Random();
         return rand.nextDouble();
+    }
+
+    protected int returnDamage(boolean critSuccessful) {
+        if (critSuccessful)
+            return (int) (getCharacterDamage() * getCriticalDamage());
+        else
+            return getCharacterDamage();
     }
 
     // Movement Speed Methods
