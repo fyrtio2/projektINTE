@@ -90,21 +90,6 @@ public class CharacterAttributes extends Attributes {
         return movementSpeed;
     }
 
-    public void giveHalfArmorBonus() {
-        defense += 10;
-    }
-
-    public void giveFullArmorBonus() {
-        defense += 25;
-    }
-
-    public void removeHalfArmorBonus() {
-        defense -= 10;
-    }
-
-    public void removeFullArmorBonus() {
-        defense -= 25;
-    }
 
     public int getDefense() {
         return defense;

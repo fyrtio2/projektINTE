@@ -151,13 +151,7 @@ public class GameCharacter {
             charAttributes.calcMaxCarryWeight();
             maxHp = charAttributes.convertVitalityToHp();
 
-            if (equippedEquipment.size() >= 4) {
-                charAttributes.giveHalfArmorBonus();
-            }
 
-            if (equippedEquipment.size() == 7) {
-                charAttributes.giveFullArmorBonus();
-            }
         }
     }
 
@@ -182,7 +176,6 @@ public class GameCharacter {
 
     public boolean isCharacterWieldingWeapon(Weapon w) {
         if (w.isWielded() && weapon.equals(w)) {
-            System.out.println();
             return true;
         } else {
             return false;
@@ -214,18 +207,22 @@ public class GameCharacter {
         if (isCharacterWieldingWeapon(w)) {
             weapon.setWielded(false);
             pickUpItem(w);
-            if (equippedEquipment.size() < 4)
-                charAttributes.removeHalfArmorBonus();
-            else if (equippedEquipment.size() < 7)
-                charAttributes.removeFullArmorBonus();
-        } else {
+
+        }else {
             System.out.printf("%s is not wielded%n", w.getName());
         }
     }
 
     public void pickUpItem(Item item) {
-        bag.addToBag(item);
-        charAttributes.checkIfOverburdened(bag.getWeight());
+        if(isInCombat){
+            System.out.println("Cant pick up while in combat");
+
+        }else{
+            bag.addToBag(item);
+            charAttributes.checkIfOverburdened(bag.getWeight());
+
+        }
+
     }
 
     public void dropItem(Item item) {
