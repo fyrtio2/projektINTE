@@ -3,6 +3,13 @@ Project Metrics
 	COM_RAT	(Comment to product code ratio)
 		- 3,69%
 		Ungefär 3.7% av vår kod är kommentarer
+		
+		Detta mått är ganska låg vilket kan indikera på bristf?llig dokumentation i koden.
+		Ju mer dokumentation man har ju mer blir din kod lättläst för andra aktörer som kan förstå vad koden exakt gör även för dem som inte kan programmera. 
+		
+		Detta mått blir då väldigt viktigt då utvecklarna kan spåra hur mycket av programmet man dokumenterar och om siffran blir för låg och man märker av det i de tidigaste stadierna av utvecklingsprocessen så
+		kan man lätt se till att utvecklarna lägger mer tid på att dokumentera sin kod.  
+
 
 	TEST_RAT (Test code to product code ratio)
 		- 56,62%
