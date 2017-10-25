@@ -214,8 +214,15 @@ public class GameCharacter {
     }
 
     public void pickUpItem(Item item) {
-        bag.addToBag(item);
-        charAttributes.checkIfOverburdened(bag.getWeight());
+        if(isInCombat){
+            System.out.println("Cant pick up while in combat");
+
+        }else{
+            bag.addToBag(item);
+            charAttributes.checkIfOverburdened(bag.getWeight());
+
+        }
+
     }
 
     public void dropItem(Item item) {
